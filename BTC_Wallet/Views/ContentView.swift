@@ -13,25 +13,20 @@ struct ContentView: View {
 //                    Text("Wallet")
 //                }
 //                .tag(1)
-//            SendView()
-//                .tabItem {
-//                    Image(systemName: "arrow.up.to.line")
-//                    Text("Send")
-//                }
-//                .tag(2)
             SettingsView()
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                     Text("Settings")
                 }
+                .tag(2)
+            SendView()
+                .tabItem {
+                    Image(systemName: "arrow.up.to.line")
+                    Text("Send")
+                }
                 .tag(3)
+
         }
         .accentColor(Color("btcOrange")) // Global?
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
