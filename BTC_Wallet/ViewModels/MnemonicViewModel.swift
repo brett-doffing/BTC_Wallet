@@ -6,9 +6,8 @@ extension MnemonicView {
     @MainActor class MnemonicViewModel: ObservableObject {
         @Published var words: [String] = []
         @Published var hasMnemonic = false
-//        @Published var isValidated = false
 
-        init() {
+        init(words: [String]? = nil) {
             checkForMnemonic()
         }
 
@@ -16,7 +15,6 @@ extension MnemonicView {
             if let mnemonic = UserDefaults.standard.object(forKey: "mnemonic") as? String {
                 words = mnemonic.components(separatedBy: " ")
                 hasMnemonic = true
-//                isValidated = true
             } else {
                 words = [String](repeating: "", count: 12)
             }
