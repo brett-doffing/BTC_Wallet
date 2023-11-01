@@ -12,6 +12,7 @@ struct MnemonicWordView: View {
 
     var body: some View {
         HStack {
+            Text("\(id)")
             TextField("Word #\(id)", text: $text)
                 .autocapitalization(.none)
                 .focused(self.focus, equals: id)
