@@ -63,6 +63,12 @@
 		BC21BB642AF2D415005AC913 /* MnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB5F2AF2D415005AC913 /* MnemonicTests.swift */; };
 		BC21BB652AF2D415005AC913 /* BTCKeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB602AF2D415005AC913 /* BTCKeychainTests.swift */; };
 		BC21BB662AF2D415005AC913 /* BTCCurveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB612AF2D415005AC913 /* BTCCurveTests.swift */; };
+		BC21BB6B2AF2D62D005AC913 /* MnemonicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */; };
+		BC21BB6D2AF2D63F005AC913 /* MnemonicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */; };
+		BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */; };
+		BC21BB712AF2D66E005AC913 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB702AF2D66D005AC913 /* SettingsView.swift */; };
+		BC21BB732AF2D679005AC913 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */; };
+		BC21BB752AF2D6B1005AC913 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB742AF2D6B1005AC913 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +149,12 @@
 		BC21BB5F2AF2D415005AC913 /* MnemonicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicTests.swift; sourceTree = "<group>"; };
 		BC21BB602AF2D415005AC913 /* BTCKeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCKeychainTests.swift; sourceTree = "<group>"; };
 		BC21BB612AF2D415005AC913 /* BTCCurveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCCurveTests.swift; sourceTree = "<group>"; };
+		BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicViewModel.swift; sourceTree = "<group>"; };
+		BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicView.swift; sourceTree = "<group>"; };
+		BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicWordView.swift; sourceTree = "<group>"; };
+		BC21BB702AF2D66D005AC913 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		BC21BB742AF2D6B1005AC913 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,9 +205,11 @@
 		BC21BAD52AF2D397005AC913 /* BTC_Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				BC21BB692AF2D5C2005AC913 /* ViewModels */,
+				BC21BB682AF2D5B4005AC913 /* Models */,
+				BC21BB672AF2D573005AC913 /* Views */,
 				BC21BB002AF2D3F1005AC913 /* BitcoinUtils */,
 				BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */,
-				BC21BAD82AF2D397005AC913 /* ContentView.swift */,
 				BC21BADA2AF2D399005AC913 /* Assets.xcassets */,
 				BC21BADC2AF2D399005AC913 /* Preview Content */,
 			);
@@ -290,6 +304,34 @@
 				BC21BB262AF2D3F1005AC913 /* PBInt.swift */,
 			);
 			path = secp256k1;
+			sourceTree = "<group>";
+		};
+		BC21BB672AF2D573005AC913 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC21BB742AF2D6B1005AC913 /* WebView.swift */,
+				BC21BB702AF2D66D005AC913 /* SettingsView.swift */,
+				BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */,
+				BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */,
+				BC21BAD82AF2D397005AC913 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BC21BB682AF2D5B4005AC913 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BC21BB692AF2D5C2005AC913 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */,
+				BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,17 +469,20 @@
 				BC21BB462AF2D3F2005AC913 /* hash_impl.swift in Sources */,
 				BC21BB322AF2D3F1005AC913 /* ExtendedPrivateKey.swift in Sources */,
 				BC21BB3F2AF2D3F2005AC913 /* field_10x26.swift in Sources */,
+				BC21BB6B2AF2D62D005AC913 /* MnemonicViewModel.swift in Sources */,
 				BC21BAD92AF2D397005AC913 /* ContentView.swift in Sources */,
 				BC21BB572AF2D3F2005AC913 /* PBKDF2.swift in Sources */,
 				BC21BB592AF2D3F2005AC913 /* SMP.swift in Sources */,
 				BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */,
 				BC21BB532AF2D3F2005AC913 /* PBInt.swift in Sources */,
+				BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */,
 				BC21BB542AF2D3F2005AC913 /* BTCKeychainType.swift in Sources */,
 				BC21BB3A2AF2D3F2005AC913 /* eckey_impl.swift in Sources */,
 				BC21BB362AF2D3F1005AC913 /* BTCKeychain.swift in Sources */,
 				BC21BB2F2AF2D3F1005AC913 /* WordList.swift in Sources */,
 				BC21BB5A2AF2D3F2005AC913 /* SegwitAddrCoder.swift in Sources */,
 				BC21BB402AF2D3F2005AC913 /* ecdsa_impl.swift in Sources */,
+				BC21BB6D2AF2D63F005AC913 /* MnemonicView.swift in Sources */,
 				BC21BB492AF2D3F2005AC913 /* ecmult_const_impl.swift in Sources */,
 				BC21BB522AF2D3F2005AC913 /* ecmult_impl.swift in Sources */,
 				BC21BB432AF2D3F2005AC913 /* field_impl.swift in Sources */,
@@ -453,12 +498,14 @@
 				BC21BB422AF2D3F2005AC913 /* group_impl.swift in Sources */,
 				BC21BB4D2AF2D3F2005AC913 /* scalar_8x32.swift in Sources */,
 				BC21BB302AF2D3F1005AC913 /* SMP+Bitcoin.swift in Sources */,
+				BC21BB752AF2D6B1005AC913 /* WebView.swift in Sources */,
 				BC21BB3D2AF2D3F2005AC913 /* ecmult_static_context.swift in Sources */,
 				BC21BB4B2AF2D3F2005AC913 /* ecmult.swift in Sources */,
 				BC21BB502AF2D3F2005AC913 /* PBHex.swift in Sources */,
 				BC21BB4C2AF2D3F2005AC913 /* recovery.swift in Sources */,
 				BC21BB3E2AF2D3F2005AC913 /* ecmult_gen.swift in Sources */,
 				BC21BB482AF2D3F2005AC913 /* secp256k1.swift in Sources */,
+				BC21BB712AF2D66E005AC913 /* SettingsView.swift in Sources */,
 				BC21BB352AF2D3F1005AC913 /* SHA256.swift in Sources */,
 				BC21BB312AF2D3F1005AC913 /* ExtendedPublicKey.swift in Sources */,
 				BC21BB512AF2D3F2005AC913 /* field_10x26_impl.swift in Sources */,
@@ -466,6 +513,7 @@
 				BC21BB5B2AF2D3F2005AC913 /* Bech32.swift in Sources */,
 				BC21BB552AF2D3F2005AC913 /* RIPEMD160.swift in Sources */,
 				BC21BB342AF2D3F1005AC913 /* BTCNetwork.swift in Sources */,
+				BC21BB732AF2D679005AC913 /* SettingsViewModel.swift in Sources */,
 				BC21BB332AF2D3F1005AC913 /* BTCCurve.swift in Sources */,
 				BC21BB562AF2D3F2005AC913 /* Mnemonic.swift in Sources */,
 				BC21BB4E2AF2D3F2005AC913 /* lax_der_parsing.swift in Sources */,
