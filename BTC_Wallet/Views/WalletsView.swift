@@ -4,24 +4,27 @@ import SwiftUI
 
 struct WalletsView: View {
     @StateObject var viewModel = WalletsViewModel()
-    @Binding var tabSelection: Int
+    @Binding var tabSelection: Tab
 
     var body: some View {
         NavigationView {
-            List {
-                Section(header: SectionHeaderView(heading: "Wallets", callback: callback)) {
-//                    NavigationLink {
-//                        WalletView()
-//                    } label: {
-//                        Text("Wallet")
-//                    }
+            ZStack {
+                List {
+                    Section(header: SectionHeaderView(heading: "Wallets", callback: callback)) {
+//                        NavigationLink {
+//                            WalletView()
+//                        } label: {
+//                            Text("Wallet")
+//                        }
+                    }
                 }
+                .listStyle(.insetGrouped)
             }
         }
         .onAppear { viewModel.checkForMnemonic() }
         .alert("Create Mnemonic", isPresented: $viewModel.needsMnemonic,
             actions: {
-                Button("Enter Seed Words", action: { self.tabSelection = 4 })
+            Button("Enter Seed Words", action: { self.tabSelection = .settings })
                 Button("Randomly Generate", action: { viewModel.randomlyGenerateSeed() })
             },
             message: {

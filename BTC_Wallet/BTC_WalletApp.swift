@@ -9,7 +9,7 @@ struct BTC_WalletApp: App {
         // Initialize context for performance
         _ = BTCCurve.shared
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
