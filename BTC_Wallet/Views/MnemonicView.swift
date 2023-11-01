@@ -16,7 +16,7 @@ struct MnemonicView: View {
                             text: viewModel.words[(i * numColumns) + j],
                             id: ((i * numColumns) + j) + 1,
                             disabled: viewModel.hasMnemonic,
-                            saveWord: viewModel.saveWord,
+                            saveWord: { word, index in viewModel.saveWord(word: word, index: index) },
                             focus: $focusedField,
                             nextFocus: { index in
                                 if let index = index {
