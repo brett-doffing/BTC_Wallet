@@ -26,11 +26,11 @@ struct MnemonicView: View {
                                 }
                             }
                         )
-                            .padding(5)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .strokeBorder(lineWidth: 1)
-                            }
+                        .padding(5)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 5)
+                                .strokeBorder(lineWidth: 1)
+                        }
                     }
                 }
             }
