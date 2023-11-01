@@ -76,6 +76,7 @@
 		BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */; };
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
+		BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
 		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +353,7 @@
 				BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */,
 				BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */,
 				BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */,
+				BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC21BB3C2AF2D3F2005AC913 /* lax_der_privatekey_parsing.swift in Sources */,
+				BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */,
 				BC21BB462AF2D3F2005AC913 /* hash_impl.swift in Sources */,
 				BC21BB322AF2D3F1005AC913 /* ExtendedPrivateKey.swift in Sources */,
 				BC21BB3F2AF2D3F2005AC913 /* field_10x26.swift in Sources */,
