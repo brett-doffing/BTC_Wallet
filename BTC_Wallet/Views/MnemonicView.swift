@@ -36,6 +36,8 @@ struct MnemonicView: View {
             }
             .padding()
             if !viewModel.hasMnemonic {
+                Text("Make sure to write down these words and store them in a safe place. You will be quizzed once you hit \"SAVE\".")
+                    .padding()
                 Button("Save") {
                     viewModel.saveMnemonic()
                 }
