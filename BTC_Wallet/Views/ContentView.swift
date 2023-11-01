@@ -7,22 +7,22 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $tabSelection) {
-//            WalletView(tabSelection: $tabSelection)
-//                .tabItem {
-//                    Image(systemName: "bitcoinsign.circle.fill")
-//                    Text("Wallet")
-//                }
-//                .tag(1)
-            SettingsView()
+            WalletsView(tabSelection: $tabSelection)
                 .tabItem {
-                    Image(systemName: "gearshape.fill")
-                    Text("Settings")
+                    Image(systemName: "bitcoinsign.circle.fill")
+                    Text("Wallets")
                 }
-                .tag(2)
+                .tag(1)
             SendView()
                 .tabItem {
                     Image(systemName: "arrow.up.to.line")
                     Text("Send")
+                }
+                .tag(2)
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text("Settings")
                 }
                 .tag(3)
 

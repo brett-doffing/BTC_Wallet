@@ -74,6 +74,8 @@
 		BC21BB7B2AF2E106005AC913 /* RecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7A2AF2E106005AC913 /* RecipientView.swift */; };
 		BC21BB7D2AF2E11E005AC913 /* RecipientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7C2AF2E11E005AC913 /* RecipientViewModel.swift */; };
 		BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */; };
+		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
+		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,8 @@
 		BC21BB7A2AF2E106005AC913 /* RecipientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientView.swift; sourceTree = "<group>"; };
 		BC21BB7C2AF2E11E005AC913 /* RecipientViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientViewModel.swift; sourceTree = "<group>"; };
 		BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
+		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +331,8 @@
 				BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */,
 				BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */,
 				BC21BAD82AF2D397005AC913 /* ContentView.swift */,
+				BC21BB802AF2F074005AC913 /* WalletsView.swift */,
+				BC21BB822AF2F15E005AC913 /* WalletView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				BC21BB592AF2D3F2005AC913 /* SMP.swift in Sources */,
 				BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */,
 				BC21BB532AF2D3F2005AC913 /* PBInt.swift in Sources */,
+				BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */,
 				BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */,
 				BC21BB542AF2D3F2005AC913 /* BTCKeychainType.swift in Sources */,
 				BC21BB3A2AF2D3F2005AC913 /* eckey_impl.swift in Sources */,
@@ -507,6 +514,7 @@
 				BC21BB582AF2D3F2005AC913 /* String+Bitcoin.swift in Sources */,
 				BC21BB4A2AF2D3F2005AC913 /* group.swift in Sources */,
 				BC21BB472AF2D3F2005AC913 /* util.swift in Sources */,
+				BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */,
 				BC21BB3B2AF2D3F2005AC913 /* hash.swift in Sources */,
 				BC21BB442AF2D3F2005AC913 /* scalar_8x32_impl.swift in Sources */,
 				BC21BB452AF2D3F2005AC913 /* scalar_impl.swift in Sources */,
