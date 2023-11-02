@@ -13,9 +13,9 @@ struct MnemonicView: View {
                 HStack {
                     ForEach(0..<3) { j in
                         MnemonicWordView(
-                            text: viewModel.words[(i * numColumns) + j],
-                            id: ((i * numColumns) + j) + 1,
-                            disabled: viewModel.hasMnemonic,
+                            index: ((i * numColumns) + j),
+                            words: $viewModel.words,
+                            disabled: $viewModel.hasMnemonic,
                             saveWord: { word, index in viewModel.saveWord(word: word, index: index) },
                             focus: $focusedField,
                             nextFocus: { index in
@@ -36,6 +36,9 @@ struct MnemonicView: View {
             }
             .padding()
             if !viewModel.hasMnemonic {
+                Button("Generate Random Seed") {
+                    viewModel.randomlyGenerateSeed()
+                }
                 Text("Make sure to write down these words and store them in a safe place. You will be quizzed once you hit \"SAVE\".")
                     .padding()
                 Button("Save") {

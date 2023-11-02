@@ -24,8 +24,7 @@ struct WalletsView: View {
         .onAppear { viewModel.checkForMnemonic() }
         .alert("Create Mnemonic", isPresented: $viewModel.needsMnemonic,
             actions: {
-            Button("Enter Seed Words", action: { self.tabSelection = .settings })
-                Button("Randomly Generate", action: { viewModel.randomlyGenerateSeed() })
+                Button("Enter Seed Words", action: { self.tabSelection = .settings })
             },
             message: {
                 Text("How would you like to create a seed for your wallet?")

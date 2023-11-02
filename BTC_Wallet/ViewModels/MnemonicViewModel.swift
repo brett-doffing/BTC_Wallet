@@ -39,5 +39,20 @@ extension MnemonicView {
             }
             return true
         }
+
+        func randomlyGenerateSeed() {
+            let mnemonic = Mnemonic.createRandom()
+
+            // TODO: Save Securely
+            UserDefaults.standard.set(mnemonic, forKey: "mnemonic")
+    //            let kcpi = KeychainPasswordItem(service: "wallet", account: "satoshi")
+    //            do { try kcpi.savePassword(mnemonic) }
+    //            catch let kcError {
+    //                print("error = \(kcError)")
+    //                isLoading = false
+    //                return
+    //            }
+            checkForMnemonic()
+        }
     }
 }
