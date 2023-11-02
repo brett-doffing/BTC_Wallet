@@ -170,12 +170,12 @@ class BTCKeychain {
     
     func getFingerprint(forParentPrvkey parPrvkey: Data) -> UInt32 {
         let parentPubkey = try! BTCCurve.shared.generatePublicKey(privateKey: parPrvkey)
-        let fingerprint: UInt32 = parentPubkey.hash160().withUnsafeBytes { $0.pointee }
+        let fingerprint: UInt32 = parentPubkey.hash160().withUnsafeBytes { $0.load(as: UInt32.self) }
         return fingerprint
     }
     
     func getFingerprint(forParentPubkey parentPubkey: Data) -> UInt32 {
-        let fingerprint: UInt32 = parentPubkey.hash160().withUnsafeBytes { $0.pointee }
+        let fingerprint: UInt32 = parentPubkey.hash160().withUnsafeBytes { $0.load(as: UInt32.self) }
         return fingerprint
     }
     
