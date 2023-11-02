@@ -6,6 +6,7 @@ extension MnemonicView {
     @MainActor class MnemonicViewModel: ObservableObject {
         @Published var words: [String] = []
         @Published var hasMnemonic = false
+        @Published var shouldQuiz = false
 
         init(words: [String]? = nil) {
             checkForMnemonic()
@@ -28,6 +29,7 @@ extension MnemonicView {
             if validateMnemonic() {
                 let mnemonic = words.map { $0.lowercased() }.joined(separator: " ")
                 UserDefaults.standard.set(mnemonic, forKey: "mnemonic")
+                shouldQuiz = true
             }
         }
 
@@ -53,6 +55,7 @@ extension MnemonicView {
     //                return
     //            }
             checkForMnemonic()
+            shouldQuiz = true
         }
     }
 }

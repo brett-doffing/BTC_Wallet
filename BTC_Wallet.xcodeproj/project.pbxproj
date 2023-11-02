@@ -77,6 +77,8 @@
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
 		BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */; };
+		BCFD2D852AF44A7200A9A94E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D842AF44A7200A9A94E /* QuizView.swift */; };
+		BCFD2D872AF44A9300A9A94E /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +173,8 @@
 		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
 		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
+		BCFD2D842AF44A7200A9A94E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +339,7 @@
 				BC21BAD82AF2D397005AC913 /* ContentView.swift */,
 				BC21BB802AF2F074005AC913 /* WalletsView.swift */,
 				BC21BB822AF2F15E005AC913 /* WalletView.swift */,
+				BCFD2D842AF44A7200A9A94E /* QuizView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */,
 				BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */,
 				BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */,
+				BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				BC21BB4A2AF2D3F2005AC913 /* group.swift in Sources */,
 				BC21BB472AF2D3F2005AC913 /* util.swift in Sources */,
 				BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */,
+				BCFD2D872AF44A9300A9A94E /* QuizViewModel.swift in Sources */,
 				BC21BB3B2AF2D3F2005AC913 /* hash.swift in Sources */,
 				BC21BB442AF2D3F2005AC913 /* scalar_8x32_impl.swift in Sources */,
 				BC21BB452AF2D3F2005AC913 /* scalar_impl.swift in Sources */,
@@ -530,6 +537,7 @@
 				BC21BB302AF2D3F1005AC913 /* SMP+Bitcoin.swift in Sources */,
 				BC21BB752AF2D6B1005AC913 /* WebView.swift in Sources */,
 				BC21BB3D2AF2D3F2005AC913 /* ecmult_static_context.swift in Sources */,
+				BCFD2D852AF44A7200A9A94E /* QuizView.swift in Sources */,
 				BC21BB4B2AF2D3F2005AC913 /* ecmult.swift in Sources */,
 				BC21BB502AF2D3F2005AC913 /* PBHex.swift in Sources */,
 				BC21BB4C2AF2D3F2005AC913 /* recovery.swift in Sources */,
