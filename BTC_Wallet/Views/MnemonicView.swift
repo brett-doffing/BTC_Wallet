@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct MnemonicView: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel = MnemonicViewModel()
     @FocusState private var focusedField: Int?
     let numColumns = 3
@@ -60,14 +61,29 @@ struct MnemonicView: View {
                             .stroke(.white, lineWidth: 5)
                 }
                 .padding()
-            } else {
-                NavigationLink("Done", destination: {
-                    QuizView(viewModel: QuizView.QuizViewModel(words: viewModel.words))
+            } else if viewModel.shouldQuiz {
+                NavigationLink("Quiz", destination: {
+                    QuizView(viewModel:
+                                QuizView.QuizViewModel(
+                                    words: viewModel.words,
+                                    callback: { success in
+                                        if success {
+                                            viewModel.shouldQuiz = false
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                    })
+                    )
                 })
+                .frame(width: 150, height: 50)
+                .cornerRadius(10)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("btcOrange"), lineWidth: 3)
+                }
                 .padding()
             }
+            Spacer()
         }
         .onAppear { viewModel.checkForMnemonic() }
-        Spacer()
     }
 }

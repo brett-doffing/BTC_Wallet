@@ -5,35 +5,47 @@ import Foundation
 extension QuizView {
     @MainActor class QuizViewModel: ObservableObject {
         let words: [String]
+        /// Holds indices that have been questioned
+        var wordIndices: [Int] = []
         var answerButtonIndex = 0
-        @Published var wordIndex: Int = 1
+        var questionCounter = 0
+        let callback: (Bool) -> ()
+        @Published var wordIndex: Int = 0
         @Published var word1: String = ""
         @Published var word2: String = ""
         @Published var word3: String = ""
 
-        init(words: [String]) {
+        init(words: [String], callback: @escaping (Bool) -> ()) {
             self.words = words
+            self.callback = callback
             self.generateQuiz()
         }
 
         func generateQuiz() {
+            questionCounter += 1
+            
             // Index for answer to question
-            wordIndex = Int.random(in: 0..<12)
+            repeat {
+                wordIndex = Int.random(in: 0..<12)
+            } while wordIndices.contains(wordIndex)
+            wordIndices.append(wordIndex)
+
             // Random button will be the answer
             answerButtonIndex = Int.random(in: 1...3)
+
             // Indecies that shouldn't be repeated as possible answer options
-            var takenIndecies: [Int] = []
+            var takenIndices: [Int] = []
 
             for i in 1...3 {
                 var idx = wordIndex
                 if i != answerButtonIndex {
                     var randomIdx = Int.random(in: 0..<12)
-                    while randomIdx == wordIndex || takenIndecies.contains(randomIdx) {
+                    while randomIdx == wordIndex || takenIndices.contains(randomIdx) {
                         randomIdx = Int.random(in: 0..<12)
                     }
                     idx = randomIdx
                 }
-                takenIndecies.append(idx)
+                takenIndices.append(idx)
 
                 switch i {
                 case 1:
@@ -47,12 +59,18 @@ extension QuizView {
             print(words[wordIndex])
         }
 
-        func selected(index: Int) {
+        func selected(index: Int, dismiss: (Bool) -> ()) {
             if index == answerButtonIndex {
-                print("correct")
-                generateQuiz()
+                if questionCounter < 4 {
+                    generateQuiz()
+                } else {
+                    dismiss(true)
+                    callback(true)
+                }
             } else {
-                print("wrong")
+                wordIndices = []
+                dismiss(true)
+                callback(false)
             }
         }
     }
