@@ -175,6 +175,7 @@
 		BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
 		BCFD2D842AF44A7200A9A94E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		BCFD2D882AF5AFC100A9A94E /* BTC_Wallet.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BTC_Wallet.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +206,7 @@
 		BC21BACA2AF2D396005AC913 = {
 			isa = PBXGroup;
 			children = (
+				BCFD2D882AF5AFC100A9A94E /* BTC_Wallet.xctestplan */,
 				BC21BAD52AF2D397005AC913 /* BTC_Wallet */,
 				BC21BAE62AF2D399005AC913 /* BTC_WalletTests */,
 				BC21BAF02AF2D399005AC913 /* BTC_WalletUITests */,

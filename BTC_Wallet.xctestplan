@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "84256093-1443-46AC-9ACB-FA734D32EFA4",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:BTC_Wallet.xcodeproj",
+      "identifier" : "BC21BAD22AF2D397005AC913",
+      "name" : "BTC_Wallet"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BTC_Wallet.xcodeproj",
+        "identifier" : "BC21BAE22AF2D399005AC913",
+        "name" : "BTC_WalletTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BTC_Wallet.xcodeproj",
+        "identifier" : "BC21BAEC2AF2D399005AC913",
+        "name" : "BTC_WalletUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
