@@ -60,6 +60,7 @@ struct MnemonicView: View {
                     RoundedRectangle(cornerRadius: 10)
                             .stroke(.white, lineWidth: 5)
                 }
+                .navigationBarBackButtonHidden(false)
                 .padding()
             } else if viewModel.shouldQuiz {
                 NavigationLink("Quiz", destination: {
@@ -80,6 +81,7 @@ struct MnemonicView: View {
                     RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("btcOrange"), lineWidth: 3)
                 }
+                .navigationBarBackButtonHidden(true)
                 .padding()
             }
             Spacer()
