@@ -56,7 +56,9 @@ extension QuizView {
                     word3 = words[idx]
                 }
             }
-            print(words[wordIndex])
+            #if DEBUG
+            print(words[wordIndex]) // answer
+            #endif
         }
 
         func selected(index: Int, dismiss: (Bool) -> ()) {
