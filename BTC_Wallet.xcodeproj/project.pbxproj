@@ -77,6 +77,7 @@
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
 		BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */; };
+		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCFD2D852AF44A7200A9A94E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D842AF44A7200A9A94E /* QuizView.swift */; };
 		BCFD2D872AF44A9300A9A94E /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +384,9 @@
 			dependencies = (
 			);
 			name = BTC_Wallet;
+			packageProductDependencies = (
+				BCE06A202AFACE9300F5F415 /* CodeScanner */,
+			);
 			productName = BTC_Wallet;
 			productReference = BC21BAD32AF2D397005AC913 /* BTC_Wallet.app */;
 			productType = "com.apple.product-type.application";
@@ -455,6 +460,9 @@
 				Base,
 			);
 			mainGroup = BC21BACA2AF2D396005AC913;
+			packageReferences = (
+				BCE06A1F2AFACE9300F5F415 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = BC21BAD42AF2D397005AC913 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -893,6 +901,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BCE06A1F2AFACE9300F5F415 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCE06A202AFACE9300F5F415 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCE06A1F2AFACE9300F5F415 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BC21BACB2AF2D396005AC913 /* Project object */;
 }
