@@ -10,13 +10,6 @@ struct SettingsView: View {
             List {
                 Section {
                     NavigationLink {
-                        MnemonicView()
-                    } label: {
-                        Text("Seed Words")
-                    }
-                }
-                Section {
-                    NavigationLink {
                         WebView(url: URL(string: "https://coinfaucet.eu/en/btc-testnet/")!)
                             .ignoresSafeArea()
                             .navigationTitle("Testnet Faucet")
