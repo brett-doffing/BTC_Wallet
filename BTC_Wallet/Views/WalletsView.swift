@@ -4,35 +4,29 @@ import SwiftUI
 
 struct WalletsView: View {
     @StateObject var viewModel = WalletsViewModel()
-    @Binding var tabSelection: Tab
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 List {
-                    Section(header: SectionHeaderView(heading: "Wallets", callback: callback)) {
-//                        NavigationLink {
-//                            WalletView()
-//                        } label: {
-//                            Text("Wallet")
-//                        }
+                    Section(
+                        header: SectionHeaderView(
+                            heading: "Wallets",
+                            callback: showMnemonic
+                        )
+                    ) {
+
                     }
                 }
                 .listStyle(.insetGrouped)
             }
-        }
-        .onAppear { viewModel.checkForMnemonic() }
-        .alert("Create Mnemonic", isPresented: $viewModel.needsMnemonic,
-            actions: {
-                Button("Create Seed Words", action: { self.tabSelection = .settings })
-            },
-            message: {
-                Text("It looks like you need a seed for you wallets.")
+            .navigationDestination(isPresented: $viewModel.showMnemonic) {
+                MnemonicView()
             }
-        )
+        }
     }
 
-    func callback() {
-        print("callback")
+    func showMnemonic() {
+        viewModel.showMnemonic = true
     }
 }
