@@ -4,9 +4,13 @@ import SwiftUI
 
 struct MnemonicView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel = MnemonicViewModel()
+    @ObservedObject var viewModel: MnemonicViewModel
     @FocusState private var focusedField: Int?
     let numColumns = 3
+
+    init(viewModel: MnemonicViewModel = MnemonicViewModel()) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         VStack {
