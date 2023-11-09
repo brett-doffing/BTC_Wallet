@@ -10,6 +10,7 @@ struct QuizView: View {
         VStack {
             Text("What is word #\(viewModel.wordIndex + 1)")
                 .padding()
+            
             ButtonX(text: "\(viewModel.word1)") {
                 viewModel.selected(index: 1, dismiss: dismissView)
             }
