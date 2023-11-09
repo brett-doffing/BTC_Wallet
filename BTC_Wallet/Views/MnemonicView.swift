@@ -4,13 +4,9 @@ import SwiftUI
 
 struct MnemonicView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel: MnemonicViewModel
+    @StateObject var viewModel: MnemonicViewModel
     @FocusState private var focusedField: Int?
     let numColumns = 3
-
-    init(viewModel: MnemonicViewModel = MnemonicViewModel()) {
-        self.viewModel = viewModel
-    }
 
     var body: some View {
         VStack {
@@ -60,7 +56,7 @@ struct MnemonicView: View {
             } else if viewModel.shouldQuiz {
                 NavigationLink("Quiz", destination: {
                     QuizView(viewModel:
-                                QuizView.QuizViewModel(
+                                QuizViewModel(
                                     words: viewModel.words,
                                     callback: { success in
                                         if success {
