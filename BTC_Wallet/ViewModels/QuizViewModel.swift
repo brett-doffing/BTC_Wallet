@@ -2,7 +2,7 @@
 
 import Foundation
 
-class QuizViewModel: ObservableObject {
+@MainActor class QuizViewModel: ObservableObject {
     let words: [String]
     /// Holds indices that have been questioned
     var wordIndices: [Int] = []
