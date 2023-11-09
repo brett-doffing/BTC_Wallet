@@ -9,11 +9,11 @@ enum Tab {
 }
 
 struct ContentView: View {
-//    @State private var tabSelection = Tab.wallets
+    @State private var tabSelection = Tab.wallets
 
     var body: some View {
-        TabView() {
-            WalletsView()
+        TabView(selection: $tabSelection) {
+            WalletsView(tabSelection: $tabSelection)
                 .tabItem {
                     Image(systemName: "bitcoinsign.circle.fill")
                     Text("Wallets")

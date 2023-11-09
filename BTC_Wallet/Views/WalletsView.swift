@@ -4,6 +4,7 @@ import SwiftUI
 
 struct WalletsView: View {
     @StateObject var viewModel = WalletsViewModel()
+    @Binding var tabSelection: Tab
 
     var body: some View {
         NavigationStack {
@@ -24,7 +25,14 @@ struct WalletsView: View {
                 }
                 .listStyle(.insetGrouped)
             }
-            .onAppear { viewModel.getWallets() }
+            .onChange(of: tabSelection) { selection in
+                if selection == .wallets {
+                    viewModel.getWallets()
+                }
+            }
+            .onAppear {
+                viewModel.getWallets()
+            }
             .navigationDestination(isPresented: $viewModel.showMnemonic) {
                 let vm = MnemonicViewModel(viewModel.walletName)
                 MnemonicView(viewModel: vm)
