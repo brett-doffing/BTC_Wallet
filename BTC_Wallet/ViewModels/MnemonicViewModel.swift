@@ -2,7 +2,7 @@
 
 import Foundation
 
-@MainActor class MnemonicViewModel: ObservableObject {
+class MnemonicViewModel: ObservableObject {
     @Published var words = [String](repeating: "", count: 12)
     @Published var hasMnemonic = false
     @Published var shouldQuiz = false
