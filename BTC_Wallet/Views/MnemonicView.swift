@@ -74,7 +74,7 @@ struct MnemonicView: View {
                                     callback: { success in
                                         if success {
                                             viewModel.shouldQuiz = false
-                                            self.presentationMode.wrappedValue.dismiss()
+                                            presentationMode.wrappedValue.dismiss()
                                         }
                                     })
                     )
