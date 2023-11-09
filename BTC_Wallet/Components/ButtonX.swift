@@ -4,7 +4,7 @@ import SwiftUI
 
 struct ButtonX: View {
     var text: String
-    var callback: (() -> Void) /// use closure for callback
+    var callback: (() -> Void)
 
     var body: some View {
         Button(action: callback) {
@@ -13,7 +13,7 @@ struct ButtonX: View {
         .frame(width: 150, height: 50)
         .cornerRadius(10)
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 5)
                     .stroke(Color("btcOrange"), lineWidth: 5)
                     .allowsHitTesting(false)
         }
