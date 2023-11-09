@@ -13,6 +13,9 @@ import Foundation
         if let savedWallets = UserDefaults.standard.object(forKey: "wallets") as? [[String: String]] {
             print(savedWallets)
             wallets = savedWallets
+        } else {
+            wallets = []
         }
+        
     }
 }
