@@ -61,17 +61,17 @@ extension QuizView {
             #endif
         }
 
-        func selected(index: Int, dismiss: (Bool) -> ()) {
+        func selected(index: Int, dismiss: () -> ()) {
             if index == answerButtonIndex {
                 if questionCounter < 4 {
                     generateQuiz()
                 } else {
-                    dismiss(true)
+                    dismiss()
                     callback(true)
                 }
             } else {
                 wordIndices = []
-                dismiss(true)
+                dismiss()
                 callback(false)
             }
         }
