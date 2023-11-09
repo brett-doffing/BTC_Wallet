@@ -10,11 +10,11 @@ struct ButtonX: View {
         Button(action: callback) {
             Text(text)
         }
-        .frame(width: 150, height: 50)
-        .cornerRadius(10)
+        .frame(width: 200, height: 50)
+        .cornerRadius(5)
         .overlay {
             RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color("btcOrange"), lineWidth: 5)
+                    .stroke(Color("btcOrange"), lineWidth: 3)
                     .allowsHitTesting(false)
         }
     }

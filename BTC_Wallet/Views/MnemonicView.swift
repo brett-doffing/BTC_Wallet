@@ -47,22 +47,13 @@ struct MnemonicView: View {
             Spacer()
 
             if !viewModel.hasMnemonic {
-                Button("Generate Random Seed") {
+                ButtonX(text: "Generate Random Seed") {
                     viewModel.randomlyGenerateSeed()
                 }
+                .padding()
 
-                Spacer()
-
-                Button("Save") {
+                ButtonX(text: "Save") {
                     viewModel.saveMnemonic()
-                }
-                .frame(width: 150, height: 50)
-                .background(.blue)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                            .stroke(.white, lineWidth: 5)
                 }
                 .navigationBarBackButtonHidden(false)
                 .padding()
@@ -79,10 +70,10 @@ struct MnemonicView: View {
                                     })
                     )
                 })
-                .frame(width: 150, height: 50)
-                .cornerRadius(10)
+                .frame(width: 200, height: 50)
+                .cornerRadius(5)
                 .overlay {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 5)
                             .stroke(Color("btcOrange"), lineWidth: 3)
                 }
                 .navigationBarBackButtonHidden(true)
