@@ -4,47 +4,48 @@ import Foundation
 
 @MainActor class QuizViewModel: ObservableObject {
     let words: [String]
-    /// Holds indices that have been questioned
+    /// Holds indices of question that have already been asked
     var wordIndices: [Int] = []
-    var answerButtonIndex = 0
-    var questionCounter = 0
-    let callback: (Bool) -> ()
+    var answerButtonNumber = 0
+    var questionNumber = 1
+    let dismissMnemonicView: (Bool) -> ()
     @Published var wordIndex: Int = 0
     @Published var word1: String = ""
     @Published var word2: String = ""
     @Published var word3: String = ""
 
-    init(words: [String], callback: @escaping (Bool) -> ()) {
+    init(words: [String], dismissMnemonicView: @escaping (Bool) -> ()) {
         self.words = words
-        self.callback = callback
-        self.generateQuiz()
+        self.dismissMnemonicView = dismissMnemonicView
+        self.generateQuestion()
     }
 
-    func generateQuiz() {
-        questionCounter += 1
-        
-        // Index for answer to question
+    /**
+     Generates the question, answer, and two wrong answers, making sure not to repeat or duplicate answers or questions.
+     */
+    private func generateQuestion() {
+        /// Index for answer to question
         repeat {
             wordIndex = Int.random(in: 0..<12)
         } while wordIndices.contains(wordIndex)
         wordIndices.append(wordIndex)
 
-        // Random button will be the answer
-        answerButtonIndex = Int.random(in: 1...3)
+        /// Random button will be the answer
+        answerButtonNumber = Int.random(in: 1...3)
 
-        // Indecies that shouldn't be repeated as possible answer options
-        var takenIndices: [Int] = []
+        /// Indices that shouldn't be repeated as possible answer options
+        var answerIndices: [Int] = []
 
         for i in 1...3 {
             var idx = wordIndex
-            if i != answerButtonIndex {
+            if i != answerButtonNumber {
                 var randomIdx = Int.random(in: 0..<12)
-                while randomIdx == wordIndex || takenIndices.contains(randomIdx) {
+                while randomIdx == wordIndex || answerIndices.contains(randomIdx) {
                     randomIdx = Int.random(in: 0..<12)
                 }
                 idx = randomIdx
             }
-            takenIndices.append(idx)
+            answerIndices.append(idx)
 
             switch i {
             case 1:
@@ -60,18 +61,22 @@ import Foundation
         #endif
     }
 
-    func selected(index: Int, dismiss: () -> ()) {
-        if index == answerButtonIndex {
-            if questionCounter < 4 {
-                generateQuiz()
+    /**
+     Action taken when an answer button has been tapped.
+     */
+    func selected(buttonNumber: Int, dismissQuizView: () -> ()) {
+        if buttonNumber == answerButtonNumber {
+            if questionNumber < 4 {
+                questionNumber += 1
+                generateQuestion()
             } else {
-                dismiss()
-                callback(true)
+                dismissQuizView()
+                dismissMnemonicView(true)
             }
         } else {
             wordIndices = []
-            dismiss()
-            callback(false)
+            dismissQuizView()
+            dismissMnemonicView(false)
         }
     }
 }

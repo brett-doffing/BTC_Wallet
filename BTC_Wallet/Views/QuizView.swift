@@ -12,17 +12,17 @@ struct QuizView: View {
                 .padding()
             
             ButtonX(text: "\(viewModel.word1)") {
-                viewModel.selected(index: 1, dismiss: dismissView)
+                viewModel.selected(buttonNumber: 1) { dismissView() }
             }
             .padding()
 
             ButtonX(text: "\(viewModel.word2)") {
-                viewModel.selected(index: 2, dismiss: dismissView)
+                viewModel.selected(buttonNumber: 2) { dismissView() }
             }
             .padding()
             
             ButtonX(text: "\(viewModel.word3)") {
-                viewModel.selected(index: 3, dismiss: dismissView)
+                viewModel.selected(buttonNumber: 3) { dismissView() }
             }
             .padding()
         }

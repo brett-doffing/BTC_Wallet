@@ -38,7 +38,7 @@ struct WalletsView: View {
                 MnemonicView(viewModel: vm)
             }
             .alert("Wallet Name", isPresented: $viewModel.showNameAlert) {
-                TextField("WalletName", text: $viewModel.walletName)
+                TextField("Wallet Name", text: $viewModel.walletName)
                 Button("OK", action: { saveName() })
             }
         }
