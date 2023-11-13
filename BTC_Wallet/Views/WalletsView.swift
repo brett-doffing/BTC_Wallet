@@ -40,11 +40,14 @@ struct WalletsView: View {
             .alert("Wallet Name", isPresented: $viewModel.showNameAlert) {
                 TextField("Wallet Name", text: $viewModel.walletName)
                 Button("OK", action: { saveName() })
+                Button("Cancel", role: .cancel, action: {})
             }
         }
     }
 
     func saveName() {
-        viewModel.showMnemonic = true
+        if viewModel.walletName != "" {
+            viewModel.showMnemonic = true
+        }
     }
 }
