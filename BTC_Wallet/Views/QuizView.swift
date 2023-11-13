@@ -14,17 +14,17 @@ struct QuizView: View {
             ButtonX(text: "\(viewModel.word1)") {
                 viewModel.selected(buttonNumber: 1) { dismissView() }
             }
-            .padding()
+            .buttonStyle(SecondaryButton())
 
             ButtonX(text: "\(viewModel.word2)") {
                 viewModel.selected(buttonNumber: 2) { dismissView() }
             }
-            .padding()
-            
+            .buttonStyle(SecondaryButton())
+
             ButtonX(text: "\(viewModel.word3)") {
                 viewModel.selected(buttonNumber: 3) { dismissView() }
             }
-            .padding()
+            .buttonStyle(SecondaryButton())
         }
     }
 

@@ -46,13 +46,13 @@ struct MnemonicView: View {
                 ButtonX(text: "Generate Random Seed") {
                     viewModel.randomlyGenerateSeed()
                 }
-                .padding()
+                .buttonStyle(SecondaryButton())
 
                 ButtonX(text: "Save") {
                     viewModel.saveMnemonic()
                 }
+                .buttonStyle(PrimaryButton())
                 .navigationBarBackButtonHidden(false)
-                .padding()
             } else if viewModel.shouldQuiz {
                 NavigationLink("Quiz", destination: {
                     QuizView(viewModel:
@@ -66,6 +66,10 @@ struct MnemonicView: View {
                 })
                 .frame(width: 200, height: 50)
                 .cornerRadius(5)
+                .background {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.white)
+                }
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
                             .stroke(Color("btcOrange"), lineWidth: 3)
