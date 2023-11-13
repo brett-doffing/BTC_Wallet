@@ -65,13 +65,8 @@ struct MnemonicView: View {
                     )
                 })
                 .frame(width: 200, height: 50)
-                .cornerRadius(5)
                 .background {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.white)
-                }
-                .overlay {
-                    RoundedRectangle(cornerRadius: 5)
+                    RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("btcOrange"), lineWidth: 3)
                 }
                 .navigationBarBackButtonHidden(true)
