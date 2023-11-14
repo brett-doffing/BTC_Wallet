@@ -55,13 +55,13 @@ struct MnemonicView: View {
                 .navigationBarBackButtonHidden(false)
             } else if viewModel.shouldQuiz {
                 NavigationLink("Quiz", destination: {
-                    QuizView(viewModel:
-                                QuizViewModel(words: viewModel.words) { dismiss in
-                                    if dismiss {
-                                        viewModel.shouldQuiz = false
-                                        presentationMode.wrappedValue.dismiss()
-                                    }
-                                }
+                    QuizView(
+                        viewModel: QuizViewModel(words: viewModel.words) { dismiss in
+                            if dismiss {
+                                viewModel.shouldQuiz = false
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
                     )
                 })
                 .frame(width: 200, height: 50)
