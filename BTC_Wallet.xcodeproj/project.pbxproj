@@ -80,6 +80,7 @@
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
+		BCE06A282B03D06D00F5F415 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCE06A272B03D06D00F5F415 /* Localizable.strings */; };
 		BCFD2D852AF44A7200A9A94E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D842AF44A7200A9A94E /* QuizView.swift */; };
 		BCFD2D872AF44A9300A9A94E /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -178,6 +179,7 @@
 		BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BCFD2D842AF44A7200A9A94E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		BCFD2D882AF5AFC100A9A94E /* BTC_Wallet.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BTC_Wallet.xctestplan; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */,
 				BC21BADA2AF2D399005AC913 /* Assets.xcassets */,
 				BC21BADC2AF2D399005AC913 /* Preview Content */,
+				BCE06A272B03D06D00F5F415 /* Localizable.strings */,
 			);
 			path = BTC_Wallet;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC21BADE2AF2D399005AC913 /* Preview Assets.xcassets in Resources */,
+				BCE06A282B03D06D00F5F415 /* Localizable.strings in Resources */,
 				BC21BADB2AF2D399005AC913 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ struct WalletsView: View {
                 List {
                     Section(
                         header: SectionHeaderView(
-                            heading: "Wallets",
+                            heading: "wallets",
                             callback: { viewModel.showNameAlert = true }
                         )
                     ) {
@@ -37,10 +37,10 @@ struct WalletsView: View {
                 let vm = MnemonicViewModel(viewModel.walletName)
                 MnemonicView(viewModel: vm)
             }
-            .alert("Wallet Name", isPresented: $viewModel.showNameAlert) {
-                TextField("Wallet Name", text: $viewModel.walletName)
-                Button("OK", action: { saveName() })
-                Button("Cancel", role: .cancel, action: {})
+            .alert("walletName", isPresented: $viewModel.showNameAlert) {
+                TextField("walletName", text: $viewModel.walletName)
+                Button("ok", action: { saveName() })
+                Button("cancel", role: .cancel, action: {})
             }
         }
     }

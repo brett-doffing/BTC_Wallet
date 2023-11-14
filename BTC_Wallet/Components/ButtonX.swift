@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct ButtonX: View {
-    var text: String
+    var text: LocalizedStringKey
     var callback: (() -> Void)
 
     var body: some View {

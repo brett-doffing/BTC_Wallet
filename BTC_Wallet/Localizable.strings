@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  BTC_Wallet
+
+  Created by Brett Doffing on 11/14/23.
+  
+*/
+
+"cancel" = "Cancel";
+"delete" = "Delete";
+"deleteData" = "Delete Data";
+"deleteAllData" = "Delete All Data";
+"faucet" = "Testnet Faucet";
+"generateRandomSeed" = "Generate Random Seed";
+"getCoins" = "Get Coins";
+"ok" = "OK";
+"questionDeleteData" = "Are you sure you want to delete all of your data?";
+"quiz" = "Quiz";
+"save" = "Save";
+"wallets" = "Wallets";
+"walletName" = "Wallet Name";
+"wordQuestion %@" = "What is word %@";
+"writeDownMnemonic" = "Make sure to write down these words, in order, and store them in a safe place. You will be quizzed once you create them.";

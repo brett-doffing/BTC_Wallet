@@ -8,7 +8,7 @@ struct QuizView: View {
 
     var body: some View {
         VStack {
-            Text("What is word #\(viewModel.wordIndex + 1)")
+            Text("wordQuestion \(viewModel.wordIndex + 1)")
                 .padding()
             
             ButtonX(text: "\(viewModel.word1)") {

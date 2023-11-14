@@ -10,7 +10,7 @@ struct MnemonicView: View {
 
     var body: some View {
         VStack {
-            Text("Make sure to write down these words, in order, and store them in a safe place. You will be quizzed once you create them.")
+            Text("writeDownMnemonic")
                 .padding()
 
             ForEach(0..<4) { i in
@@ -43,18 +43,18 @@ struct MnemonicView: View {
             Spacer()
 
             if !viewModel.hasMnemonic {
-                ButtonX(text: "Generate Random Seed") {
+                ButtonX(text: "generateRandomSeed") {
                     viewModel.randomlyGenerateSeed()
                 }
                 .buttonStyle(SecondaryButton())
 
-                ButtonX(text: "Save") {
+                ButtonX(text: "save") {
                     viewModel.saveMnemonic()
                 }
                 .buttonStyle(PrimaryButton())
                 .navigationBarBackButtonHidden(false)
             } else if viewModel.shouldQuiz {
-                NavigationLink("Quiz", destination: {
+                NavigationLink("quiz", destination: {
                     QuizView(
                         viewModel: QuizViewModel(words: viewModel.words) { dismiss in
                             if dismiss {
