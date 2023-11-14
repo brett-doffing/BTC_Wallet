@@ -11,7 +11,7 @@ struct PrimaryButton: ButtonStyle {
                     .fill(Color("btcOrange"))
             }
             .foregroundStyle(.white)
-            .padding()
+            .padding(10)
     }
 }
 
@@ -24,6 +24,6 @@ struct SecondaryButton: ButtonStyle {
                     .stroke(Color("btcOrange"), lineWidth: 3)
             }
             .foregroundStyle(Color("btcOrange"))
-            .padding()
+            .padding(10)
     }
 }
