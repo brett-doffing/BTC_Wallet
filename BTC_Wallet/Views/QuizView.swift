@@ -8,7 +8,7 @@ struct QuizView: View {
 
     var body: some View {
         VStack {
-            Text("wordQuestion \(viewModel.wordIndex + 1)")
+            Text(String(format: NSLocalizedString("wordQuestion %@", comment: ""), "\(viewModel.wordIndex + 1)"))
                 .padding()
             
             ButtonX(text: "\(viewModel.word1)") {
