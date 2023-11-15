@@ -6,6 +6,13 @@ struct QuizView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: QuizViewModel
 
+    init(words: [String], dismissMnemonicView: @escaping (Bool) -> ()) {
+        _viewModel = StateObject(wrappedValue: QuizViewModel(
+                        words: words,
+                        dismissMnemonicView: dismissMnemonicView
+                     ))
+    }
+
     var body: some View {
         VStack {
             Text(String(format: NSLocalizedString("wordQuestion %@", comment: ""), "\(viewModel.wordIndex + 1)"))

@@ -55,22 +55,15 @@ struct MnemonicView: View {
                 .navigationBarBackButtonHidden(false)
             } else if viewModel.shouldQuiz {
                 NavigationLink("quiz", destination: {
-                    QuizView(
-                        viewModel: QuizViewModel(words: viewModel.words) { dismiss in
-                            if dismiss {
-                                viewModel.shouldQuiz = false
-                                presentationMode.wrappedValue.dismiss()
-                            }
+                    QuizView(words: viewModel.words) { dismiss in
+                        if dismiss {
+                            viewModel.shouldQuiz = false
+                            presentationMode.wrappedValue.dismiss()
                         }
-                    )
+                    }
                 })
-                .frame(width: 200, height: 50)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("btcOrange"), lineWidth: 3)
-                }
+                .buttonStyle(PrimaryButton())
                 .navigationBarBackButtonHidden(true)
-                .padding()
             }
             Spacer()
         }
