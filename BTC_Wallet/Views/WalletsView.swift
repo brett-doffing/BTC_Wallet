@@ -18,7 +18,10 @@ struct WalletsView: View {
                     ) {
                         ForEach($viewModel.wallets, id: \.self) { wallet in
                             if let name = wallet.wrappedValue["name"] {
-                                Text(name)
+                                NavigationLink(name) {
+                                    let vm = MnemonicViewModel(name)
+                                    MnemonicView(viewModel: vm)
+                                }
                             }
                         }
                     }
