@@ -50,7 +50,7 @@ import Foundation
 
     /**
      Randomly selects which button will be the answer,
-     while ensuring that no other buttons can be the answer.
+     while ensuring that no buttons can be repeated.
      */
     private func generateAnswerOptions() {
         /// Select random button that will be the answer
