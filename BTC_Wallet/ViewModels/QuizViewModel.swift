@@ -40,12 +40,12 @@ import Foundation
      - Returns: The random int to index the `words` array
      */
     private func getNewWordIndex() -> Int {
-        var answerIndex: Int
+        var idx: Int
         repeat {
-            answerIndex = Int.random(in: 0..<12)
-        } while questionedIndices.contains(answerIndex)
+            idx = Int.random(in: 0..<12)
+        } while questionedIndices.contains(idx)
 
-        return answerIndex
+        return idx
     }
 
     /**
