@@ -11,8 +11,6 @@
 		BC21BAD92AF2D397005AC913 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD82AF2D397005AC913 /* ContentView.swift */; };
 		BC21BADB2AF2D399005AC913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC21BADA2AF2D399005AC913 /* Assets.xcassets */; };
 		BC21BADE2AF2D399005AC913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC21BADD2AF2D399005AC913 /* Preview Assets.xcassets */; };
-		BC21BAF22AF2D399005AC913 /* BTC_WalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAF12AF2D399005AC913 /* BTC_WalletUITests.swift */; };
-		BC21BAF42AF2D399005AC913 /* BTC_WalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAF32AF2D399005AC913 /* BTC_WalletUITestsLaunchTests.swift */; };
 		BC21BB2F2AF2D3F1005AC913 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB012AF2D3F1005AC913 /* WordList.swift */; };
 		BC21BB302AF2D3F1005AC913 /* SMP+Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB022AF2D3F1005AC913 /* SMP+Bitcoin.swift */; };
 		BC21BB312AF2D3F1005AC913 /* ExtendedPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB032AF2D3F1005AC913 /* ExtendedPublicKey.swift */; };
@@ -95,13 +93,6 @@
 			remoteGlobalIDString = BC21BAD22AF2D397005AC913;
 			remoteInfo = BTC_Wallet;
 		};
-		BC21BAEE2AF2D399005AC913 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BC21BACB2AF2D396005AC913 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BC21BAD22AF2D397005AC913;
-			remoteInfo = BTC_Wallet;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -111,9 +102,6 @@
 		BC21BADA2AF2D399005AC913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC21BADD2AF2D399005AC913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC21BAE32AF2D399005AC913 /* BTC_WalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTC_WalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC21BAED2AF2D399005AC913 /* BTC_WalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTC_WalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC21BAF12AF2D399005AC913 /* BTC_WalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTC_WalletUITests.swift; sourceTree = "<group>"; };
-		BC21BAF32AF2D399005AC913 /* BTC_WalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTC_WalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BC21BB012AF2D3F1005AC913 /* WordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
 		BC21BB022AF2D3F1005AC913 /* SMP+Bitcoin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP+Bitcoin.swift"; sourceTree = "<group>"; };
 		BC21BB032AF2D3F1005AC913 /* ExtendedPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedPublicKey.swift; sourceTree = "<group>"; };
@@ -205,13 +193,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC21BAEA2AF2D399005AC913 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -221,7 +202,6 @@
 				BCFD2D882AF5AFC100A9A94E /* BTC_Wallet.xctestplan */,
 				BC21BAD52AF2D397005AC913 /* BTC_Wallet */,
 				BC21BAE62AF2D399005AC913 /* BTC_WalletTests */,
-				BC21BAF02AF2D399005AC913 /* BTC_WalletUITests */,
 				BC21BAD42AF2D397005AC913 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -231,7 +211,6 @@
 			children = (
 				BC21BAD32AF2D397005AC913 /* BTC_Wallet.app */,
 				BC21BAE32AF2D399005AC913 /* BTC_WalletTests.xctest */,
-				BC21BAED2AF2D399005AC913 /* BTC_WalletUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,15 +251,6 @@
 				BC21BB5C2AF2D414005AC913 /* BTC_WalletTests-Bridging-Header.h */,
 			);
 			path = BTC_WalletTests;
-			sourceTree = "<group>";
-		};
-		BC21BAF02AF2D399005AC913 /* BTC_WalletUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BC21BAF12AF2D399005AC913 /* BTC_WalletUITests.swift */,
-				BC21BAF32AF2D399005AC913 /* BTC_WalletUITestsLaunchTests.swift */,
-			);
-			path = BTC_WalletUITests;
 			sourceTree = "<group>";
 		};
 		BC21BB002AF2D3F1005AC913 /* BitcoinUtils */ = {
@@ -440,24 +410,6 @@
 			productReference = BC21BAE32AF2D399005AC913 /* BTC_WalletTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BC21BAEC2AF2D399005AC913 /* BTC_WalletUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BC21BAFD2AF2D399005AC913 /* Build configuration list for PBXNativeTarget "BTC_WalletUITests" */;
-			buildPhases = (
-				BC21BAE92AF2D399005AC913 /* Sources */,
-				BC21BAEA2AF2D399005AC913 /* Frameworks */,
-				BC21BAEB2AF2D399005AC913 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BC21BAEF2AF2D399005AC913 /* PBXTargetDependency */,
-			);
-			name = BTC_WalletUITests;
-			productName = BTC_WalletUITests;
-			productReference = BC21BAED2AF2D399005AC913 /* BTC_WalletUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -474,10 +426,6 @@
 					BC21BAE22AF2D399005AC913 = {
 						CreatedOnToolsVersion = 14.3.1;
 						LastSwiftMigration = 1430;
-						TestTargetID = BC21BAD22AF2D397005AC913;
-					};
-					BC21BAEC2AF2D399005AC913 = {
-						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = BC21BAD22AF2D397005AC913;
 					};
 				};
@@ -500,7 +448,6 @@
 			targets = (
 				BC21BAD22AF2D397005AC913 /* BTC_Wallet */,
 				BC21BAE22AF2D399005AC913 /* BTC_WalletTests */,
-				BC21BAEC2AF2D399005AC913 /* BTC_WalletUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -517,13 +464,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BC21BAE12AF2D399005AC913 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BC21BAEB2AF2D399005AC913 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -619,15 +559,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC21BAE92AF2D399005AC913 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BC21BAF22AF2D399005AC913 /* BTC_WalletUITests.swift in Sources */,
-				BC21BAF42AF2D399005AC913 /* BTC_WalletUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -635,11 +566,6 @@
 			isa = PBXTargetDependency;
 			target = BC21BAD22AF2D397005AC913 /* BTC_Wallet */;
 			targetProxy = BC21BAE42AF2D399005AC913 /* PBXContainerItemProxy */;
-		};
-		BC21BAEF2AF2D399005AC913 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BC21BAD22AF2D397005AC913 /* BTC_Wallet */;
-			targetProxy = BC21BAEE2AF2D399005AC913 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -861,42 +787,6 @@
 			};
 			name = Release;
 		};
-		BC21BAFE2AF2D399005AC913 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59ASJ9CE64;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.BCD.BTC-WalletUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BTC_Wallet;
-			};
-			name = Debug;
-		};
-		BC21BAFF2AF2D399005AC913 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59ASJ9CE64;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.BCD.BTC-WalletUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BTC_Wallet;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -923,15 +813,6 @@
 			buildConfigurations = (
 				BC21BAFB2AF2D399005AC913 /* Debug */,
 				BC21BAFC2AF2D399005AC913 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BC21BAFD2AF2D399005AC913 /* Build configuration list for PBXNativeTarget "BTC_WalletUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BC21BAFE2AF2D399005AC913 /* Debug */,
-				BC21BAFF2AF2D399005AC913 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
