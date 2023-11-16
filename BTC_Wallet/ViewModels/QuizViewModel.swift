@@ -4,7 +4,7 @@ import Foundation
 
 @MainActor class QuizViewModel: ObservableObject {
     let words: [String]
-    var wordIndices: [Int] = [] /// Holds indices of questions that have already been asked
+    var questionedIndices: [Int] = [] /// Holds indices of questions that have already been asked
     var answerButtonNumber = 0
     var questionNumber = 1
     let dismissMnemonicView: (Bool) -> ()
@@ -25,7 +25,7 @@ import Foundation
     private func generateQuestion() {
         /// Index for answer to question
         wordIndex = getNewWordIndex()
-        wordIndices.append(wordIndex)
+        questionedIndices.append(wordIndex)
 
         generateAnswerOptions()
 
@@ -43,7 +43,7 @@ import Foundation
         var answerIndex: Int
         repeat {
             answerIndex = Int.random(in: 0..<12)
-        } while wordIndices.contains(answerIndex)
+        } while questionedIndices.contains(answerIndex)
 
         return answerIndex
     }
@@ -99,7 +99,7 @@ import Foundation
                 dismissViews(true)
             }
         } else {
-            wordIndices = []
+            questionedIndices = []
             dismissViews(false)
         }
     }
