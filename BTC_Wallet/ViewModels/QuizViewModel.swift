@@ -63,20 +63,25 @@ import Foundation
 
     /**
      Action taken when an answer button has been tapped.
+     Generate a new question if less than 4 questions have been asked,
+     or dismisses views according to quiz success or failure.
+
+     - Parameters:
+        - buttonNumber: which button was selected
+        - dismissViews: Callback to both dismiss the quiz view,
+                        and potentially the mnemonic view if finished successfully
      */
-    func selected(buttonNumber: Int, dismissQuizView: () -> ()) {
+    func selected(_ buttonNumber: Int, _ dismissViews: (Bool) -> ()) {
         if buttonNumber == answerButtonNumber {
             if questionNumber < 4 {
                 questionNumber += 1
                 generateQuestion()
             } else {
-                dismissQuizView()
-                dismissMnemonicView(true)
+                dismissViews(true)
             }
         } else {
             wordIndices = []
-            dismissQuizView()
-            dismissMnemonicView(false)
+            dismissViews(false)
         }
     }
 }

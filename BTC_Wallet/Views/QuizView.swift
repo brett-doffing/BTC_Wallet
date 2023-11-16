@@ -19,23 +19,27 @@ struct QuizView: View {
                 .padding()
             
             ButtonX(text: "\(viewModel.word1)") {
-                viewModel.selected(buttonNumber: 1) { dismissView() }
+                viewModel.selected(1, dismissViews)
             }
             .buttonStyle(SecondaryButton())
 
             ButtonX(text: "\(viewModel.word2)") {
-                viewModel.selected(buttonNumber: 2) { dismissView() }
+                viewModel.selected(2, dismissViews)
             }
             .buttonStyle(SecondaryButton())
 
             ButtonX(text: "\(viewModel.word3)") {
-                viewModel.selected(buttonNumber: 3) { dismissView() }
+                viewModel.selected(3, dismissViews)
             }
             .buttonStyle(SecondaryButton())
         }
     }
 
-    private func dismissView() {
+    private func dismissViews(dismissMenmonicView: Bool) {
         presentationMode.wrappedValue.dismiss()
+        
+        if dismissMenmonicView {
+            viewModel.dismissMnemonicView(dismissMenmonicView)
+        }
     }
 }
