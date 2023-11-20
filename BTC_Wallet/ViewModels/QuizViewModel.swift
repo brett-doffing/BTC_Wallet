@@ -3,7 +3,7 @@
 import Foundation
 
 class QuizViewModel: ObservableObject {
-    @Published var wordIndex: Int = 0
+    @Published var wordIndex: Int = -1
     @Published var word1: String = ""
     @Published var word2: String = ""
     @Published var word3: String = ""
@@ -25,6 +25,7 @@ class QuizViewModel: ObservableObject {
      Generates the question, answer, and two wrong answers, making sure not to repeat or duplicate answers or questions.
      */
     private func generateQuestion() {
+        guard words.count == 12 else { return }
         /// Index for answer to question
         wordIndex = getNewWordIndex()
         questionedIndices.append(wordIndex)
