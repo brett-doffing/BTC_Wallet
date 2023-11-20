@@ -8,10 +8,11 @@ import Foundation
     @Published var word2: String = ""
     @Published var word3: String = ""
     
-    let words: [String]
-    var questionedIndices: [Int] = [] /// Holds indices of questions that have already been asked
-    var answerButtonNumber = 0
-    var questionNumber = 1
+    private let words: [String]
+    private var questionedIndices: [Int] = [] /// Holds indices of questions that have already been asked
+    private var answerButtonNumber = 0
+    private var questionNumber = 1
+
     let dismissMnemonicView: (Bool) -> ()
 
     init(words: [String], dismissMnemonicView: @escaping (Bool) -> ()) {
