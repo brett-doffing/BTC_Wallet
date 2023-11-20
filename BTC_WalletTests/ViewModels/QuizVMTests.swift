@@ -25,4 +25,16 @@ final class QuizVMTests: XCTestCase {
         XCTAssertTrue(vm.wordIndex == -1)
     }
 
+    func test_QuizViewModel_words_partial() {
+        // Given
+        let words: [String] = ["some", "words", "exist", "but", "not", "enough"]
+        // When
+        let vm = QuizViewModel(words: words, dismissMnemonicView: {_ in })
+        // Then
+        XCTAssertTrue(vm.word1 == "")
+        XCTAssertTrue(vm.word2 == "")
+        XCTAssertTrue(vm.word3 == "")
+        XCTAssertTrue(vm.wordIndex == -1)
+    }
+
 }
