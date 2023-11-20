@@ -3,15 +3,16 @@
 import Foundation
 
 @MainActor class QuizViewModel: ObservableObject {
+    @Published var wordIndex: Int = 0
+    @Published var word1: String = ""
+    @Published var word2: String = ""
+    @Published var word3: String = ""
+    
     let words: [String]
     var questionedIndices: [Int] = [] /// Holds indices of questions that have already been asked
     var answerButtonNumber = 0
     var questionNumber = 1
     let dismissMnemonicView: (Bool) -> ()
-    @Published var wordIndex: Int = 0
-    @Published var word1: String = ""
-    @Published var word2: String = ""
-    @Published var word3: String = ""
 
     init(words: [String], dismissMnemonicView: @escaping (Bool) -> ()) {
         self.words = words
@@ -82,6 +83,7 @@ import Foundation
 
     /**
      Action taken when an answer button has been tapped.
+
      Generate a new question if less than 4 questions have been asked,
      or dismisses views according to quiz success or failure.
 
