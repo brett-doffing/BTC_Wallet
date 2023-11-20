@@ -2,7 +2,7 @@
 
 import Foundation
 
-@MainActor class QuizViewModel: ObservableObject {
+class QuizViewModel: ObservableObject {
     @Published var wordIndex: Int = 0
     @Published var word1: String = ""
     @Published var word2: String = ""
