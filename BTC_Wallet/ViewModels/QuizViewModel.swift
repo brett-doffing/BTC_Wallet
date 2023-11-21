@@ -95,6 +95,7 @@ class QuizViewModel: ObservableObject {
                         and potentially the mnemonic view if finished successfully
      */
     func selected(_ buttonNumber: Int, _ dismissViews: (Bool) -> ()) {
+        assert((buttonNumber != 0 && buttonNumber <= 3), "Invalid button number")
         if buttonNumber == answerButtonNumber {
             if questionNumber < 4 {
                 questionNumber += 1
