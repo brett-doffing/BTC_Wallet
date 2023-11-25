@@ -56,7 +56,6 @@
 		BC21BB592AF2D3F2005AC913 /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB2C2AF2D3F1005AC913 /* SMP.swift */; };
 		BC21BB5A2AF2D3F2005AC913 /* SegwitAddrCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB2D2AF2D3F1005AC913 /* SegwitAddrCoder.swift */; };
 		BC21BB5B2AF2D3F2005AC913 /* Bech32.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB2E2AF2D3F1005AC913 /* Bech32.swift */; };
-		BC21BB622AF2D415005AC913 /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB5D2AF2D415005AC913 /* Base58Tests.swift */; };
 		BC21BB632AF2D415005AC913 /* BTCKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB5E2AF2D415005AC913 /* BTCKeyTests.swift */; };
 		BC21BB642AF2D415005AC913 /* MnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB5F2AF2D415005AC913 /* MnemonicTests.swift */; };
 		BC21BB652AF2D415005AC913 /* BTCKeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB602AF2D415005AC913 /* BTCKeychainTests.swift */; };
@@ -148,7 +147,6 @@
 		BC21BB2D2AF2D3F1005AC913 /* SegwitAddrCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegwitAddrCoder.swift; sourceTree = "<group>"; };
 		BC21BB2E2AF2D3F1005AC913 /* Bech32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bech32.swift; sourceTree = "<group>"; };
 		BC21BB5C2AF2D414005AC913 /* BTC_WalletTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BTC_WalletTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BC21BB5D2AF2D415005AC913 /* Base58Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
 		BC21BB5E2AF2D415005AC913 /* BTCKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCKeyTests.swift; sourceTree = "<group>"; };
 		BC21BB5F2AF2D415005AC913 /* MnemonicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicTests.swift; sourceTree = "<group>"; };
 		BC21BB602AF2D415005AC913 /* BTCKeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCKeychainTests.swift; sourceTree = "<group>"; };
@@ -243,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				BCE06A2B2B05616E00F5F415 /* ViewModels */,
-				BC21BB5D2AF2D415005AC913 /* Base58Tests.swift */,
 				BC21BB612AF2D415005AC913 /* BTCCurveTests.swift */,
 				BC21BB602AF2D415005AC913 /* BTCKeychainTests.swift */,
 				BC21BB5E2AF2D415005AC913 /* BTCKeyTests.swift */,
@@ -553,7 +550,6 @@
 				BCE06A2D2B0562C200F5F415 /* QuizVMTests.swift in Sources */,
 				BC21BB642AF2D415005AC913 /* MnemonicTests.swift in Sources */,
 				BC21BB652AF2D415005AC913 /* BTCKeychainTests.swift in Sources */,
-				BC21BB622AF2D415005AC913 /* Base58Tests.swift in Sources */,
 				BC21BB662AF2D415005AC913 /* BTCCurveTests.swift in Sources */,
 				BC21BB632AF2D415005AC913 /* BTCKeyTests.swift in Sources */,
 			);
