@@ -4,7 +4,7 @@ import XCTest
 @testable import BTC_Wallet
 
 class BTCCurveTests: XCTestCase {
-    func testCompressedPublicKeys() {
+    func test_BTCCurve_publicKey_compressed() {
         for i in 0..<prvkeys.count {
             let privateKey = prvkeys[i].hexData()!
             let publicKey = try! BTCCurve.shared.generatePublicKey(privateKey: privateKey)
@@ -12,7 +12,7 @@ class BTCCurveTests: XCTestCase {
         }
     }
 
-    func testUncompressedPublicKeys() {
+    func test_BTCCurve_publicKey_uncompressed() {
         for i in 0..<prvkeys.count {
             let privateKey = prvkeys[i].hexData()!
             let publicKey = try! BTCCurve.shared.generatePublicKey(privateKey: privateKey, compressed: false)
@@ -20,7 +20,7 @@ class BTCCurveTests: XCTestCase {
         }
     }
 
-    func testSign() {
+    func test_BTCCurve_signature() {
         let pk1: [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01]
         let message = "Satoshi Nakamoto".data(using: .utf8)!
         let hashedMessage = message.SHA256()
