@@ -5,23 +5,35 @@ import XCTest
 
 class BTCKeyTests: XCTestCase {
     /**
-     Tests the creation of Bech32 addresses from a public key.
+     Tests the creation of Bech32 P2WPKH addresses from a public key.
      [Test vectors]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#examples
      [Test vectors]
      */
-    func testBECH32() {
+    func test_BTCKey_BECH32_P2WPKH() {
+        // Given
         let pubkey = "0279BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798".hexData()!
-        
-        // P2WPKH
         let keyHash = pubkey.hash160()
-
+        
+        // When
         let mainP2WPKH = try? SegwitAddrCoder.init().encode(hrp: BTCNetwork.main.bech32, version: 0, program: keyHash)
         let testP2WPKH = try? SegwitAddrCoder.init().encode(hrp: BTCNetwork.test.bech32, version: 0, program: keyHash)
 
+        // Then
         XCTAssertEqual(mainP2WPKH, "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4")
         XCTAssertEqual(testP2WPKH, "tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx")
+    }
 
-        // P2WSH
+    /**
+     Tests the creation of Bech32 P2WSH addresses from a public key.
+     [Test vectors]: https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#examples
+     [Test vectors]
+     */
+    func test_BTCKey_BECH32_P2WSH() {
+        // Given
+        let pubkey = "0279BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798".hexData()!
+        let keyHash = pubkey.hash160()
+
+        // When
         var script = Data()
         script += OP_NUMBYTES(pubkey.count)
         script += pubkey
@@ -31,11 +43,16 @@ class BTCKeyTests: XCTestCase {
         let mainP2WSH = try? SegwitAddrCoder.init().encode(hrp: BTCNetwork.main.bech32, version: 0, program: programData)
         let testP2WSH = try? SegwitAddrCoder.init().encode(hrp: BTCNetwork.test.bech32, version: 0, program: programData)
 
+        // Then
         XCTAssertEqual(mainP2WSH, "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3")
         XCTAssertEqual(testP2WSH, "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7")
     }
 
-    // https://gist.github.com/gavinandresen/3966071
+    /**
+     Tests the creation of a P2SH (multi-signature) address from three private keys.
+     [Resource]: https://gist.github.com/gavinandresen/3966071
+     [Resource]
+     */
     func testP2SH() {
         var privateKey1 = "5JaTXbAUmfPYZFRwrYaALK48fN6sFJp4rHqq2QSXs8ucfpE4yQU".base58CheckDecode()
         privateKey1?.removeFirst() // removes version byte
