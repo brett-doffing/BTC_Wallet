@@ -4,7 +4,8 @@ import XCTest
 @testable import BTC_Wallet
 
 final class Base58Tests: XCTestCase {
-    func test_Base58_CheckDecode() {
+    
+    func test_Base58_checkDecode() {
         let privateKeys = [
             "5JaTXbAUmfPYZFRwrYaALK48fN6sFJp4rHqq2QSXs8ucfpE4yQU",
             "5Jb7fCeh1Wtm4yBBg3q3XbT6B525i17kVhy3vMC9AqfR6FH2qGk",
@@ -25,5 +26,23 @@ final class Base58Tests: XCTestCase {
             XCTAssertEqual(decodedKey!.hexDescription(), decodedHexKeys[i])
 
         }
+    }
+
+    func test_Base58_checkEncodedString() {
+        // Given
+        let data = "05f815b036d9bbbce5e9f2a00abd1bf3dc91e95510".hexData()
+        // When
+        let checkEncodedString = data!.base58CheckEncodedString
+        // Then
+        XCTAssertEqual(checkEncodedString, "3QJmV3qfvL9SuYo34YihAf3sRCW3qSinyC")
+    }
+
+    func test_Base58_encodedString() {
+        // Given
+        let data = "0488ade4000000000000000000873dff81c02f525623fd1fe5167eac3a55a049de3d314bb42ee227ffed37d50800e8f32e723decf4051aefac8e2c93c9c5b214313817cdb01a1494b917c8436b35e77e9d71".hexData()
+        // When
+        let encodedString = data!.base58EncodedString()
+        // Then
+        XCTAssertEqual(encodedString, "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi")
     }
 }
