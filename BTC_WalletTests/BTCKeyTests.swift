@@ -46,6 +46,7 @@ class BTCKeyTests: XCTestCase {
         XCTAssertEqual(mainP2WSH, "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3")
         XCTAssertEqual(testP2WSH, "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7")
     }
+    
     /// Tests the generation of uncompressed public keys from private keys
     func test_BTCCurve_uncompressedPublicKey() {
         let privateKeys = [
@@ -98,7 +99,8 @@ class BTCKeyTests: XCTestCase {
         let hash = redeemScript.hash160()
 
         // Then
-        let address = (BTCNetwork.main.scriptHash + hash).base58CheckEncodedString
+        let data = BTCNetwork.main.scriptHash + hash
+        let address = data.base58CheckEncodedString
         XCTAssertEqual(address, "3QJmV3qfvL9SuYo34YihAf3sRCW3qSinyC")
 
         var scriptPubKey = Data()
