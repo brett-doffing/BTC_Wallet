@@ -31,15 +31,14 @@ class BTCKeyTests: XCTestCase {
     func test_BTCKey_BECH32_P2WSH() {
         // Given
         let pubkey = "0279BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798".hexData()!
-        let keyHash = pubkey.hash160()
 
-        // When
         var script = Data()
         script += OP_NUMBYTES(pubkey.count)
         script += pubkey
         script += OP_CHECKSIG
         let programData = script.SHA256()
 
+        // When
         let mainP2WSH = try? SegwitAddrCoder.init().encode(hrp: BTCNetwork.main.bech32, version: 0, program: programData)
         let testP2WSH = try? SegwitAddrCoder.init().encode(hrp: BTCNetwork.test.bech32, version: 0, program: programData)
 
@@ -47,27 +46,45 @@ class BTCKeyTests: XCTestCase {
         XCTAssertEqual(mainP2WSH, "bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3")
         XCTAssertEqual(testP2WSH, "tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3q0sl5k7")
     }
+    /// Tests the generation of uncompressed public keys from private keys
+    func test_BTCCurve_uncompressedPublicKey() {
+        let privateKeys = [
+            "5JaTXbAUmfPYZFRwrYaALK48fN6sFJp4rHqq2QSXs8ucfpE4yQU",
+            "5Jb7fCeh1Wtm4yBBg3q3XbT6B525i17kVhy3vMC9AqfR6FH2qGk",
+            "5JFjmGo5Fww9p8gvx48qBYDJNAzR9pmH5S389axMtDyPT8ddqmw"
+        ]
+        let uncompressedPublicKeys = [
+            "0491bba2510912a5bd37da1fb5b1673010e43d2c6d812c514e91bfa9f2eb129e1c183329db55bd868e209aac2fbc02cb33d98fe74bf23f0c235d6126b1d8334f86",
+            "04865c40293a680cb9c020e7b1e106d8c1916d3cef99aa431a56d253e69256dac09ef122b1a986818a7cb624532f062c1d1f8722084861c5c3291ccffef4ec6874",
+            "048d2455d2403e08708fc1f556002f1b6cd83f992d085097f9974ab08a28838f07896fbab08f39495e15fa6fad6edbfb1e754e35fa1c7844c41f322a1863d46213"
+        ]
+
+        for i in 0..<3 {
+            // Given
+            var decodedKey = privateKeys[i].base58CheckDecode()
+            decodedKey!.removeFirst() // removes version byte
+
+            // When
+            let publicKey = try! BTCCurve.shared.generatePublicKey(privateKey: decodedKey!.data, compressed: false)
+
+            // Then
+            XCTAssertEqual(publicKey.hexDescription(), uncompressedPublicKeys[i])
+        }
+
+    }
 
     /**
-     Tests the creation of a P2SH (multi-signature) address from three private keys.
+     Tests the `address` and `scriptPubKey` of P2SH (multi-signature) creation from three public keys.
      [Resource]: https://gist.github.com/gavinandresen/3966071
      [Resource]
      */
-    func testP2SH() {
-        var privateKey1 = "5JaTXbAUmfPYZFRwrYaALK48fN6sFJp4rHqq2QSXs8ucfpE4yQU".base58CheckDecode()
-        privateKey1?.removeFirst() // removes version byte
-        var privateKey2 = "5Jb7fCeh1Wtm4yBBg3q3XbT6B525i17kVhy3vMC9AqfR6FH2qGk".base58CheckDecode()
-        privateKey2?.removeFirst()
-        var privateKey3 = "5JFjmGo5Fww9p8gvx48qBYDJNAzR9pmH5S389axMtDyPT8ddqmw".base58CheckDecode()
-        privateKey3?.removeFirst()
+    func test_P2SH() {
+        // Given
+        let publicKey1 = "0491bba2510912a5bd37da1fb5b1673010e43d2c6d812c514e91bfa9f2eb129e1c183329db55bd868e209aac2fbc02cb33d98fe74bf23f0c235d6126b1d8334f86".hexData()!
+        let publicKey2 = "04865c40293a680cb9c020e7b1e106d8c1916d3cef99aa431a56d253e69256dac09ef122b1a986818a7cb624532f062c1d1f8722084861c5c3291ccffef4ec6874".hexData()!
+        let publicKey3 = "048d2455d2403e08708fc1f556002f1b6cd83f992d085097f9974ab08a28838f07896fbab08f39495e15fa6fad6edbfb1e754e35fa1c7844c41f322a1863d46213".hexData()!
 
-        let publicKey1 = try! BTCCurve.shared.generatePublicKey(privateKey: (privateKey1?.data)!, compressed: false)
-        let publicKey2 = try! BTCCurve.shared.generatePublicKey(privateKey: (privateKey2?.data)!, compressed: false)
-        let publicKey3 = try! BTCCurve.shared.generatePublicKey(privateKey: (privateKey3?.data)!, compressed: false)
-        XCTAssertEqual(publicKey1.hexDescription(), "0491bba2510912a5bd37da1fb5b1673010e43d2c6d812c514e91bfa9f2eb129e1c183329db55bd868e209aac2fbc02cb33d98fe74bf23f0c235d6126b1d8334f86")
-        XCTAssertEqual(publicKey2.hexDescription(), "04865c40293a680cb9c020e7b1e106d8c1916d3cef99aa431a56d253e69256dac09ef122b1a986818a7cb624532f062c1d1f8722084861c5c3291ccffef4ec6874")
-        XCTAssertEqual(publicKey3.hexDescription(), "048d2455d2403e08708fc1f556002f1b6cd83f992d085097f9974ab08a28838f07896fbab08f39495e15fa6fad6edbfb1e754e35fa1c7844c41f322a1863d46213")
-
+        // When
         var redeemScript = Data()
         redeemScript += OP_2
         redeemScript += OP_NUMBYTES(publicKey1.count) // OP_CODE to push 65 bytes onto stack
@@ -80,6 +97,7 @@ class BTCKeyTests: XCTestCase {
         redeemScript += OP_CHECKMULTISIG
         let hash = redeemScript.hash160()
 
+        // Then
         let address = (BTCNetwork.main.scriptHash + hash).base58CheckEncodedString
         XCTAssertEqual(address, "3QJmV3qfvL9SuYo34YihAf3sRCW3qSinyC")
 
