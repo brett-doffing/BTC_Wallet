@@ -75,6 +75,8 @@
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
 		BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */; };
+		BC6285212B1BA66C00EDFDB2 /* BlockstreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */; };
+		BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */; };
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
@@ -167,6 +169,8 @@
 		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
 		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
+		BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamService.swift; sourceTree = "<group>"; };
+		BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamResponse.swift; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 		BC21BAD52AF2D397005AC913 /* BTC_Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				BC62851F2B1BA65400EDFDB2 /* Networking */,
 				BCE06A242AFD3EE700F5F415 /* Components */,
 				BC21BB692AF2D5C2005AC913 /* ViewModels */,
 				BC21BB682AF2D5B4005AC913 /* Models */,
@@ -334,6 +339,7 @@
 		BC21BB682AF2D5B4005AC913 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +356,14 @@
 				BCE06A292B05485300F5F415 /* WalletViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BC62851F2B1BA65400EDFDB2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		BCE06A242AFD3EE700F5F415 /* Components */ = {
@@ -495,6 +509,7 @@
 				BC21BB3A2AF2D3F2005AC913 /* eckey_impl.swift in Sources */,
 				BC21BB362AF2D3F1005AC913 /* BTCKeychain.swift in Sources */,
 				BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */,
+				BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */,
 				BC21BB2F2AF2D3F1005AC913 /* WordList.swift in Sources */,
 				BC21BB5A2AF2D3F2005AC913 /* SegwitAddrCoder.swift in Sources */,
 				BC21BB402AF2D3F2005AC913 /* ecdsa_impl.swift in Sources */,
@@ -505,6 +520,7 @@
 				BC21BB382AF2D3F2005AC913 /* BTCkOP_CODES.swift in Sources */,
 				BC21BB582AF2D3F2005AC913 /* String+Bitcoin.swift in Sources */,
 				BC21BB4A2AF2D3F2005AC913 /* group.swift in Sources */,
+				BC6285212B1BA66C00EDFDB2 /* BlockstreamService.swift in Sources */,
 				BC21BB472AF2D3F2005AC913 /* util.swift in Sources */,
 				BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */,
 				BCFD2D872AF44A9300A9A94E /* QuizViewModel.swift in Sources */,
