@@ -27,7 +27,8 @@ extension Data {
         var bytes = self
         var zerosCount = 0
         var length = 0
-        
+
+        // Remove leading zeroes
         for b in bytes {
             if b != 0 { break }
             zerosCount += 1
