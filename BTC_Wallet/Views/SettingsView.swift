@@ -8,21 +8,8 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    NavigationLink {
-                        WebView(url: URL(string: "https://coinfaucet.eu/en/btc-testnet/")!)
-                            .ignoresSafeArea()
-                            .navigationTitle("faucet")
-                            .navigationBarTitleDisplayMode(.inline)
-                    } label: {
-                        Text("getCoins")
-                    }
-                }
-                Section {
-                    Button("deleteAllData") {
-                        viewModel.promptToDelete = true
-                    }
-                }
+                getCoinsItem
+                deleteDataItem
             }
         }
         .alert("deleteData", isPresented: $viewModel.promptToDelete,
@@ -34,6 +21,27 @@ struct SettingsView: View {
                 Text("questionDeleteData")
             }
         )
+    }
+
+    private var getCoinsItem: some View {
+        Section {
+            NavigationLink {
+                WebView(url: URL(string: "https://coinfaucet.eu/en/btc-testnet/")!)
+                    .ignoresSafeArea()
+                    .navigationTitle("faucet")
+                    .navigationBarTitleDisplayMode(.inline)
+            } label: {
+                Text("getCoins")
+            }
+        }
+    }
+
+    private var deleteDataItem: some View {
+        Section {
+            Button("deleteAllData") {
+                viewModel.promptToDelete = true
+            }
+        }
     }
 }
 

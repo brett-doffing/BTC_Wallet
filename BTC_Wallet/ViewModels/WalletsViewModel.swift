@@ -16,6 +16,5 @@ import Foundation
         } else {
             wallets = []
         }
-        
     }
 }

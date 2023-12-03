@@ -9,24 +9,7 @@ struct WalletsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                List {
-                    Section(
-                        header: SectionHeaderView(
-                            heading: "wallets",
-                            callback: { viewModel.showNameAlert = true }
-                        )
-                    ) {
-                        ForEach($viewModel.wallets, id: \.self) { wallet in
-                            if let name = wallet.wrappedValue["name"] {
-                                NavigationLink(name) {
-                                    let vm = MnemonicViewModel(name)
-                                    MnemonicView(viewModel: vm)
-                                }
-                            }
-                        }
-                    }
-                }
-                .listStyle(.insetGrouped)
+                walletsList
             }
             .onChange(of: tabSelection) { selection in
                 if selection == .wallets {
@@ -48,7 +31,32 @@ struct WalletsView: View {
         }
     }
 
-    func saveName() {
+    private var walletsList: some View {
+        List {
+            Section(
+                header: SectionHeaderView(
+                    heading: "wallets",
+                    callback: { viewModel.showNameAlert = true }
+                )
+            ) {
+                ForEach($viewModel.wallets, id: \.self) { wallet in
+                    if let name = wallet.wrappedValue["name"] {
+                        getWallet(by: name)
+                    }
+                }
+            }
+        }
+        .listStyle(.insetGrouped)
+    }
+
+    private func getWallet(by name: String) -> some View {
+        NavigationLink(name) {
+            let vm = MnemonicViewModel(name)
+            MnemonicView(viewModel: vm)
+        }
+    }
+
+    private func saveName() {
         if viewModel.walletName != "" {
             viewModel.showMnemonic = true
         }

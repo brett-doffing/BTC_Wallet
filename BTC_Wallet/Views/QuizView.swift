@@ -17,22 +17,28 @@ struct QuizView: View {
         VStack {
             Text(String(format: NSLocalizedString("wordQuestion %@", comment: ""), "\(viewModel.wordIndex + 1)"))
                 .padding()
-            
-            ButtonX(text: "\(viewModel.word1)") {
-                viewModel.selected(1, dismissViews)
-            }
-            .buttonStyle(SecondaryButton())
 
-            ButtonX(text: "\(viewModel.word2)") {
-                viewModel.selected(2, dismissViews)
+            ForEach(0..<2) { index in
+                getPossibleAnswer(at: index)
             }
-            .buttonStyle(SecondaryButton())
-
-            ButtonX(text: "\(viewModel.word3)") {
-                viewModel.selected(3, dismissViews)
-            }
-            .buttonStyle(SecondaryButton())
         }
+    }
+
+    private func getPossibleAnswer(at index: Int) -> some View {
+        var word: String
+        switch index {
+        case 0:
+            word = viewModel.word1
+        case 1:
+            word = viewModel.word2
+        default:
+            word = viewModel.word3
+        }
+
+        return ButtonX(text: "\(word)") {
+            viewModel.selected(index, dismissViews)
+        }
+        .buttonStyle(SecondaryButton())
     }
 
     private func dismissViews(dismissMenmonicView: Bool) {
