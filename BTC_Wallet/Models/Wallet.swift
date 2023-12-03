@@ -3,7 +3,7 @@
 import Foundation
 
 struct Wallet {
-    var changeIndex: Int32
-    var walletIndex: Int32
-    var transactions: NSSet?
+    var changeIndex: Int
+    var walletIndex: Int
+    var transactions: [TX]
 }

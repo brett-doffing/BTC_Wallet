@@ -5,12 +5,12 @@ import CoreData
 
 struct BlockstreamResponse: Codable, Identifiable {
     var txid: String
-    var size: Int64
-    var locktime: Int64
-    var weight: Int64
-    var version: Int64
-    var fee: Int64
-    var status: BlockInfo
+    var size: Int
+    var locktime: Int
+    var weight: Int
+    var version: Int
+    var fee: Int
+    var status: BTCBlock
     var vin: [V_in]
     var vout: [V_out]
 
@@ -71,36 +71,4 @@ struct BlockstreamResponse: Codable, Identifiable {
 //        newTX.v_out = NSSet(array: cdVout)
 //        return newTX
 //    }
-}
-
-struct V_out: Codable {
-    var scriptpubkey: String
-    var scriptpubkey_asm: String
-    var scriptpubkey_address: String?
-    var scriptpubkey_type: String
-    var value: Double
-    /// Non API
-    var isTXO: Bool? // Used to flag wallet TXO
-    var n: Int64? // Used for TX creation
-    var txid: String? // Used for TX creation
-
-    mutating func toggleIsTXO() { self.isTXO = true }
-}
-
-struct V_in: Codable {
-    var is_coinbase: Bool
-    var prevout: V_out
-    var scriptsig: String
-    var scriptsig_asm: String
-    var sequence: Int64
-    var txid: String
-    var vout: Int64
-    var witness: [String]?
-}
-
-struct BlockInfo: Codable { // referred to as "status" in json response
-    var block_hash: String?
-    var block_time: Int64?
-    var block_height: Int64?
-    var confirmed: Bool
 }

@@ -3,15 +3,15 @@
 import Foundation
 
 struct TX {
-    var blockHeight: Int64
-    var blockTime: Int64
+    var blockHeight: Int
+    var blockTime: Int
     var confirmed: Bool
-    var fee: Int64
+    var fee: Int
     var id: String?
-    var locktime: Int64
-    var size: Int64
-    var version: Int64
-    var weight: Int64
-    var v_in: NSSet?
-    var v_out: NSSet?
+    var locktime: Int
+    var size: Int
+    var version: Int
+    var weight: Int
+    var v_in: [V_in]
+    var v_out: [V_out]
 }
