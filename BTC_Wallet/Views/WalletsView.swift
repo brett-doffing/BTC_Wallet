@@ -25,7 +25,7 @@ struct WalletsView: View {
             }
             .alert("walletName", isPresented: $viewModel.showNameAlert) {
                 TextField("walletName", text: $viewModel.walletName)
-                Button("ok", action: { saveName() })
+                Button("ok", action: { viewModel.saveName() })
                 Button("cancel", role: .cancel, action: {})
             }
         }
@@ -53,12 +53,6 @@ struct WalletsView: View {
         NavigationLink(name) {
             let vm = MnemonicViewModel(name)
             MnemonicView(viewModel: vm)
-        }
-    }
-
-    private func saveName() {
-        if viewModel.walletName != "" {
-            viewModel.showMnemonic = true
         }
     }
 }

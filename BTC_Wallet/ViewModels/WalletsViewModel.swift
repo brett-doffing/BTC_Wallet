@@ -17,4 +17,10 @@ import Foundation
             wallets = []
         }
     }
+
+    func saveName() {
+        if walletName != "" {
+            showMnemonic = true
+        }
+    }
 }
