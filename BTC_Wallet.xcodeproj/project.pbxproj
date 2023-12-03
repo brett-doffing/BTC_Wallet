@@ -78,6 +78,10 @@
 		BC6285212B1BA66C00EDFDB2 /* BlockstreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */; };
 		BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */; };
 		BC6285262B1BBF7800EDFDB2 /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285252B1BBF7800EDFDB2 /* String+Error.swift */; };
+		BC6285282B1D349B00EDFDB2 /* TX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285272B1D349B00EDFDB2 /* TX.swift */; };
+		BC62852A2B1D354A00EDFDB2 /* V_OUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285292B1D354A00EDFDB2 /* V_OUT.swift */; };
+		BC62852C2B1D35C100EDFDB2 /* V_IN.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852B2B1D35C100EDFDB2 /* V_IN.swift */; };
+		BC62852E2B1D362000EDFDB2 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852D2B1D362000EDFDB2 /* Wallet.swift */; };
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
@@ -173,6 +177,10 @@
 		BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamService.swift; sourceTree = "<group>"; };
 		BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamResponse.swift; sourceTree = "<group>"; };
 		BC6285252B1BBF7800EDFDB2 /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
+		BC6285272B1D349B00EDFDB2 /* TX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TX.swift; sourceTree = "<group>"; };
+		BC6285292B1D354A00EDFDB2 /* V_OUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_OUT.swift; sourceTree = "<group>"; };
+		BC62852B2B1D35C100EDFDB2 /* V_IN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_IN.swift; sourceTree = "<group>"; };
+		BC62852D2B1D362000EDFDB2 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -343,6 +351,10 @@
 			isa = PBXGroup;
 			children = (
 				BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */,
+				BC6285272B1D349B00EDFDB2 /* TX.swift */,
+				BC6285292B1D354A00EDFDB2 /* V_OUT.swift */,
+				BC62852B2B1D35C100EDFDB2 /* V_IN.swift */,
+				BC62852D2B1D362000EDFDB2 /* Wallet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -507,17 +519,20 @@
 				BC21BB462AF2D3F2005AC913 /* hash_impl.swift in Sources */,
 				BC21BB322AF2D3F1005AC913 /* ExtendedPrivateKey.swift in Sources */,
 				BC6285262B1BBF7800EDFDB2 /* String+Error.swift in Sources */,
+				BC62852A2B1D354A00EDFDB2 /* V_OUT.swift in Sources */,
 				BC21BB3F2AF2D3F2005AC913 /* field_10x26.swift in Sources */,
 				BC21BB792AF2E0CC005AC913 /* SendViewModel.swift in Sources */,
 				BC21BB6B2AF2D62D005AC913 /* MnemonicViewModel.swift in Sources */,
 				BC21BAD92AF2D397005AC913 /* ContentView.swift in Sources */,
 				BC21BB572AF2D3F2005AC913 /* PBKDF2.swift in Sources */,
 				BC21BB592AF2D3F2005AC913 /* SMP.swift in Sources */,
+				BC62852E2B1D362000EDFDB2 /* Wallet.swift in Sources */,
 				BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */,
 				BC21BB532AF2D3F2005AC913 /* PBInt.swift in Sources */,
 				BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */,
 				BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */,
 				BC21BB542AF2D3F2005AC913 /* BTCKeychainType.swift in Sources */,
+				BC62852C2B1D35C100EDFDB2 /* V_IN.swift in Sources */,
 				BC21BB3A2AF2D3F2005AC913 /* eckey_impl.swift in Sources */,
 				BC21BB362AF2D3F1005AC913 /* BTCKeychain.swift in Sources */,
 				BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */,
@@ -565,6 +580,7 @@
 				BC21BB5B2AF2D3F2005AC913 /* Bech32.swift in Sources */,
 				BC21BB552AF2D3F2005AC913 /* RIPEMD160.swift in Sources */,
 				BC21BB342AF2D3F1005AC913 /* BTCNetwork.swift in Sources */,
+				BC6285282B1D349B00EDFDB2 /* TX.swift in Sources */,
 				BC21BB732AF2D679005AC913 /* SettingsViewModel.swift in Sources */,
 				BC21BB332AF2D3F1005AC913 /* BTCCurve.swift in Sources */,
 				BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */,
