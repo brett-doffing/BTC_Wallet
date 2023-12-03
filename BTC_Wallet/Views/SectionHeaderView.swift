@@ -19,6 +19,8 @@ struct SectionHeaderView: View {
                 }
             }
         }
+        .imageScale(.large)
+        .font(.headline)
         .padding(.bottom, 5)
     }
 }
