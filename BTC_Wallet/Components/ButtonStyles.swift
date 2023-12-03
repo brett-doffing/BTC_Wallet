@@ -6,10 +6,9 @@ struct PrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 200, height: 50)
-            .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color("btcOrange"))
-            }
+            .contentShape(Rectangle())
+            .background(Color("btcOrange"))
+            .cornerRadius(10)
             .foregroundStyle(.white)
             .padding(10)
     }
