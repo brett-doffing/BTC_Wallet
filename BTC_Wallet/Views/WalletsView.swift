@@ -42,9 +42,8 @@ struct WalletsView: View {
 
     private func getWallet(_ wallet: Wallet) -> some View {
         NavigationLink(wallet.name) {
-//            let vm = MnemonicViewModel(wallet)
-//            MnemonicView(viewModel: vm)
-            
+            let vm = WalletViewModel(wallet)
+            WalletView(viewModel: vm)
         }
     }
 }
