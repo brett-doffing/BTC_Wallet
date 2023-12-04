@@ -33,6 +33,6 @@ struct ContentView: View {
                 .tag(Tab.settings)
 
         }
-        .accentColor(Color("btcOrange")) // Global?
+        .accentColor(Color("btcOrange"))
     }
 }

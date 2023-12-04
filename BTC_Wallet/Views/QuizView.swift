@@ -18,7 +18,7 @@ struct QuizView: View {
             Text(String(format: NSLocalizedString("wordQuestion %@", comment: ""), "\(viewModel.wordIndex + 1)"))
                 .padding()
 
-            ForEach(0..<2) { index in
+            ForEach(0..<3) { index in
                 getPossibleAnswer(at: index)
             }
         }
@@ -36,7 +36,7 @@ struct QuizView: View {
         }
 
         return ButtonX(text: "\(word)") {
-            viewModel.selected(index, dismissViews)
+            viewModel.selected(index + 1, dismissViews)
         }
         .buttonStyle(SecondaryButton())
     }

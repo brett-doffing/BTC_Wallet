@@ -353,11 +353,11 @@
 			isa = PBXGroup;
 			children = (
 				BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */,
+				BC62852F2B1D36F400EDFDB2 /* BTCBlock.swift */,
 				BC6285272B1D349B00EDFDB2 /* TX.swift */,
 				BC6285292B1D354A00EDFDB2 /* V_out.swift */,
 				BC62852B2B1D35C100EDFDB2 /* V_in.swift */,
 				BC62852D2B1D362000EDFDB2 /* Wallet.swift */,
-				BC62852F2B1D36F400EDFDB2 /* BTCBlock.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
