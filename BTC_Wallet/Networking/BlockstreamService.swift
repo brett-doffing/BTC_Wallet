@@ -2,11 +2,11 @@
 
 import Foundation
 
-protocol BlockstreamService {
+protocol BlockstreamServiceable {
     func getTransactions(for address: String, lastSeenTX: String?) async throws -> [BlockstreamResponse]
 }
 
-struct _BlockstreamService: BlockstreamService {
+struct BlockstreamService: BlockstreamServiceable {
     private let baseURL = "https://blockstream.info/testnet/api/"
     private let defaults = UserDefaults.standard
 
