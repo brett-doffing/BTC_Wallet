@@ -3,26 +3,22 @@
 import SwiftUI
 
 struct MnemonicWordView: View {
-    let index: Int
     @Binding var word: String
-    @Binding var words: [String]
-    @Binding var disabled: Bool
+
+    let index: Int
     var saveWord: (String, Int) -> Void
     var focus: FocusState<Int?>.Binding
     var nextFocus: (Int?) -> Void
 
     init(
         index: Int,
-        words: Binding<[String]>,
-        disabled: Binding<Bool>,
+        word: Binding<String>,
         saveWord: @escaping (String, Int) -> Void,
         focus: FocusState<Int?>.Binding,
         nextFocus: @escaping (Int?) -> Void
     ) {
         self.index = index
-        self._words = words
-        self._word = words[index]
-        self._disabled = disabled
+        self._word = word
         self.saveWord = saveWord
         self.focus = focus
         self.nextFocus = nextFocus
@@ -39,7 +35,6 @@ struct MnemonicWordView: View {
                     index + 1 <= 11 ? self.nextFocus(index + 1) : nil
                     saveWord(word, (index))
                 }
-                .disabled(disabled)
         }
     }
 }

@@ -10,29 +10,29 @@ struct MnemonicView: View {
 
     var body: some View {
         VStack {
-            Text("writeDownMnemonic")
-                .padding()
-
             wordsView
 
-            Spacer()
-
             if viewModel.shouldQuiz {
-                quizButton
-            } else {
+                VStack {
+                    Text("writeDownMnemonic")
+                        .padding()
+                    Spacer()
+                    quizButton
+                }
+            } else if viewModel.isNewWallet {
+                Spacer()
                 mnemonicButtons
             }
 
             Spacer()
         }
-        .onAppear { viewModel.checkForMnemonic() }
     }
 
     var wordsView: some View {
         ForEach(0..<4) { i in
             HStack {
                 ForEach(0..<3) { j in
-                    getMnemonicWordView(at: i, and: j)
+                    getMnemonicWordView(at: (i * numColumns) + j)
                 }
             }
         }
@@ -47,7 +47,7 @@ struct MnemonicView: View {
             .buttonStyle(SecondaryButton())
 
             ButtonX(text: "save") {
-                viewModel.saveMnemonic()
+                viewModel.saveWallet()
             }
             .buttonStyle(PrimaryButton())
             .navigationBarBackButtonHidden(false)
@@ -59,6 +59,7 @@ struct MnemonicView: View {
             QuizView(words: viewModel.words) { dismiss in
                 if dismiss {
                     viewModel.shouldQuiz = false
+                    viewModel.saveWallet()
                     presentationMode.wrappedValue.dismiss()
                 }
             }
@@ -67,11 +68,11 @@ struct MnemonicView: View {
         .navigationBarBackButtonHidden(true)
     }
 
-    func getMnemonicWordView(at i: Int, and j: Int) -> some View {
-        MnemonicWordView(
-            index: ((i * numColumns) + j),
-            words: $viewModel.words,
-            disabled: $viewModel.hasMnemonic,
+    func getMnemonicWordView(at index: Int) -> some View {
+        let word = $viewModel.words[index]
+        return MnemonicWordView(
+            index: index,
+            word: word,
             saveWord: { word, index in viewModel.saveWord(word: word, index: index) },
             focus: $focusedField,
             nextFocus: { index in
@@ -87,5 +88,6 @@ struct MnemonicView: View {
             RoundedRectangle(cornerRadius: 5)
                 .strokeBorder(lineWidth: 1)
         }
+        .disabled(!viewModel.isNewWallet)
     }
 }

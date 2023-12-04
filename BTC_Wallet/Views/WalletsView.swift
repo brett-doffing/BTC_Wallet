@@ -20,7 +20,7 @@ struct WalletsView: View {
                 viewModel.getWallets()
             }
             .navigationDestination(isPresented: $viewModel.showMnemonic) {
-                let vm = MnemonicViewModel(viewModel.walletName)
+                let vm = MnemonicViewModel(wallets: viewModel.wallets, currentWallet: viewModel.walletName)
                 MnemonicView(viewModel: vm)
             }
             .alert("walletName", isPresented: $viewModel.showNameAlert) {
@@ -39,19 +39,17 @@ struct WalletsView: View {
                     callback: { viewModel.showNameAlert = true }
                 )
             ) {
-                ForEach($viewModel.wallets, id: \.self) { wallet in
-                    if let name = wallet.wrappedValue["name"] {
-                        getWallet(by: name)
-                    }
+                ForEach($viewModel.wallets) { wallet in
+                    getWallet(wallet.wrappedValue)
                 }
             }
         }
         .listStyle(.insetGrouped)
     }
 
-    private func getWallet(by name: String) -> some View {
-        NavigationLink(name) {
-            let vm = MnemonicViewModel(name)
+    private func getWallet(_ wallet: Wallet) -> some View {
+        NavigationLink(wallet.name) {
+            let vm = MnemonicViewModel(wallet)
             MnemonicView(viewModel: vm)
         }
     }
