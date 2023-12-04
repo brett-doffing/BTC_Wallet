@@ -32,7 +32,7 @@ class BTCKeychain {
         }
     }()
     
-    init(seed: Data, network: BTCNetwork = .main) {
+    init(seed: Data, network: BTCNetwork = .test) {
         self.network = network
         self.extendedPrivateKey = ExtendedPrivateKey(seed: seed, network: self.network)
         self.extendedPublicKey = ExtendedPublicKey(extPrivateKey: self.extendedPrivateKey!)
