@@ -4,6 +4,7 @@ import SwiftUI
 
 struct MnemonicView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var wallets: Wallets
     @StateObject var viewModel: MnemonicViewModel
     @FocusState private var focusedField: Int?
     let numColumns = 3
@@ -47,7 +48,10 @@ struct MnemonicView: View {
             .buttonStyle(SecondaryButton())
 
             ButtonX(text: "save") {
-                viewModel.saveWallet()
+                if viewModel.hasValidMnemonic {
+                    viewModel.saveMnemonic()
+                    wallets.save(viewModel.wallet)
+                }
             }
             .buttonStyle(PrimaryButton())
             .navigationBarBackButtonHidden(false)
@@ -59,7 +63,7 @@ struct MnemonicView: View {
             QuizView(words: viewModel.words) { dismiss in
                 if dismiss {
                     viewModel.shouldQuiz = false
-                    viewModel.saveWallet()
+                    wallets.save(viewModel.wallet)
                     presentationMode.wrappedValue.dismiss()
                 }
             }

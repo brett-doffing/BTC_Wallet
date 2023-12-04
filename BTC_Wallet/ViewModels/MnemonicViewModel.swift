@@ -6,10 +6,9 @@ import Foundation
     @Published var words = [String](repeating: "", count: 12)
     @Published var isNewWallet = true
     @Published var shouldQuiz = false
-    var wallets: [Wallet] = []
-    var wallet: Wallet?
+    var wallet: Wallet
 
-    private var validMnemonic: Bool {
+    var hasValidMnemonic: Bool {
         for word in words {
             if !WordList.english.words.contains(word) {
                 return false
@@ -26,8 +25,7 @@ import Foundation
         }
     }
 
-    init(wallets: [Wallet], currentWallet: String) {
-        self.wallets = wallets
+    init(currentWallet: String) {
         self.wallet = Wallet(name: currentWallet)
     }
 
@@ -35,18 +33,9 @@ import Foundation
         words[index] = word
     }
 
-    func saveWallet() {
-        if validMnemonic {
-            let mnemonic = words.map { $0.lowercased() }.joined(separator: " ")
-            wallet?.mnemonic = mnemonic
-            if let wallet = wallet {
-                let encoder = JSONEncoder()
-                wallets += [wallet]
-                if let encodedWallets = try? encoder.encode(wallets) {
-                    UserDefaults.standard.set(encodedWallets, forKey: "wallets")
-                }
-            }
-        }
+    func saveMnemonic() {
+        let mnemonic = words.map { $0.lowercased() }.joined(separator: " ")
+        wallet.mnemonic = mnemonic
     }
 
     func randomlyGenerateSeed() {

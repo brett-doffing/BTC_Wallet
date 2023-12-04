@@ -9,6 +9,7 @@ enum Tab {
 }
 
 struct ContentView: View {
+    @StateObject var wallets = Wallets()
     @State private var tabSelection = Tab.wallets
 
     var body: some View {
@@ -34,5 +35,6 @@ struct ContentView: View {
 
         }
         .accentColor(Color("btcOrange"))
+        .environmentObject(wallets)
     }
 }

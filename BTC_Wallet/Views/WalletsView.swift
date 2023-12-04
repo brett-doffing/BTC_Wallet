@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct WalletsView: View {
+    @EnvironmentObject var wallets: Wallets
     @StateObject var viewModel = WalletsViewModel()
     @Binding var tabSelection: Tab
 
@@ -11,16 +12,8 @@ struct WalletsView: View {
             ZStack {
                 walletsList
             }
-            .onChange(of: tabSelection) { selection in
-                if selection == .wallets {
-                    viewModel.getWallets()
-                }
-            }
-            .onAppear {
-                viewModel.getWallets()
-            }
             .navigationDestination(isPresented: $viewModel.showMnemonic) {
-                let vm = MnemonicViewModel(wallets: viewModel.wallets, currentWallet: viewModel.walletName)
+                let vm = MnemonicViewModel(currentWallet: viewModel.walletName)
                 MnemonicView(viewModel: vm)
             }
             .alert("walletName", isPresented: $viewModel.showNameAlert) {
@@ -39,7 +32,7 @@ struct WalletsView: View {
                     callback: { viewModel.showNameAlert = true }
                 )
             ) {
-                ForEach($viewModel.wallets) { wallet in
+                ForEach($wallets.wallets) { wallet in
                     getWallet(wallet.wrappedValue)
                 }
             }
@@ -49,8 +42,9 @@ struct WalletsView: View {
 
     private func getWallet(_ wallet: Wallet) -> some View {
         NavigationLink(wallet.name) {
-            let vm = MnemonicViewModel(wallet)
-            MnemonicView(viewModel: vm)
+//            let vm = MnemonicViewModel(wallet)
+//            MnemonicView(viewModel: vm)
+            
         }
     }
 }

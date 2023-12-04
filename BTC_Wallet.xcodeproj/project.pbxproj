@@ -83,6 +83,7 @@
 		BC62852C2B1D35C100EDFDB2 /* V_in.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852B2B1D35C100EDFDB2 /* V_in.swift */; };
 		BC62852E2B1D362000EDFDB2 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852D2B1D362000EDFDB2 /* Wallet.swift */; };
 		BC6285302B1D36F400EDFDB2 /* BTCBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852F2B1D36F400EDFDB2 /* BTCBlock.swift */; };
+		BC6285322B1E689100EDFDB2 /* Wallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285312B1E689100EDFDB2 /* Wallets.swift */; };
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
@@ -183,6 +184,7 @@
 		BC62852B2B1D35C100EDFDB2 /* V_in.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_in.swift; sourceTree = "<group>"; };
 		BC62852D2B1D362000EDFDB2 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		BC62852F2B1D36F400EDFDB2 /* BTCBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCBlock.swift; sourceTree = "<group>"; };
+		BC6285312B1E689100EDFDB2 /* Wallets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallets.swift; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				BC6285292B1D354A00EDFDB2 /* V_out.swift */,
 				BC62852B2B1D35C100EDFDB2 /* V_in.swift */,
 				BC62852D2B1D362000EDFDB2 /* Wallet.swift */,
+				BC6285312B1E689100EDFDB2 /* Wallets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				BC21BB362AF2D3F1005AC913 /* BTCKeychain.swift in Sources */,
 				BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */,
 				BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */,
+				BC6285322B1E689100EDFDB2 /* Wallets.swift in Sources */,
 				BC21BB2F2AF2D3F1005AC913 /* WordList.swift in Sources */,
 				BC21BB5A2AF2D3F2005AC913 /* SegwitAddrCoder.swift in Sources */,
 				BC21BB402AF2D3F2005AC913 /* ecdsa_impl.swift in Sources */,
