@@ -9,7 +9,8 @@ class QuizViewModel: ObservableObject {
     @Published var word3: String = ""
     
     private let words: [String]
-    private var questionedIndices: [Int] = [] /// Holds indices of questions that have already been asked
+    private var answers: [(Int, String)] = []
+    private var wrongAnswerOptions: [String] = []
     private var answerButtonNumber = 0
     private var questionNumber = 1
 
@@ -18,67 +19,50 @@ class QuizViewModel: ObservableObject {
     init(words: [String], dismissMnemonicView: @escaping (Bool) -> ()) {
         self.words = words
         self.dismissMnemonicView = dismissMnemonicView
-        self.generateQuestion()
+
+        generateQuiz()
+        generateQuestion()
     }
 
-    /**
-     Generates the question, answer, and two wrong answers, making sure not to repeat or duplicate answers or questions.
-     */
+    func generateQuiz() {
+        var wordsEnumerated: [(index: Int, word: String)] = []
+        for (i, word) in words.enumerated() {
+            wordsEnumerated.append((i, word))
+        }
+
+        for _ in 0...3 {
+            let index = Int.random(in: 0..<wordsEnumerated.count)
+            let answer = wordsEnumerated.remove(at: index)
+            answers.append(answer)
+        }
+
+        wrongAnswerOptions = wordsEnumerated.shuffled().map { $0.word }
+    }
+
     private func generateQuestion() {
-        guard words.count == 12 else { return }
-        /// Index for answer to question
-        wordIndex = getNewWordIndex()
-        questionedIndices.append(wordIndex)
-
-        generateAnswerOptions()
-
-        #if DEBUG
-        print(words[wordIndex]) // answer
-        #endif
-    }
-
-    /**
-     Randomly selects a new word, while also making sure it has not been used previously.
-
-     - Returns: The random int to index the `words` array
-     */
-    private func getNewWordIndex() -> Int {
-        var idx: Int
-        repeat {
-            idx = Int.random(in: 0..<12)
-        } while questionedIndices.contains(idx)
-
-        return idx
-    }
-
-    /**
-     Randomly selects which button will be the answer,
-     while ensuring that no buttons can be repeated.
-     */
-    private func generateAnswerOptions() {
-        /// Select random button that will be the answer
         answerButtonNumber = Int.random(in: 1...3)
-        /// Indices that shouldn't be repeated as possible options for answers
-        var answerIndices: [Int] = []
 
         for i in 1...3 {
-            var idx = wordIndex
+            var word: String
             if i != answerButtonNumber {
-                var randomIdx = Int.random(in: 0..<12)
-                while randomIdx == wordIndex || answerIndices.contains(randomIdx) {
-                    randomIdx = Int.random(in: 0..<12)
-                }
-                idx = randomIdx
+                word = wrongAnswerOptions.removeLast()
+            } else {
+                let answer = answers.removeLast()
+                wordIndex = answer.0 // index
+                word = answer.1 // word
+
+                #if DEBUG
+                print(word) // answer
+                #endif
             }
-            answerIndices.append(idx)
 
             switch i {
             case 1:
-                word1 = words[idx]
+                word1 = word
             case 2:
-                word2 = words[idx]
+                word2 = word
             default:
-                word3 = words[idx]
+                word3 = word
             }
         }
     }
@@ -104,7 +88,6 @@ class QuizViewModel: ObservableObject {
                 dismissViews(true)
             }
         } else {
-            questionedIndices = []
             dismissViews(false)
         }
     }
