@@ -17,8 +17,8 @@ import Foundation
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let masterKeychain = BTCKeychain(seed: seed)
         let coinType = masterKeychain.network.coinType
-        if let kc = masterKeychain.derivedKeychain(withPath: "m/84'/\(coinType)'/0'", andType: .BIP84),
-           let address = kc.recieveKeychain(atIndex: UInt32(wallet.walletIndex), withType: .BIP84)?.address
+        if let kc = masterKeychain.derivedKeychain(withPath: "m/44'/\(coinType)'/0'", andType: .BIP44),
+           let address = kc.recieveKeychain(atIndex: UInt32(wallet.walletIndex), withType: .BIP44)?.address
         {
             self.keychain = kc
             self.address = address
