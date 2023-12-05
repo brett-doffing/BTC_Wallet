@@ -66,14 +66,15 @@ struct WalletView: View {
     private var transactionsList: some View {
         List {
             Section(header: SectionHeaderView(heading: "Transactions")) {
-//                ForEach($viewModel.transactions) { $tx in
+                ForEach($viewModel.transactions) { $tx in
+                    Text($tx.id)
 //                    let viewModel = TransactionViewModel(model: tx)
 //                    NavigationLink {
 //                        TransactionFullView(viewModel: viewModel)
 //                    } label: {
 //                        TransactionListView(viewModel: viewModel)
 //                    }
-//                }
+                }
             }
         }
         .listStyle(.insetGrouped)
