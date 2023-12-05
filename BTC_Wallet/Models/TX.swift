@@ -2,9 +2,9 @@
 
 import Foundation
 
-struct TX: Codable {
-    var blockHeight: Int
-    var blockTime: Int
+struct TX: Codable, Identifiable {
+    var blockHeight: Int?
+    var blockTime: Int?
     var confirmed: Bool
     var fee: Int
     var id: String
