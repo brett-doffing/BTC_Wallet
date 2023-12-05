@@ -22,6 +22,11 @@ struct WalletsView: View {
                 Button("cancel", role: .cancel, action: {})
             }
         }
+        .onChange(of: tabSelection) { selection in
+            if selection == .wallets {
+                wallets.getWallets()
+            }
+        }
     }
 
     private var walletsList: some View {
