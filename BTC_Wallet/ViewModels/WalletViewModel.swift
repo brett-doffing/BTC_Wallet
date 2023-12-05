@@ -9,7 +9,7 @@ import Foundation
     @Published var transactions: [TX] = []
     private let service = BlockstreamService()
 
-    let wallet: Wallet
+    var wallet: Wallet
 
     init(_ wallet: Wallet) {
         self.wallet = wallet
@@ -22,8 +22,37 @@ import Foundation
         {
             self.keychain = kc
             self.address = address
-//            getTXs(forAddress: address, isCurrentAddress: true)
         }
+    }
+
+    func getCurrentAddressTransactions() async {
+        guard let address else { return }
+        await getTXs(forAddress: address, isCurrentAddress: true)
+    }
+
+    private func getTXs(forAddress address: String, lastSeenTX: String? = nil, isCurrentAddress: Bool = false) async {
+        do {
+            try await service.getTransactions(for: address, lastSeenTX: lastSeenTX) { [weak self] responseArray, error in
+                if let response = responseArray {
+                    if !response.isEmpty {
+                        guard let self = self else { return }
+                        print(responseArray)
+                        if isCurrentAddress { self.incrementWalletIndex() }
+                    } else {
+                        print("No transactions for this address:\n\t\(address)")
+                    }
+                } else if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+
+    }
+
+    private func incrementWalletIndex() {
+
     }
 
     func refresh() {

@@ -39,7 +39,7 @@ struct WalletView: View {
                 }
             }
         }
-//        .onAppear { viewModel.checkForWallet() }
+        .onAppear { Task { await viewModel.getCurrentAddressTransactions() }}
 //        .alert("Create Wallet", isPresented: $viewModel.needsWallet,
 //            actions: {
 //                Button("Enter Seed Words", action: { self.tabSelection = 4 })
