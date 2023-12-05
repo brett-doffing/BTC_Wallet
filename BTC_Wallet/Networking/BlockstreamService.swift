@@ -28,6 +28,7 @@ struct BlockstreamService: BlockstreamServiceable {
             let transactions = try JSONDecoder().decode([BlockstreamResponse].self, from: data)
             completionHandler(.success(transactions))
         } catch {
+            print(error.localizedDescription)
             completionHandler(.failure("BlockstreamResponse Error"))
         }
     }
