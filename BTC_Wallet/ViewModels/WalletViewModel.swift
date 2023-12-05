@@ -31,24 +31,19 @@ import Foundation
     }
 
     private func getTXs(forAddress address: String, lastSeenTX: String? = nil, isCurrentAddress: Bool = false) async {
-        do {
-            try await service.getTransactions(for: address, lastSeenTX: lastSeenTX) { [weak self] responseArray, error in
-                if let response = responseArray {
-                    if !response.isEmpty {
-                        guard let self = self else { return }
-                        print(responseArray)
-                        if isCurrentAddress { self.incrementWalletIndex() }
-                    } else {
-                        print("No transactions for this address:\n\t\(address)")
-                    }
-                } else if let error = error {
-                    print(error.localizedDescription)
+        await service.getTransactions(for: address, lastSeenTX: lastSeenTX) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let response):
+                if !response.isEmpty {
+                    print(response)
+                    if isCurrentAddress { self.incrementWalletIndex() }
+                } else {
+                    print("No transactions for this address:\n\t\(address)")
                 }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-
+            case .failure(let error):
+                print(error.localizedDescription)
+            }}
     }
 
     private func incrementWalletIndex() {

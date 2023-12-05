@@ -6,7 +6,7 @@ protocol BlockstreamServiceable {
     func getTransactions(
         for address: String,
         lastSeenTX: String?,
-        completionHandler: @escaping ([BlockstreamResponse]?, Error?) -> ()
+        completionHandler: @escaping (Result<[BlockstreamResponse], Error>) -> ()
     ) async throws
 }
 
@@ -17,16 +17,18 @@ struct BlockstreamService: BlockstreamServiceable {
     func getTransactions(
         for address: String,
         lastSeenTX: String? = nil,
-        completionHandler: @escaping ([BlockstreamResponse]?, Error?) -> ()) async throws {
+        completionHandler: @escaping (Result<[BlockstreamResponse], Error>) -> ()) async {
         var urlString = baseURL + "address/\(address)/txs"
         if let lastSeenTX = lastSeenTX { urlString += "/chain/\(lastSeenTX)" }
-        guard let url = URL(string: urlString) else { throw "Bad URL when fetching a BlockstreamResponse" }
+        guard let url = URL(string: urlString)
+                
+        else { completionHandler(.failure("Bad URL when fetching a BlockstreamResponse")); return }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let transactions = try JSONDecoder().decode([BlockstreamResponse].self, from: data)
-            completionHandler(transactions, nil)
+            completionHandler(.success(transactions))
         } catch {
-            throw "BlockstreamResponse Error"
+            completionHandler(.failure("BlockstreamResponse Error"))
         }
     }
 }
