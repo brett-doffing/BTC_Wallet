@@ -27,6 +27,7 @@ struct MnemonicView: View {
 
             Spacer()
         }
+        .animation(Animation.easeInOut, value: viewModel.shouldQuiz)
     }
 
     var wordsView: some View {
@@ -51,6 +52,7 @@ struct MnemonicView: View {
                 if viewModel.hasValidMnemonic {
                     viewModel.saveMnemonic()
                     wallets.save(viewModel.wallet)
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
             .buttonStyle(PrimaryButton())
