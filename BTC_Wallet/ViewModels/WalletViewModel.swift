@@ -25,7 +25,7 @@ import Foundation
         }
     }
 
-    func getCurrentAddressTransactions() async {
+    func getTransactionForCurrentAddress() async {
         guard let address else { return }
         await getTXs(forAddress: address, isCurrentAddress: true)
     }

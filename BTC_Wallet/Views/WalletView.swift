@@ -39,16 +39,7 @@ struct WalletView: View {
                 }
             }
         }
-        .onAppear { Task { await viewModel.getCurrentAddressTransactions() }}
-//        .alert("Create Wallet", isPresented: $viewModel.needsWallet,
-//            actions: {
-//                Button("Enter Seed Words", action: { self.tabSelection = 4 })
-//                Button("Randomly Generate", action: { viewModel.randomlyGenerateSeed() })
-//            },
-//            message: {
-//                Text("How would you like to create a seed for your wallet?")
-//            }
-//        )
+        .onAppear { Task { await viewModel.getTransactionForCurrentAddress() }}
     }
 
     private var qrSection: some View {
