@@ -25,38 +25,8 @@ struct WalletView: View {
             GeometryReader { geometry in
                 ZStack {
                     VStack {
-                        Image(uiImage: generateQRCode())
-                            .resizable()
-                            .interpolation(.none) // Do not smooth
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .padding()
-                        if let address = viewModel.address {
-                            Text("\(address) \(Image(systemName: "doc.on.doc"))")
-                                .padding()
-                                .onTapGesture() {
-                                    UIPasteboard.general.string = address
-                                    withAnimation { copied = true }
-                                }
-                        } else {
-                            Text("").padding()
-                        }
-                        List {
-                            Section(header: SectionHeaderView(heading: "Transactions")) {
-//                                ForEach($viewModel.transactions) { $tx in
-//                                    let viewModel = TransactionViewModel(model: tx)
-//                                    NavigationLink {
-//                                        TransactionFullView(viewModel: viewModel)
-//                                    } label: {
-//                                        TransactionListView(viewModel: viewModel)
-//                                    }
-//                                }
-                            }
-                        }
-                        .listStyle(.insetGrouped)
-                        .refreshable {
-                            viewModel.refresh()
-                        }
+                        qrSection
+                        transactionsList
                         Spacer()
                     }
                     if viewModel.isLoading {
@@ -64,14 +34,7 @@ struct WalletView: View {
                             .scaleEffect(3)
                     }
                     if copied {
-                        Text("Copied to clipboard")
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color("btcOrange").cornerRadius(10))
-                            .position(x: geometry.frame(in: .local).width/2)
-                            .transition(.move(edge: .top))
-                            .padding(.top)
-                            .animation(Animation.easeInOut(duration: 0.5))
+                        getCopiedTextNotification(with: geometry)
                     }
                 }
             }
@@ -86,6 +49,56 @@ struct WalletView: View {
 //                Text("How would you like to create a seed for your wallet?")
 //            }
 //        )
+    }
+
+    private var qrSection: some View {
+        VStack {
+            Image(uiImage: generateQRCode())
+                .resizable()
+                .interpolation(.none) // Do not smooth
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .padding()
+            if let address = viewModel.address {
+                Text("\(address) \(Image(systemName: "doc.on.doc"))")
+                    .padding()
+                    .onTapGesture() {
+                        UIPasteboard.general.string = address
+                        withAnimation { copied = true }
+                    }
+            } else {
+                Text("").padding()
+            }
+        }
+    }
+
+    private var transactionsList: some View {
+        List {
+            Section(header: SectionHeaderView(heading: "Transactions")) {
+//                ForEach($viewModel.transactions) { $tx in
+//                    let viewModel = TransactionViewModel(model: tx)
+//                    NavigationLink {
+//                        TransactionFullView(viewModel: viewModel)
+//                    } label: {
+//                        TransactionListView(viewModel: viewModel)
+//                    }
+//                }
+            }
+        }
+        .listStyle(.insetGrouped)
+        .refreshable {
+            viewModel.refresh()
+        }
+    }
+
+    private func getCopiedTextNotification(with geometry: GeometryProxy) -> some View{
+        Text("Copied to clipboard")
+            .padding()
+            .foregroundColor(.white)
+            .background(Color("btcOrange").cornerRadius(10))
+            .position(x: geometry.frame(in: .local).width/2)
+            .transition(.move(edge: .top))
+            .padding(.top)
     }
 
     private func generateQRCode() -> UIImage {
