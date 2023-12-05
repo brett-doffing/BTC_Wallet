@@ -63,6 +63,7 @@ struct MnemonicView: View {
             QuizView(words: viewModel.words) { dismiss in
                 if dismiss {
                     viewModel.shouldQuiz = false
+                    viewModel.saveMnemonic()
                     wallets.save(viewModel.wallet)
                     presentationMode.wrappedValue.dismiss()
                 }
