@@ -79,7 +79,7 @@ struct WalletView: View {
         List {
             Section(header: SectionHeaderView(heading: "Transactions")) {
                 ForEach($viewModel.transactions) { $tx in
-                    Text($tx.id)
+                    TransactionListView(for: $tx.wrappedValue)
 //                    let viewModel = TransactionViewModel(model: tx)
 //                    NavigationLink {
 //                        TransactionFullView(viewModel: viewModel)
