@@ -39,7 +39,11 @@ struct WalletView: View {
                 }
             }
         }
-        .onAppear { Task { await viewModel.getTransactionForCurrentAddress() }}
+        .onAppear {
+            Task {
+                await viewModel.getTransactionsForCurrentAddress()
+            }
+        }
     }
 
     private var qrSection: some View {

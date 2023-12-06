@@ -25,23 +25,21 @@ import Foundation
         }
     }
 
-    func getTransactionForCurrentAddress() async {
+    func getTransactionsForCurrentAddress() async {
         guard let address else { return }
         await getTXs(forAddress: address, isCurrentAddress: true)
     }
 
     private func getTXs(forAddress address: String, lastSeenTX: String? = nil, isCurrentAddress: Bool = false) async {
-        await service.getTransactions(for: address, lastSeenTX: lastSeenTX) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let response):
-                if !response.isEmpty {
-                    flagTXs(in: response)
-                    if isCurrentAddress { self.getNextAddress() }
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }}
+        do {
+            let responseData = try await service.fetchTransactions(for: address, lastSeenTX: lastSeenTX)
+            if !responseData.isEmpty {
+                flagTXs(in: responseData)
+                if isCurrentAddress { self.getNextAddress() }
+            }
+        } catch {
+            print(error)
+        }
     }
 
     /// Flag wallet specific TXOs
@@ -71,7 +69,7 @@ import Foundation
             DispatchQueue.main.async { [weak self] in
                 self?.address = address
             }
-            Task { await getTransactionForCurrentAddress() }
+            Task { await getTransactionsForCurrentAddress() }
         }
     }
 
