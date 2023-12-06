@@ -24,19 +24,23 @@ struct WalletView: View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack {
-                    VStack {
-                        qrSection
-                        transactionsList
-                        Spacer()
-                    }
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .scaleEffect(3)
+                    if !viewModel.isLoading {
+                        VStack {
+                            qrSection
+                            transactionsList
+                            Spacer()
+                        }
                     }
                     if copied {
                         getCopiedTextNotification(with: geometry)
                     }
                 }
+            }
+        }
+        .overlay {
+            if viewModel.isLoading {
+                ProgressView("Loading")
+                    .scaleEffect(2)
             }
         }
         .onAppear {
@@ -55,14 +59,18 @@ struct WalletView: View {
                 .frame(width: 200, height: 200)
                 .padding()
             if let address = viewModel.address {
-                Text("\(address) \(Image(systemName: "doc.on.doc"))")
-                    .padding()
-                    .onTapGesture() {
-                        UIPasteboard.general.string = address
-                        withAnimation { copied = true }
-                    }
-            } else {
-                Text("").padding()
+                HStack {
+                    Text("\(address)")
+                        .scaledToFill()
+                        .minimumScaleFactor(0.1)
+                        .lineLimit(1)
+                    Image(systemName: "doc.on.doc")
+                }
+                .padding()
+                .onTapGesture() {
+                    UIPasteboard.general.string = address
+                    withAnimation { copied = true }
+                }
             }
         }
     }
@@ -87,7 +95,7 @@ struct WalletView: View {
         }
     }
 
-    private func getCopiedTextNotification(with geometry: GeometryProxy) -> some View{
+    private func getCopiedTextNotification(with geometry: GeometryProxy) -> some View {
         Text("Copied to clipboard")
             .padding()
             .foregroundColor(.white)
