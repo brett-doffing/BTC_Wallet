@@ -5,7 +5,7 @@ import Foundation
 @MainActor class WalletViewModel: ObservableObject {
     @Published var keychain: BTCKeychain?
     @Published var address: String?
-    @Published var isLoading = false
+    @Published var isLoading = true
     @Published var transactions: [TX] = []
     private let service = BlockstreamService()
 
@@ -34,15 +34,19 @@ import Foundation
         do {
             let responseData = try await service.fetchTransactions(for: address, lastSeenTX: lastSeenTX)
             if !responseData.isEmpty {
-                flagTXs(in: responseData)
-                if isCurrentAddress { self.getNextAddress() }
+                await MainActor.run {
+                    flagTXs(in: responseData)
+                    if isCurrentAddress { self.getNextAddress() }
+                }
+            } else {
+                await MainActor.run { isLoading = false }
             }
         } catch {
             print(error)
         }
     }
 
-    /// Flag wallet specific TXOs
+    /// Flag wallet specific TXs
     private func flagTXs(in txs: [BlockstreamResponse]) {
         var txs = txs
         for (i, response) in txs.enumerated() {
@@ -57,18 +61,14 @@ import Foundation
                 }
             }
             let mappedTX = txs[i].mapped()
-            DispatchQueue.main.async { [weak self] in
-                self?.transactions.append(mappedTX)
-            }
+            self.transactions.append(mappedTX)
         }
     }
 
     private func getNextAddress() {
         wallet.walletIndex += 1
         if let address = self.keychain?.recieveKeychain(atIndex: UInt32(wallet.walletIndex))?.address {
-            DispatchQueue.main.async { [weak self] in
-                self?.address = address
-            }
+            self.address = address
             Task { await getTransactionsForCurrentAddress() }
         }
     }
