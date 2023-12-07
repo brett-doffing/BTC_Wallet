@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC1E79492B16679F00F68FAB /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E79482B16679F00F68FAB /* Base58Tests.swift */; };
 		BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */; };
-		BC21BAD92AF2D397005AC913 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD82AF2D397005AC913 /* ContentView.swift */; };
+		BC21BAD92AF2D397005AC913 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD82AF2D397005AC913 /* AppView.swift */; };
 		BC21BADB2AF2D399005AC913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC21BADA2AF2D399005AC913 /* Assets.xcassets */; };
 		BC21BADE2AF2D399005AC913 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC21BADD2AF2D399005AC913 /* Preview Assets.xcassets */; };
 		BC21BB2F2AF2D3F1005AC913 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB012AF2D3F1005AC913 /* WordList.swift */; };
@@ -109,7 +109,7 @@
 		BC1E79482B16679F00F68FAB /* Base58Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
 		BC21BAD32AF2D397005AC913 /* BTC_Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTC_Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTC_WalletApp.swift; sourceTree = "<group>"; };
-		BC21BAD82AF2D397005AC913 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BC21BAD82AF2D397005AC913 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		BC21BADA2AF2D399005AC913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC21BADD2AF2D399005AC913 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC21BAE32AF2D399005AC913 /* BTC_WalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTC_WalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,7 +345,7 @@
 				BC21BB702AF2D66D005AC913 /* SettingsView.swift */,
 				BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */,
 				BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */,
-				BC21BAD82AF2D397005AC913 /* ContentView.swift */,
+				BC21BAD82AF2D397005AC913 /* AppView.swift */,
 				BC21BB802AF2F074005AC913 /* WalletsView.swift */,
 				BC21BB822AF2F15E005AC913 /* WalletView.swift */,
 				BCFD2D842AF44A7200A9A94E /* QuizView.swift */,
@@ -532,7 +532,7 @@
 				BC21BB3F2AF2D3F2005AC913 /* field_10x26.swift in Sources */,
 				BC21BB792AF2E0CC005AC913 /* SendViewModel.swift in Sources */,
 				BC21BB6B2AF2D62D005AC913 /* MnemonicViewModel.swift in Sources */,
-				BC21BAD92AF2D397005AC913 /* ContentView.swift in Sources */,
+				BC21BAD92AF2D397005AC913 /* AppView.swift in Sources */,
 				BC21BB572AF2D3F2005AC913 /* PBKDF2.swift in Sources */,
 				BC21BB592AF2D3F2005AC913 /* SMP.swift in Sources */,
 				BC62852E2B1D362000EDFDB2 /* Wallet.swift in Sources */,
@@ -751,6 +751,7 @@
 				DEVELOPMENT_TEAM = 59ASJ9CE64;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -780,6 +781,7 @@
 				DEVELOPMENT_TEAM = 59ASJ9CE64;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
