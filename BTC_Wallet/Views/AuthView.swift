@@ -9,9 +9,18 @@ struct AuthView: View {
 
     var body: some View {
         ZStack {
-            Color("btcOrange")
-                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Image(systemName: "bitcoinsign.circle.fill")
+                    .resizable()
+                    .foregroundColor(.white)
+                    .opacity(0.1)
+                    .aspectRatio(contentMode: .fill)
+                    .rotationEffect(.degrees(30))
+            }
         }
+        .background(
+            LinearGradient(gradient: Gradient(colors: [Color("btcOrange"), .black]), startPoint: .topLeading, endPoint: .bottom)
+        )
         .onAppear { authenticate() }
         .onChange(of: $shouldDismiss.wrappedValue) { newValue in
             presentationMode.wrappedValue.dismiss()
