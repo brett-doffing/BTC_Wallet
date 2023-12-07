@@ -12,7 +12,8 @@ struct BTC_WalletApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
+                .environment(\.font, Font.custom("Futura", size: 14))
         }
     }
 }
