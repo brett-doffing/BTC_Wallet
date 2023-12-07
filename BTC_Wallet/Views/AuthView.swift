@@ -4,12 +4,17 @@ import LocalAuthentication
 import SwiftUI
 
 struct AuthView: View {
-    @Environment(\.presentationMode) var prentationMode
+    @Environment(\.presentationMode) var presentationMode
+    @State var shouldDismiss = false
 
     var body: some View {
         ZStack {
             Color("btcOrange")
                 .edgesIgnoringSafeArea(.all)
+        }
+        .onAppear { authenticate() }
+        .onChange(of: $shouldDismiss.wrappedValue) { newValue in
+            presentationMode.wrappedValue.dismiss()
         }
     }
 
@@ -20,9 +25,9 @@ struct AuthView: View {
             let reason = "Unlock App"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authError in
                 if success {
-                    prentationMode.wrappedValue.dismiss()
+                    shouldDismiss.toggle()
                 } else {
-
+                    print(authError?.localizedDescription)
                 }
             }
         } else {

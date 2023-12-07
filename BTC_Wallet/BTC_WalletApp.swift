@@ -10,9 +10,9 @@ struct BTC_WalletApp: App {
         // Initialize context for performance
         _ = BTCCurve.shared
 
-//        #if DEBUG
-//        shouldAuthenticate = true
-//        #endif
+        #if DEBUG
+        shouldAuthenticate = false
+        #endif
     }
 
     var body: some Scene {
@@ -27,7 +27,6 @@ struct BTC_WalletApp: App {
                 ) { _ in
                     shouldAuthenticate = true
                 }
-
         }
     }
 }
