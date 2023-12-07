@@ -27,6 +27,14 @@ struct AuthView: View {
         .onChange(of: $shouldDismiss.wrappedValue) { newValue in
             presentationMode.wrappedValue.dismiss()
         }
+        .alert("Authentication Error", isPresented: $shouldShowAlert, actions: {
+            Button("OK") {
+                errorMessage = nil
+                shouldShowAlert = false
+            }
+        }, message: {
+            Text($errorMessage.wrappedValue ?? "Unknown Error")
+        })
         .alert("Authentication Error", isPresented: $shouldShowAlert) {
             Button("OK") {
                 errorMessage = nil
@@ -47,14 +55,14 @@ struct AuthView: View {
                     if let authError = authError as? LAError {
                         errorMessage = handle(authError)
                     }
-                    shouldShowAlert = false
+                    shouldShowAlert = true
                 }
             }
         } else {
             if let authError = error as? LAError {
                 errorMessage = handle(authError)
             }
-            shouldShowAlert = false
+            shouldShowAlert = true
         }
     }
 
