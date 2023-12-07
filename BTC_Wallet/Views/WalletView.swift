@@ -40,7 +40,7 @@ struct WalletView: View {
         .overlay {
             if viewModel.isLoading {
                 ProgressView("Loading")
-                    .scaleEffect(2)
+                    .scaleEffect(1.5)
             }
         }
         .onAppear {
