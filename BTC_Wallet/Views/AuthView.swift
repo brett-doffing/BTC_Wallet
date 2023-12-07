@@ -6,6 +6,8 @@ import SwiftUI
 struct AuthView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var shouldDismiss = false
+    @State var shouldShowAlert = false
+    @State var errorMessage: String?
 
     var body: some View {
         ZStack {
@@ -25,9 +27,15 @@ struct AuthView: View {
         .onChange(of: $shouldDismiss.wrappedValue) { newValue in
             presentationMode.wrappedValue.dismiss()
         }
+        .alert("Authentication Error", isPresented: $shouldShowAlert) {
+            Button("OK") {
+                errorMessage = nil
+                shouldShowAlert = false
+            }
+        }
     }
 
-    func authenticate() {
+    private func authenticate() {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
@@ -36,11 +44,46 @@ struct AuthView: View {
                 if success {
                     shouldDismiss.toggle()
                 } else {
-                    print(authError?.localizedDescription)
+                    if let authError = authError as? LAError {
+                        errorMessage = handle(authError)
+                    }
+                    shouldShowAlert = false
                 }
             }
         } else {
-            // No Biometrics
+            if let authError = error as? LAError {
+                errorMessage = handle(authError)
+            }
+            shouldShowAlert = false
+        }
+    }
+
+    private func handle(_ error: LAError) -> String? {
+        switch error.code {
+        case .authenticationFailed:
+            return "Authentication failed"
+        case .userCancel:
+            return "Cancelled authentication"
+        case .systemCancel:
+            return "System canceled authentication"
+        case .passcodeNotSet:
+            return "Please go to the Settings & Turn On Passcode"
+        case .biometryNotAvailable:
+            return "TouchID or FaceID not available"
+        case .biometryNotEnrolled:
+            return "TouchID or FaceID not enrolled"
+        case .biometryLockout:
+            return "TouchID or FaceID is locked because there were too many failed attempts, Please go to the Settings & Turn On Passcode"
+        case .appCancel:
+            return "App canceled authentication"
+        case .invalidContext:
+            return "Invalid Context"
+        case .userFallback:
+            return "No fallback is available for the authentication policy"
+        case .notInteractive:
+            return "Displaying the required authentication user interface is forbidden"
+        default:
+            return nil
         }
     }
 }
