@@ -4,7 +4,7 @@ import SwiftUI
 
 struct TransactionListView: View {
     @State var tx: TX
-    @State var txo: V_out?
+    var txo: V_out?
     let dateFormatter = DateFormatter()
 
     init(for tx: TX) {
@@ -16,7 +16,7 @@ struct TransactionListView: View {
         HStack {
             Text(blockTime)
             Spacer()
-            Text("\(amount) Sats")
+            Text("\(Int(txo?.value ?? 0)) Sats")
         }
         .frame(height: 30)
     }
@@ -31,11 +31,6 @@ struct TransactionListView: View {
             return dateFormatter.string(from: dateFromServer)
         }
         return "Unconfirmed"
-    }
-
-    var amount: Int {
-        guard let value = txo?.value as? Int else { return 0 }
-        return value
     }
 
     private func getWalletTXO() -> V_out? {
