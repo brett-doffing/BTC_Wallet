@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1981252B222C980003ABEC /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1981242B222C980003ABEC /* AuthView.swift */; };
 		BC1E79492B16679F00F68FAB /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E79482B16679F00F68FAB /* Base58Tests.swift */; };
 		BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */; };
 		BC21BAD92AF2D397005AC913 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD82AF2D397005AC913 /* AppView.swift */; };
@@ -106,6 +107,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC1981242B222C980003ABEC /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		BC1E79482B16679F00F68FAB /* Base58Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
 		BC21BAD32AF2D397005AC913 /* BTC_Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTC_Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTC_WalletApp.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				BC21BB802AF2F074005AC913 /* WalletsView.swift */,
 				BC21BB822AF2F15E005AC913 /* WalletView.swift */,
 				BCFD2D842AF44A7200A9A94E /* QuizView.swift */,
+				BC1981242B222C980003ABEC /* AuthView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				BC21BB3B2AF2D3F2005AC913 /* hash.swift in Sources */,
 				BC21BB442AF2D3F2005AC913 /* scalar_8x32_impl.swift in Sources */,
 				BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */,
+				BC1981252B222C980003ABEC /* AuthView.swift in Sources */,
 				BC21BB452AF2D3F2005AC913 /* scalar_impl.swift in Sources */,
 				BC21BB392AF2D3F2005AC913 /* Data+Bitcoin.swift in Sources */,
 				BC21BB412AF2D3F2005AC913 /* gen_context.swift in Sources */,
