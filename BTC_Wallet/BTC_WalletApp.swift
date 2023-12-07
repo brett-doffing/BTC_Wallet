@@ -4,7 +4,7 @@ import SwiftUI
 
 @main
 struct BTC_WalletApp: App {
-    @State var shouldAuthenticate = true
+    @State var shouldAuthenticate: Bool
 
     init() {
         // Initialize context for performance
@@ -12,6 +12,8 @@ struct BTC_WalletApp: App {
 
         #if DEBUG
         shouldAuthenticate = false
+        #else
+        shouldAuthenticate = true
         #endif
     }
 
