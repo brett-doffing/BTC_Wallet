@@ -7,16 +7,6 @@ import SwiftUI
 struct WalletView: View {
     @StateObject var viewModel: WalletViewModel
 
-    @State private var copied = false {
-        didSet {
-            if copied == true {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    withAnimation { copied = false }
-                }
-            }
-        }
-    }
-
     let qrContext = CIContext()
     let qrFilter = CIFilter.qrCodeGenerator()
 
@@ -31,7 +21,7 @@ struct WalletView: View {
                             Spacer()
                         }
                     }
-                    if copied {
+                    if viewModel.copied {
                         getCopiedTextNotification(with: geometry)
                     }
                 }
@@ -69,7 +59,10 @@ struct WalletView: View {
                 .padding()
                 .onTapGesture() {
                     UIPasteboard.general.string = address
-                    withAnimation { copied = true }
+                    withAnimation { viewModel.copied = true }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        withAnimation { viewModel.copied = false }
+                    }
                 }
             }
         }
@@ -99,7 +92,7 @@ struct WalletView: View {
         Text("Copied to clipboard")
             .padding()
             .foregroundColor(.white)
-            .background(Color("btcOrange").cornerRadius(10))
+            .background(Color("btcOrange").cornerRadius(5))
             .position(x: geometry.frame(in: .local).width/2)
             .transition(.move(edge: .top))
             .padding(.top)

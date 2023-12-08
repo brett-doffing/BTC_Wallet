@@ -1,12 +1,15 @@
 // WalletViewModel.swift
 
-import Foundation
+//import Foundation
+import SwiftUI
 
 @MainActor class WalletViewModel: ObservableObject {
     @Published var keychain: BTCKeychain?
     @Published var address: String?
     @Published var isLoading = true
     @Published var transactions: [TX] = []
+    @Published var copied = false
+    
     private let service = BlockstreamService()
 
     var wallet: Wallet
