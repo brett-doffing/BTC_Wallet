@@ -50,5 +50,6 @@ struct WalletsView: View {
             let vm = WalletViewModel(wallet)
             WalletView(viewModel: vm)
         }
+        .font(.headline)
     }
 }
