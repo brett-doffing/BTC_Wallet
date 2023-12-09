@@ -18,6 +18,7 @@ struct WalletsView: View {
             }
             .alert("walletName", isPresented: $viewModel.showNameAlert) {
                 TextField("walletName", text: $viewModel.walletName)
+                    .font(.headline)
                 Button("ok", action: { viewModel.saveName() })
                 Button("cancel", role: .cancel, action: {})
             }
