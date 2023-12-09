@@ -29,68 +29,21 @@ struct MnemonicView: View {
             Spacer()
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack(spacing: 5) {
-                    Image(systemName: "chevron.left")
-                        .fontWeight(.semibold)
-                    Button("Back") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-                .foregroundColor(Color("btcOrange"))
-                .imageScale(.large)
-                .font(.system(size: 17))
-            }
+            navBarReplacement
         }
         .navigationBarBackButtonHidden(true)
-    }
-
-    var wordsView: some View {
-        ForEach(0..<4) { i in
-            HStack {
-                ForEach(0..<3) { j in
-                    getMnemonicWordView(at: (i * numColumns) + j)
-                }
-            }
+        .alert("Are you sure?", isPresented: $viewModel.showAlert) {
+            Button("Go Back", role: .destructive, action: {
+                presentationMode.wrappedValue.dismiss()
+            })
+            Button("cancel", role: .cancel, action: {})
+        } message: {
+            Text("You will lose the generated seed if you go back without taking the quiz.")
         }
-        .padding()
+
     }
 
-    var mnemonicButtons: some View {
-        VStack {
-            ButtonX(text: "generateRandomSeed") {
-                viewModel.randomlyGenerateSeed()
-            }
-            .buttonStyle(SecondaryButton())
-
-            ButtonX(text: "save") {
-                if viewModel.hasValidMnemonic {
-                    viewModel.saveMnemonic()
-                    wallets.save(viewModel.wallet)
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
-            .buttonStyle(PrimaryButton())
-//            .navigationBarBackButtonHidden(false)
-        }
-    }
-
-    var quizButton: some View {
-        NavigationLink("quiz", destination: {
-            QuizView(words: viewModel.words) { dismiss in
-                if dismiss {
-                    viewModel.shouldQuiz = false
-                    viewModel.saveMnemonic()
-                    wallets.save(viewModel.wallet)
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
-        })
-        .buttonStyle(PrimaryButton())
-//        .navigationBarBackButtonHidden(true)
-    }
-
-    func getMnemonicWordView(at index: Int) -> some View {
+    private func mnemonicWordView(at index: Int) -> some View {
         let word = $viewModel.words[index]
         return MnemonicWordView(
             index: index,
@@ -111,6 +64,68 @@ struct MnemonicView: View {
                 .strokeBorder(lineWidth: 1)
         }
         .disabled(!viewModel.isNewWallet)
+    }
+
+    private var wordsView: some View {
+        ForEach(0..<4) { i in
+            HStack {
+                ForEach(0..<3) { j in
+                    mnemonicWordView(at: (i * numColumns) + j)
+                }
+            }
+        }
+        .padding()
+    }
+
+    private var mnemonicButtons: some View {
+        VStack {
+            ButtonX(text: "generateRandomSeed") {
+                viewModel.randomlyGenerateSeed()
+            }
+            .buttonStyle(SecondaryButton())
+
+            ButtonX(text: "save") {
+                if viewModel.hasValidMnemonic {
+                    viewModel.saveMnemonic()
+                    wallets.save(viewModel.wallet)
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+            .buttonStyle(PrimaryButton())
+        }
+    }
+
+    private var quizButton: some View {
+        NavigationLink("quiz", destination: {
+            QuizView(words: viewModel.words) { dismiss in
+                if dismiss {
+                    viewModel.shouldQuiz = false
+                    viewModel.saveMnemonic()
+                    wallets.save(viewModel.wallet)
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        })
+        .buttonStyle(PrimaryButton())
+    }
+
+    private var navBarReplacement: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            HStack(spacing: 5) {
+                Image(systemName: "chevron.left")
+                    .fontWeight(.semibold)
+                Button("Back") {
+                    if viewModel.shouldQuiz {
+                        viewModel.showAlert = true
+                    } else {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+            .foregroundColor(Color("btcOrange"))
+            .imageScale(.large)
+            .font(.system(size: 17))
+        }
     }
 }
 
