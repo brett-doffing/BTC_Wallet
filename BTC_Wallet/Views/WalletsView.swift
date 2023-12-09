@@ -27,6 +27,7 @@ struct WalletsView: View {
                 wallets.getWallets()
             }
         }
+        .onAppear { viewModel.walletName = ""}
     }
 
     private var walletsList: some View {
