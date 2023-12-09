@@ -6,6 +6,7 @@ import Foundation
     @Published var words = [String](repeating: "", count: 12)
     @Published var isNewWallet = true
     @Published var shouldQuiz = false
+    @Published var showAlert = false
     var wallet: Wallet
 
     var hasValidMnemonic: Bool {
