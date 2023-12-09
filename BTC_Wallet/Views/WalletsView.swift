@@ -22,13 +22,13 @@ struct WalletsView: View {
                 Button("ok", action: { viewModel.saveName() })
                 Button("cancel", role: .cancel, action: {})
             }
+            .onAppear { viewModel.walletName = ""}
         }
         .onChange(of: tabSelection) { selection in
             if selection == .wallets {
                 wallets.getWallets()
             }
         }
-        .onAppear { viewModel.walletName = ""}
     }
 
     private var walletsList: some View {
