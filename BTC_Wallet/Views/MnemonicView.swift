@@ -13,21 +13,36 @@ struct MnemonicView: View {
         VStack {
             wordsView
 
-            if viewModel.shouldQuiz {
-                VStack {
+            VStack {
+                if viewModel.shouldQuiz {
                     Text("writeDownMnemonic")
                         .padding()
                     Spacer()
                     quizButton
+                } else if viewModel.isNewWallet {
+                    Spacer()
+                    mnemonicButtons
                 }
-            } else if viewModel.isNewWallet {
-                Spacer()
-                mnemonicButtons
             }
+            .animation(.easeInOut, value: viewModel.shouldQuiz)
 
             Spacer()
         }
-        .animation(Animation.easeInOut, value: viewModel.shouldQuiz)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack(spacing: 5) {
+                    Image(systemName: "chevron.left")
+                        .fontWeight(.semibold)
+                    Button("Back") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+                .foregroundColor(Color("btcOrange"))
+                .imageScale(.large)
+                .font(.system(size: 17))
+            }
+        }
+        .navigationBarBackButtonHidden(true)
     }
 
     var wordsView: some View {
@@ -56,7 +71,7 @@ struct MnemonicView: View {
                 }
             }
             .buttonStyle(PrimaryButton())
-            .navigationBarBackButtonHidden(false)
+//            .navigationBarBackButtonHidden(false)
         }
     }
 
@@ -72,7 +87,7 @@ struct MnemonicView: View {
             }
         })
         .buttonStyle(PrimaryButton())
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarBackButtonHidden(true)
     }
 
     func getMnemonicWordView(at index: Int) -> some View {
@@ -96,5 +111,11 @@ struct MnemonicView: View {
                 .strokeBorder(lineWidth: 1)
         }
         .disabled(!viewModel.isNewWallet)
+    }
+}
+
+struct MnemonicView_Previews: PreviewProvider {
+    static var previews: some View {
+        MnemonicView(viewModel: MnemonicViewModel(currentWallet: ""))
     }
 }
