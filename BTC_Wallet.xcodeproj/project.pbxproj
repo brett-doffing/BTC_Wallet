@@ -351,7 +351,6 @@
 		BC21BB672AF2D573005AC913 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */,
 				BC21BB7A2AF2E106005AC913 /* RecipientView.swift */,
 				BC21BB762AF2E09D005AC913 /* SendView.swift */,
 				BC21BB742AF2D6B1005AC913 /* WebView.swift */,
@@ -414,6 +413,7 @@
 		BCE06A242AFD3EE700F5F415 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */,
 				BCE06A222AFD3EE200F5F415 /* ButtonX.swift */,
 				BCE06A252B02B37900F5F415 /* ButtonStyles.swift */,
 				BC6285332B21106400EDFDB2 /* TransactionListView.swift */,
