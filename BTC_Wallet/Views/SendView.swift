@@ -31,3 +31,9 @@ struct SendView: View {
         print("callback")
     }
 }
+
+struct SendView_Previews: PreviewProvider {
+    static var previews: some View {
+        SendView()
+    }
+}
