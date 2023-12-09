@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC1981252B222C980003ABEC /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1981242B222C980003ABEC /* AuthView.swift */; };
+		BC1981282B24B8BD0003ABEC /* PreviewMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1981272B24B8BD0003ABEC /* PreviewMocks.swift */; };
 		BC1E79492B16679F00F68FAB /* Base58Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E79482B16679F00F68FAB /* Base58Tests.swift */; };
 		BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */; };
 		BC21BAD92AF2D397005AC913 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BAD82AF2D397005AC913 /* AppView.swift */; };
@@ -108,6 +109,7 @@
 
 /* Begin PBXFileReference section */
 		BC1981242B222C980003ABEC /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		BC1981272B24B8BD0003ABEC /* PreviewMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMocks.swift; sourceTree = "<group>"; };
 		BC1E79482B16679F00F68FAB /* Base58Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
 		BC21BAD32AF2D397005AC913 /* BTC_Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTC_Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTC_WalletApp.swift; sourceTree = "<group>"; };
@@ -218,6 +220,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC1981262B24B8690003ABEC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				BC1981272B24B8BD0003ABEC /* PreviewMocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		BC21BACA2AF2D396005AC913 = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +250,7 @@
 		BC21BAD52AF2D397005AC913 /* BTC_Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				BC1981262B24B8690003ABEC /* Mocks */,
 				BC6285242B1BBF5B00EDFDB2 /* Extensions */,
 				BC62851F2B1BA65400EDFDB2 /* Networking */,
 				BCE06A242AFD3EE700F5F415 /* Components */,
@@ -531,6 +542,7 @@
 				BC21BB462AF2D3F2005AC913 /* hash_impl.swift in Sources */,
 				BC21BB322AF2D3F1005AC913 /* ExtendedPrivateKey.swift in Sources */,
 				BC6285262B1BBF7800EDFDB2 /* String+Error.swift in Sources */,
+				BC1981282B24B8BD0003ABEC /* PreviewMocks.swift in Sources */,
 				BC62852A2B1D354A00EDFDB2 /* V_out.swift in Sources */,
 				BC21BB3F2AF2D3F2005AC913 /* field_10x26.swift in Sources */,
 				BC21BB792AF2E0CC005AC913 /* SendViewModel.swift in Sources */,
