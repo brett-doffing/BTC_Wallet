@@ -355,7 +355,6 @@
 				BC21BB762AF2E09D005AC913 /* SendView.swift */,
 				BC21BB742AF2D6B1005AC913 /* WebView.swift */,
 				BC21BB702AF2D66D005AC913 /* SettingsView.swift */,
-				BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */,
 				BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */,
 				BC21BAD82AF2D397005AC913 /* AppView.swift */,
 				BC21BB802AF2F074005AC913 /* WalletsView.swift */,
@@ -413,6 +412,7 @@
 		BCE06A242AFD3EE700F5F415 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */,
 				BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */,
 				BCE06A222AFD3EE200F5F415 /* ButtonX.swift */,
 				BCE06A252B02B37900F5F415 /* ButtonStyles.swift */,
