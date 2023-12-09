@@ -47,6 +47,7 @@ struct WalletView: View {
                 .interpolation(.none) // Do not smooth
                 .scaledToFit()
                 .frame(width: 200, height: 200)
+                .shadow(radius: 10)
                 .padding()
             if let address = viewModel.address {
                 HStack {
@@ -56,6 +57,8 @@ struct WalletView: View {
                         .lineLimit(1)
                     Image(systemName: "doc.on.doc")
                 }
+                .fontWeight(.bold)
+                .foregroundColor(Color("btcOrange"))
                 .padding()
                 .onTapGesture() {
                     UIPasteboard.general.string = address
