@@ -47,7 +47,7 @@ struct AuthView: View {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Unlock App"
+            let reason = "To unlock the app."
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authError in
                 if success {
                     shouldDismiss.toggle()
