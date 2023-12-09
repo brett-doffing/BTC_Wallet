@@ -28,15 +28,10 @@ struct WalletView: View {
             }
         }
         .overlay {
-            if viewModel.isLoading {
-                ProgressView("Loading")
-                    .scaleEffect(1.5)
-            }
+            if viewModel.isLoading { ProgressView("Loading").scaleEffect(1.5) }
         }
         .onAppear {
-            Task {
-                await viewModel.getTransactionsForCurrentAddress()
-            }
+            Task { await viewModel.getTransactionsForCurrentAddress() }
         }
     }
 
