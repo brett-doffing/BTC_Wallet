@@ -35,12 +35,6 @@ struct AuthView: View {
         }, message: {
             Text($errorMessage.wrappedValue ?? "Unknown Error")
         })
-        .alert("Authentication Error", isPresented: $shouldShowAlert) {
-            Button("OK") {
-                errorMessage = nil
-                shouldShowAlert = false
-            }
-        }
     }
 
     private func authenticate() {
