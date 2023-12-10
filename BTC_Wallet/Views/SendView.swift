@@ -7,28 +7,28 @@ struct SendView: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            TextField("Fee", text: $viewModel.fee)
-                .padding()
-                .textFieldStyle(.roundedBorder)
             List {
-                Section(header: SectionHeaderView(heading: "Recipients", callback: callback)) {
-                    // ForEach...
+                Section(header: SectionHeaderView(heading: "Recipient")) {
                     RecipientView()
                         .listRowInsets(EdgeInsets())
                 }
+                .listRowBackground(Color.clear)
+                Section(header: SectionHeaderView(heading: "Fee")) {
+                    TextField("Sats", text: $viewModel.fee)
+                        .textFieldStyle(.roundedBorder)
+                }
+                .listRowBackground(Color.clear)
+                HStack {
+                    Spacer()
+                    ButtonX(text: "SEND") {
+                        print("send raw tx")
+                    }
+                    .buttonStyle(PrimaryButton())
+                    Spacer()
+                }
+                .listRowBackground(Color.clear)
             }
-            Button("SEND") {
-                print("send raw tx")
-            }
-            .padding()
-            .background { Color.gray }
         }
-//        .listStyle(.plain)
-    }
-
-    func callback() {
-        print("callback")
     }
 }
 
