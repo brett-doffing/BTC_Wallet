@@ -58,9 +58,7 @@ struct WalletView: View {
                 .onTapGesture() {
                     UIPasteboard.general.string = address
                     withAnimation { viewModel.copied = true }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        withAnimation { viewModel.copied = false }
-                    }
+                    withAnimation(.easeInOut.delay(1.5)) { viewModel.copied = false }
                 }
             }
         }
@@ -93,6 +91,7 @@ struct WalletView: View {
             .background(Color("btcOrange").cornerRadius(5))
             .position(x: geometry.frame(in: .local).width/2)
             .transition(.move(edge: .top))
+            .zIndex(1)
             .padding(.top)
     }
 
