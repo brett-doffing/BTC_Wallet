@@ -36,5 +36,10 @@ struct MnemonicWordView: View {
                     saveWord(word, (index))
                 }
         }
+        .padding(5)
+        .overlay {
+            RoundedRectangle(cornerRadius: 5)
+                .strokeBorder(lineWidth: 1)
+        }
     }
 }
