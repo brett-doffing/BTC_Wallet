@@ -8,35 +8,49 @@ struct RecipientView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                TextField("Address", text: $address)
-                    .textFieldStyle(.roundedBorder)
-                Spacer()
-                Button {
-                    print("tapped")
-                } label: {
-                    Image(systemName: "doc.on.clipboard.fill")
-                        .imageScale(.large)
-                        .foregroundColor(Color("btcOrange"))
-                }
-                Button {
-                    print("tapped")
-                } label: {
-                    Image(systemName: "qrcode.viewfinder")
-                        .font(.title)
-                        .imageScale(.large)
-                        .foregroundColor(Color("btcOrange"))
-                }
-
-            }
-            .padding(.horizontal)
-            HStack(alignment: .center) {
-                TextField("Amount", text: $satoshis)
-                    .textFieldStyle(.roundedBorder)
-                Text("Satoshis")
-                    .foregroundColor(.gray)
-            }
-            .padding(.horizontal)
+            addressView
+            amountView
         }
+    }
+
+    private var addressView: some View {
+        HStack(spacing: 10) {
+            TextField("Address", text: $address)
+            Spacer()
+            Button {
+                print("tapped")
+            } label: {
+                Image(systemName: "doc.on.clipboard.fill")
+                    .imageScale(.medium)
+                    .foregroundColor(Color("btcOrange"))
+            }
+            Button {
+                print("tapped")
+            } label: {
+                Image(systemName: "qrcode.viewfinder")
+                    .font(.title)
+                    .imageScale(.medium)
+                    .foregroundColor(Color("btcOrange"))
+            }
+
+        }
+        .padding(5)
+        .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+    }
+
+    private var amountView: some View {
+        HStack(alignment: .center) {
+            TextField("Amount", text: $satoshis)
+            Text("Satoshis")
+                .foregroundColor(.gray)
+        }
+        .padding(5)
+        .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+    }
+}
+
+struct RecipientView_Previews: PreviewProvider {
+    static var previews: some View {
+        RecipientView()
     }
 }
