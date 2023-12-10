@@ -3,31 +3,40 @@
 import SwiftUI
 
 struct RecipientView: View {
-    @StateObject var viewModel = RecipientViewModel()
+    @State var address = ""
+    @State var satoshis = ""
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                TextField("Address", text: $viewModel.address)
-                    .frame(width: 200)
-                    .padding(.leading, 15)
+                TextField("Address", text: $address)
                     .textFieldStyle(.roundedBorder)
                 Spacer()
                 Button {
                     print("tapped")
                 } label: {
-                    let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 30))
-                    let image = UIImage(systemName: "qrcode.viewfinder", withConfiguration: config) ?? UIImage()
-                    Image(uiImage: image)
-                        .padding()
+                    Image(systemName: "doc.on.clipboard.fill")
+                        .imageScale(.large)
+                        .foregroundColor(Color("btcOrange"))
+                }
+                Button {
+                    print("tapped")
+                } label: {
+                    Image(systemName: "qrcode.viewfinder")
+                        .font(.title)
+                        .imageScale(.large)
+                        .foregroundColor(Color("btcOrange"))
                 }
 
             }
-            TextField("Satoshis", text: $viewModel.satoshis)
-                .frame(width: 200)
-                .padding([.bottom, .leading], 15)
-                .textFieldStyle(.roundedBorder)
+            .padding(.horizontal)
+            HStack(alignment: .center) {
+                TextField("Amount", text: $satoshis)
+                    .textFieldStyle(.roundedBorder)
+                Text("Satoshis")
+                    .foregroundColor(.gray)
+            }
+            .padding(.horizontal)
         }
-        .background { Color.gray }
     }
 }
