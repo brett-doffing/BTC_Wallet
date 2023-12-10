@@ -20,4 +20,4 @@
 "wallets" = "Wallets";
 "walletName" = "Wallet Name";
 "wordQuestion %@" = "What is word %@";
-"writeDownMnemonic" = "Make sure to write down these words, in order, and store them in a safe place. You will be quizzed once you create them.";
+"writeDownMnemonic" = "Make sure to write down these words, in order, and store them in a safe place. You will be quizzed in order to save them.";
