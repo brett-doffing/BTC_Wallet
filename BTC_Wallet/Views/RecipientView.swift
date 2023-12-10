@@ -34,8 +34,8 @@ struct RecipientView: View {
             }
 
         }
-        .padding(5)
-        .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+        .padding(10)
+        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
     }
 
     private var amountView: some View {
@@ -44,8 +44,8 @@ struct RecipientView: View {
             Text("Satoshis")
                 .foregroundColor(.gray)
         }
-        .padding(5)
-        .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+        .padding(10)
+        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
     }
 }
 

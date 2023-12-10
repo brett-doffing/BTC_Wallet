@@ -25,7 +25,8 @@ struct SendView: View {
     private var feeView: some View {
         Section(header: SectionHeaderView(heading: "Fee")) {
             TextField("Sats", text: $viewModel.fee)
-                .textFieldStyle(.roundedBorder)
+                .padding(10)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
         }
         .listRowBackground(Color.clear)
     }

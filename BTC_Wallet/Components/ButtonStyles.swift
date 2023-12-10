@@ -11,6 +11,7 @@ struct PrimaryButton: ButtonStyle {
             .cornerRadius(10)
             .foregroundStyle(.white)
             .padding(10)
+            .font(.headline)
     }
 }
 
@@ -24,5 +25,6 @@ struct SecondaryButton: ButtonStyle {
             }
             .foregroundStyle(Color("btcOrange"))
             .padding(10)
+            .font(.headline)
     }
 }
