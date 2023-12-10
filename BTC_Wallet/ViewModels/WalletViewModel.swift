@@ -76,10 +76,11 @@ import SwiftUI
         }
     }
 
-    func refresh() {
+    func refresh() async {
+//        isLoading = true
 //        checkUnconfirmedTXs()
 //        if let address = self.address {
-//            getTXs(forAddress: address)
+//            await getTXs(forAddress: address)
 //        }
     }
 }

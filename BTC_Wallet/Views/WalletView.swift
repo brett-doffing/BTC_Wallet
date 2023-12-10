@@ -13,18 +13,8 @@ struct WalletView: View {
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
-                ZStack {
-                    if !viewModel.isLoading {
-                        VStack {
-                            qrSection
-                            transactionsList
-                            Spacer()
-                        }
-                    }
-                    if viewModel.copied {
-                        getCopiedTextNotification(with: geometry)
-                    }
-                }
+                if !viewModel.isLoading { content }
+                if viewModel.copied { showCopiedText(with: geometry) }
             }
         }
         .overlay {
@@ -35,7 +25,15 @@ struct WalletView: View {
         }
     }
 
-    private var qrSection: some View {
+    private var content: some View {
+        VStack {
+            addressSection
+            transactionsList
+            Spacer()
+        }
+    }
+
+    private var addressSection: some View {
         VStack {
             Image(uiImage: generateQRCode())
                 .resizable()
@@ -69,22 +67,16 @@ struct WalletView: View {
             Section(header: SectionHeaderView(heading: "Transactions")) {
                 ForEach($viewModel.transactions) { $tx in
                     TransactionListView(for: $tx.wrappedValue)
-//                    let viewModel = TransactionViewModel(model: tx)
-//                    NavigationLink {
-//                        TransactionFullView(viewModel: viewModel)
-//                    } label: {
-//                        TransactionListView(viewModel: viewModel)
-//                    }
                 }
             }
         }
         .listStyle(.insetGrouped)
         .refreshable {
-            viewModel.refresh()
+            Task { await viewModel.refresh() }
         }
     }
 
-    private func getCopiedTextNotification(with geometry: GeometryProxy) -> some View {
+    private func showCopiedText(with geometry: GeometryProxy) -> some View {
         Text("Copied to clipboard")
             .padding()
             .foregroundColor(.white)
