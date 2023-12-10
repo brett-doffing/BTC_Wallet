@@ -72,7 +72,6 @@
 		BC21BB772AF2E09D005AC913 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB762AF2E09D005AC913 /* SendView.swift */; };
 		BC21BB792AF2E0CC005AC913 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */; };
 		BC21BB7B2AF2E106005AC913 /* RecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7A2AF2E106005AC913 /* RecipientView.swift */; };
-		BC21BB7D2AF2E11E005AC913 /* RecipientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7C2AF2E11E005AC913 /* RecipientViewModel.swift */; };
 		BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */; };
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
@@ -176,7 +175,6 @@
 		BC21BB762AF2E09D005AC913 /* SendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 		BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
 		BC21BB7A2AF2E106005AC913 /* RecipientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientView.swift; sourceTree = "<group>"; };
-		BC21BB7C2AF2E11E005AC913 /* RecipientViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientViewModel.swift; sourceTree = "<group>"; };
 		BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
 		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 		BC21BB692AF2D5C2005AC913 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BC21BB7C2AF2E11E005AC913 /* RecipientViewModel.swift */,
 				BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */,
 				BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */,
 				BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */,
@@ -585,7 +582,6 @@
 				BC21BB392AF2D3F2005AC913 /* Data+Bitcoin.swift in Sources */,
 				BC21BB412AF2D3F2005AC913 /* gen_context.swift in Sources */,
 				BC21BB422AF2D3F2005AC913 /* group_impl.swift in Sources */,
-				BC21BB7D2AF2E11E005AC913 /* RecipientViewModel.swift in Sources */,
 				BCE06A2A2B05485300F5F415 /* WalletViewModel.swift in Sources */,
 				BC21BB4D2AF2D3F2005AC913 /* scalar_8x32.swift in Sources */,
 				BC21BB302AF2D3F1005AC913 /* SMP+Bitcoin.swift in Sources */,
