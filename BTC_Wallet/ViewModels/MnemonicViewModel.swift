@@ -10,7 +10,6 @@ import Foundation
     var wallet: Wallet
 
     var hasValidMnemonic: Bool {
-        if words.count != 12 { return false }
         for word in words {
             if !WordList.english.words.contains(word) {
                 return false
