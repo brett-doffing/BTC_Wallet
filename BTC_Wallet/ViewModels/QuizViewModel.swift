@@ -75,8 +75,9 @@ class QuizViewModel: ObservableObject {
 
      - Parameters:
         - buttonNumber: which button was selected
-        - dismissViews: Callback to both dismiss the quiz view,
-                        and potentially the mnemonic view if finished successfully
+        - dismissViews: Callback to dismiss both the quiz view,
+                        and potentially the mnemonic view if finished successfully.
+                        The boolean value designates whether both should be dismissed.
      */
     func selected(_ buttonNumber: Int, _ dismissViews: (Bool) -> ()) {
         assert((buttonNumber != 0 && buttonNumber <= 3), "Invalid button number")
