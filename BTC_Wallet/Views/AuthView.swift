@@ -14,7 +14,7 @@ struct AuthView: View {
         ZStack {
             backgroundImage
             if shouldPrompt {
-                prompt
+                AnimatedArrows(direction: .up)
             }
         }
         .background(
@@ -45,18 +45,6 @@ struct AuthView: View {
                     }
                 }
             })
-    }
-
-    private var prompt: some View {
-        VStack {
-            Text("Authenticate")
-                .font(.title)
-                .padding()
-            AnimatedArrows(direction: .up)
-
-        }
-        .foregroundColor(Color.white)
-        .disabled(!shouldPrompt)
     }
 
     private var backgroundImage: some View {
