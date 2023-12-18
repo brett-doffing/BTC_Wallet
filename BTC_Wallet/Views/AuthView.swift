@@ -13,7 +13,9 @@ struct AuthView: View {
     var body: some View {
         ZStack {
             backgroundImage
-            prompt
+            if shouldPrompt {
+                prompt
+            }
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [Color("btcOrange"), .black]), startPoint: .topLeading, endPoint: .bottom)
@@ -31,12 +33,30 @@ struct AuthView: View {
         }, message: {
             Text($errorMessage.wrappedValue ?? "Unknown Error")
         })
+        .gesture(DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+            .onEnded { value in
+                if shouldPrompt {
+                    switch(value.translation.width, value.translation.height) {
+                    case (-100...100, ...0):
+                        shouldPrompt = false
+                        authenticate()
+                    default:
+                        return
+                    }
+                }
+            })
     }
 
     private var prompt: some View {
-        Text("Swipe up to authenticate")
-            .foregroundColor(Color.white)
-            .disabled(!shouldPrompt)
+        VStack {
+            Text("Authenticate")
+                .font(.title)
+                .padding()
+            AnimatedArrows(direction: .up)
+
+        }
+        .foregroundColor(Color.white)
+        .disabled(!shouldPrompt)
     }
 
     private var backgroundImage: some View {
