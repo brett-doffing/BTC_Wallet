@@ -12,17 +12,8 @@ struct AuthView: View {
 
     var body: some View {
         ZStack {
-            VStack {
-                Image(systemName: "bitcoinsign.circle.fill")
-                    .resizable()
-                    .foregroundColor(.white)
-                    .opacity(0.1)
-                    .aspectRatio(contentMode: .fill)
-                    .rotationEffect(.degrees(30))
-            }
-            Text("Swipe up to authenticate")
-                .foregroundColor(Color.white)
-                .disabled(!shouldPrompt)
+            backgroundImage
+            prompt
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [Color("btcOrange"), .black]), startPoint: .topLeading, endPoint: .bottom)
@@ -40,6 +31,23 @@ struct AuthView: View {
         }, message: {
             Text($errorMessage.wrappedValue ?? "Unknown Error")
         })
+    }
+
+    private var prompt: some View {
+        Text("Swipe up to authenticate")
+            .foregroundColor(Color.white)
+            .disabled(!shouldPrompt)
+    }
+
+    private var backgroundImage: some View {
+        VStack {
+            Image(systemName: "bitcoinsign.circle.fill")
+                .resizable()
+                .foregroundColor(.white)
+                .opacity(0.1)
+                .aspectRatio(contentMode: .fill)
+                .rotationEffect(.degrees(30))
+        }
     }
 
     private func authenticate() {
