@@ -10,8 +10,8 @@ struct AnimatedArrows: View {
     private let direction: Direction
     private let size: CGFloat
 
-    @State var scale: CGFloat = 1.0
-    @State var fade: Double = 0.0
+    @State private var scale: CGFloat = 1.0
+    @State private var fade: Double = 0.0
 
     init(
         arrowCount: Int = 3,
