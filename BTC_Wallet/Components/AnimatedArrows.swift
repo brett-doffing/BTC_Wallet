@@ -4,7 +4,9 @@ import SwiftUI
 
 struct AnimatedArrows: View {
     private let arrowCount: Int
-    private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 2, on: .main, in: .common)
+        .autoconnect()
+        .prepend(Date()) // Trigger immediately
     private let direction: Direction
     private let size: CGFloat
 
