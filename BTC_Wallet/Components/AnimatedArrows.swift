@@ -4,7 +4,7 @@ import SwiftUI
 
 struct AnimatedArrows: View {
     private let arrowCount: Int
-    private let timer = Timer.publish(every: 2, on: .main, in: .common)
+    private let timer = Timer.publish(every: 1, on: .main, in: .common)
         .autoconnect()
         .prepend(Date()) // Trigger immediately
     private let direction: Direction
@@ -34,21 +34,20 @@ struct AnimatedArrows: View {
                         .foregroundColor(Color.white)
                         .aspectRatio(0.4, contentMode: .fit)
                         .frame(maxWidth: size)
-                        .opacity(self.fade)
-                        .scaleEffect(self.scale)
+                        .opacity(fade)
+                        .scaleEffect(scale)
                         .animation(
                             Animation.easeOut(duration: 0.5)
-                            .repeatCount(1, autoreverses: true)
-                            .delay(0.2 * Double(i))
+                            .delay(0.2 * Double(i)),
+                            value: scale
                         )
-                }.onReceive(self.timer) { _ in
-                     self.scale = self.scale > 1 ? 1 : 1.2
-                     self.fade = self.fade > 0.0 ? 0.0 : 1.0
-                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.scale = 1
-                                self.fade = 0.0
-                            }
+                }
+                .onReceive(timer) { _ in
+                    withAnimation {
+                        scale = scale > 1 ? 1 : 1.2
+                        fade = fade > 0.0 ? 0.0 : 1.0
                     }
+                }
             }
             .rotationEffect(.degrees(direction.rawValue))
         }
