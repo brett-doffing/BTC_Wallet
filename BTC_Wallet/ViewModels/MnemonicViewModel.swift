@@ -26,7 +26,7 @@ import Foundation
         }
     }
 
-    init(currentWallet: String) {
+    init(currentWallet: String = "New Wallet") {
         self.wallet = Wallet(name: currentWallet)
     }
 
