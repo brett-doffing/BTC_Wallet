@@ -6,7 +6,8 @@ import SwiftUI
 struct AuthView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var shouldDismiss = false
-    @State var shouldShowAlert = false
+    @State var shouldAlert = false
+    @State var shouldPrompt = false
     @State var errorMessage: String?
 
     var body: some View {
@@ -19,18 +20,22 @@ struct AuthView: View {
                     .aspectRatio(contentMode: .fill)
                     .rotationEffect(.degrees(30))
             }
+            Text("Swipe up to authenticate")
+                .foregroundColor(Color.white)
+                .disabled(!shouldPrompt)
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [Color("btcOrange"), .black]), startPoint: .topLeading, endPoint: .bottom)
         )
         .onAppear { authenticate() }
-        .onChange(of: $shouldDismiss.wrappedValue) { newValue in
+        .onChange(of: $shouldDismiss.wrappedValue) { _ in
             presentationMode.wrappedValue.dismiss()
         }
-        .alert("Authentication Error", isPresented: $shouldShowAlert, actions: {
+        .alert("Authentication Error", isPresented: $shouldAlert, actions: {
             Button("OK") {
                 errorMessage = nil
-                shouldShowAlert = false
+                shouldAlert = false
+                shouldPrompt = true
             }
         }, message: {
             Text($errorMessage.wrappedValue ?? "Unknown Error")
@@ -49,14 +54,14 @@ struct AuthView: View {
                     if let authError = authError as? LAError {
                         errorMessage = handle(authError)
                     }
-                    shouldShowAlert = true
+                    shouldAlert = true
                 }
             }
         } else {
             if let authError = error as? LAError {
                 errorMessage = handle(authError)
             }
-            shouldShowAlert = true
+            shouldAlert = true
         }
     }
 
