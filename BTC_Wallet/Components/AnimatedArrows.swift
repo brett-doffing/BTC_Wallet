@@ -4,11 +4,12 @@ import SwiftUI
 
 struct AnimatedArrows: View {
     private let arrowCount: Int
+    private let direction: Direction
+    private let width: CGFloat
+    private let lineWidth: CGFloat
     private let timer = Timer.publish(every: 1, on: .main, in: .common)
         .autoconnect()
         .prepend(Date()) // Trigger immediately
-    private let direction: Direction
-    private let size: CGFloat
 
     @State private var scale: CGFloat = 1.0
     @State private var fade: Double = 0.0
@@ -16,11 +17,13 @@ struct AnimatedArrows: View {
     init(
         arrowCount: Int = 3,
         direction: Direction = .right,
-        size: CGFloat = 10
+        width: CGFloat = 10,
+        lineWidth: CGFloat = 3.5
     ) {
         self.arrowCount = arrowCount
         self.direction = direction
-        self.size = size
+        self.width = width
+        self.lineWidth = lineWidth
     }
 
     var body: some View {
@@ -28,12 +31,12 @@ struct AnimatedArrows: View {
             HStack{
                 ForEach(0..<arrowCount, id: \.self) { i in
                     ArrowShape()
-                        .stroke(style: StrokeStyle(lineWidth: size / 3,
+                        .stroke(style: StrokeStyle(lineWidth: lineWidth,
                                                   lineCap: .round,
                                                   lineJoin: .round ))
                         .foregroundColor(Color.white)
                         .aspectRatio(0.4, contentMode: .fit)
-                        .frame(maxWidth: size)
+                        .frame(maxWidth: width)
                         .opacity(fade)
                         .scaleEffect(scale)
                         .animation(
