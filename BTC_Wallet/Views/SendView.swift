@@ -4,6 +4,7 @@ import SwiftUI
 
 struct SendView: View {
     @StateObject var viewModel = SendViewModel()
+    @State var canSend = false
     
     var body: some View {
         VStack {
@@ -32,14 +33,8 @@ struct SendView: View {
     }
 
     private var sendView: some View {
-        HStack {
-            Spacer()
-            ButtonX(text: "SEND") {
-                print("send raw tx")
-            }
-            .buttonStyle(PrimaryButton())
-            Spacer()
-        }
+        LockSlider(unlocked: $canSend, title: "Slide to Send")
+            .frame(height: 50)
         .listRowBackground(Color.clear)
     }
 }
