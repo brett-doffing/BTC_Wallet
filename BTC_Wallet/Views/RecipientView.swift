@@ -16,6 +16,7 @@ struct RecipientView: View {
     private var addressView: some View {
         HStack(spacing: 10) {
             TextField("Address", text: $address)
+                .textFieldStyle(.roundedBorder)
             Spacer()
             Button {
                 print("tapped")
@@ -34,18 +35,18 @@ struct RecipientView: View {
             }
 
         }
-        .padding(10)
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
+        .padding(.bottom)
     }
 
     private var amountView: some View {
         HStack(alignment: .center) {
             TextField("Amount", text: $satoshis)
+                .frame(maxWidth: 200)
+                .textFieldStyle(.roundedBorder)
+            Spacer()
             Text("Satoshis")
                 .foregroundColor(.gray)
         }
-        .padding(10)
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
     }
 }
 
