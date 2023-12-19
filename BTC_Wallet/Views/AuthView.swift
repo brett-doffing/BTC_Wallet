@@ -89,20 +89,20 @@ struct AuthView: View {
                     shouldDismiss.toggle()
                 } else {
                     if let authError = authError as? LAError {
-                        errorMessage = handle(authError)
+                        errorMessage = setErrorMessage(with: authError)
                     }
                     shouldAlert = true
                 }
             }
         } else {
             if let authError = error as? LAError {
-                errorMessage = handle(authError)
+                errorMessage = setErrorMessage(with: authError)
             }
             shouldAlert = true
         }
     }
 
-    private func handle(_ error: LAError) -> String? {
+    private func setErrorMessage(with error: LAError) -> String? {
         switch error.code {
         case .authenticationFailed:
             return "Authentication failed"
@@ -131,6 +131,8 @@ struct AuthView: View {
         }
     }
 }
+
+
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
