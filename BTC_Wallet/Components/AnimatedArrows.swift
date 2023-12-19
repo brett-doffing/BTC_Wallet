@@ -3,28 +3,8 @@
 import SwiftUI
 
 struct AnimatedArrows: View {
-    private let arrowCount: Int
-    private let direction: Direction
-    private let width: CGFloat
-    private let lineWidth: CGFloat
-    private let timer = Timer.publish(every: 1, on: .main, in: .common)
-        .autoconnect()
-        .prepend(Date()) // Trigger immediately
-
     @State private var scale: CGFloat = 1.0
     @State private var fade: Double = 0.0
-
-    init(
-        arrowCount: Int = 3,
-        direction: Direction = .right,
-        width: CGFloat = 10,
-        lineWidth: CGFloat = 3.5
-    ) {
-        self.arrowCount = arrowCount
-        self.direction = direction
-        self.width = width
-        self.lineWidth = lineWidth
-    }
 
     var body: some View {
         ZStack {
@@ -61,6 +41,26 @@ struct AnimatedArrows: View {
         case down = 90
         case left = 180
         case right = 0
+    }
+
+    private let arrowCount: Int
+    private let direction: Direction
+    private let width: CGFloat
+    private let lineWidth: CGFloat
+    private let timer = Timer.publish(every: 1, on: .main, in: .common)
+        .autoconnect()
+        .prepend(Date()) // Trigger immediately
+
+    init(
+        arrowCount: Int = 3,
+        direction: Direction = .right,
+        width: CGFloat = 10,
+        lineWidth: CGFloat = 3.5
+    ) {
+        self.arrowCount = arrowCount
+        self.direction = direction
+        self.width = width
+        self.lineWidth = lineWidth
     }
 }
 
