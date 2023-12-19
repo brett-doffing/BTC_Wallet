@@ -91,7 +91,7 @@ struct WalletView: View {
         guard let address = viewModel.address else {
             return UIImage()
         }
-        qrFilter.message = Data(address.utf8)
+        qrFilter.message = Data("bitcoin:\(address)".utf8)
 
         if let outputImage = qrFilter.outputImage,
            let cgImg = qrContext.createCGImage(outputImage, from: outputImage.extent)
