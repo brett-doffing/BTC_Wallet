@@ -19,6 +19,7 @@ struct AuthView: View {
         }
         .background(
             gradientView
+                .ignoresSafeArea(.all)
         )
         .onAppear { authenticate() }
         .onChange(of: $shouldDismiss.wrappedValue) { _ in
