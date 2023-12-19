@@ -37,7 +37,7 @@ struct SendView: View {
     }
 
     private var sendView: some View {
-        LockSlider(unlocked: $viewModel.canSend, title: "Slide to Send")
+        SliderLock(unlocked: $viewModel.canSend, title: "Slide to Send")
             .frame(height: 50)
         .listRowBackground(Color.clear)
     }

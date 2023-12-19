@@ -1,8 +1,8 @@
-// LockSlider.swift
+// SliderLock.swift
 
 import SwiftUI
 
-struct LockSlider: View {
+struct SliderLock: View {
 
     @Binding private var unlocked: Bool
     @State private var ratio: CGFloat = 0
@@ -92,6 +92,6 @@ struct LockSlider: View {
 
 struct LockSlider_Previews: PreviewProvider {
     static var previews: some View {
-        LockSlider(unlocked: .constant(false), title: "Slide to Send")
+        SliderLock(unlocked: .constant(false), title: "Slide to Send")
     }
 }
