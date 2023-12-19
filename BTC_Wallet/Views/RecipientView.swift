@@ -3,8 +3,8 @@
 import SwiftUI
 
 struct RecipientView: View {
-    @State var address = ""
-    @State var satoshis = ""
+    @Binding var address: String
+    @Binding var satoshis: String
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -51,6 +51,6 @@ struct RecipientView: View {
 
 struct RecipientView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipientView()
+        RecipientView(address: .constant(""), satoshis: .constant(""))
     }
 }

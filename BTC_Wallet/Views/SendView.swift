@@ -4,7 +4,6 @@ import SwiftUI
 
 struct SendView: View {
     @StateObject var viewModel = SendViewModel()
-    @State var canSend = false
     
     var body: some View {
         VStack {
@@ -18,22 +17,27 @@ struct SendView: View {
 
     private var recipientView: some View {
         Section(header: SectionHeaderView(heading: "Recipient")) {
-            RecipientView()
+            RecipientView(address: $viewModel.address, satoshis: $viewModel.amountToSend)
         }
         .listRowBackground(Color.clear)
     }
 
     private var feeView: some View {
         Section(header: SectionHeaderView(heading: "Fee")) {
-            TextField("Sats", text: $viewModel.fee)
-                .textFieldStyle(.roundedBorder)
-                .frame(maxWidth: 200)
+            HStack(alignment: .center) {
+                TextField("Amount", text: $viewModel.fee)
+                    .frame(maxWidth: 200)
+                    .textFieldStyle(.roundedBorder)
+                Spacer()
+                Text("Satoshis")
+                    .foregroundColor(.gray)
+            }
         }
         .listRowBackground(Color.clear)
     }
 
     private var sendView: some View {
-        LockSlider(unlocked: $canSend, title: "Slide to Send")
+        LockSlider(unlocked: $viewModel.canSend, title: "Slide to Send")
             .frame(height: 50)
         .listRowBackground(Color.clear)
     }
