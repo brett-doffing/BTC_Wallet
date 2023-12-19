@@ -18,33 +18,20 @@ struct AuthView: View {
             }
         }
         .background(
-            LinearGradient(gradient: Gradient(colors: [Color("btcOrange"), .black]), startPoint: .topLeading, endPoint: .bottom)
+            gradientView
         )
         .onAppear { authenticate() }
         .onChange(of: $shouldDismiss.wrappedValue) { _ in
             presentationMode.wrappedValue.dismiss()
         }
         .alert("Authentication Error", isPresented: $shouldAlert, actions: {
-            Button("OK") {
-                errorMessage = nil
-                shouldAlert = false
-                shouldPrompt = true
-            }
+            alertButton
         }, message: {
-            Text($errorMessage.wrappedValue ?? "Unknown Error")
+            alertMessage
         })
         .gesture(DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
-            .onEnded { value in
-                if shouldPrompt {
-                    switch(value.translation.width, value.translation.height) {
-                    case (-100...100, ...0):
-                        shouldPrompt = false
-                        authenticate()
-                    default:
-                        return
-                    }
-                }
-            })
+            .onEnded { processSwipe(for: $0) }
+        )
     }
 
     private var backgroundImage: some View {
@@ -54,7 +41,40 @@ struct AuthView: View {
                 .foregroundColor(.white)
                 .opacity(0.1)
                 .aspectRatio(contentMode: .fill)
-                .rotationEffect(.degrees(30))
+                .rotationEffect(.degrees(30)
+            )
+        }
+    }
+
+    private var gradientView: some View {
+        LinearGradient(
+            gradient: Gradient(colors: [Color("btcOrange"), .black]),
+            startPoint: .topLeading,
+            endPoint: .bottom
+        )
+    }
+
+    private var alertButton: some View {
+        Button("OK") {
+            errorMessage = nil
+            shouldAlert = false
+            shouldPrompt = true
+        }
+    }
+
+    private var alertMessage: some View {
+        Text($errorMessage.wrappedValue ?? "Unknown Error")
+    }
+
+    private func processSwipe(for value: DragGesture.Value) {
+        if shouldPrompt {
+            switch(value.translation.width, value.translation.height) {
+            case (-100...100, ...0):
+                shouldPrompt = false
+                authenticate()
+            default:
+                return
+            }
         }
     }
 
