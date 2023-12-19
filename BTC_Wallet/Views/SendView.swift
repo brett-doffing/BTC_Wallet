@@ -1,5 +1,6 @@
 // SendView.swift
 
+import CodeScanner
 import SwiftUI
 
 struct SendView: View {
@@ -13,11 +14,22 @@ struct SendView: View {
                 sendView
             }
         }
+        .sheet(isPresented: $viewModel.isShowingScanner) {
+            CodeScannerView(
+                codeTypes: [.qr],
+                simulatedData: "bitcoin:n3qSUp3c5x6tKD3qYmwe28WnEHBTvNyNic",
+                completion: handleScan
+            )
+        }
     }
 
     private var recipientView: some View {
         Section(header: SectionHeaderView(heading: "Recipient")) {
-            RecipientView(address: $viewModel.address, satoshis: $viewModel.amountToSend)
+            RecipientView(
+                address: $viewModel.address,
+                satoshis: $viewModel.amountToSend,
+                showScanner: $viewModel.isShowingScanner
+            )
         }
         .listRowBackground(Color.clear)
     }
@@ -40,6 +52,19 @@ struct SendView: View {
         SliderLock(unlocked: $viewModel.canSend, title: "Slide to Send")
             .frame(height: 50)
         .listRowBackground(Color.clear)
+    }
+
+    private func handleScan(result: Result<ScanResult, ScanError>) {
+        viewModel.isShowingScanner = false
+        switch result {
+        case .success(let result):
+            let details = result.string.components(separatedBy: ":")
+            guard details.count == 2 else { return }
+
+            viewModel.address = details[1]
+        case .failure(let error):
+            print("Scanning failed: \(error.localizedDescription)")
+        }
     }
 }
 

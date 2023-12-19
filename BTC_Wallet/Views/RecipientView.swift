@@ -5,6 +5,7 @@ import SwiftUI
 struct RecipientView: View {
     @Binding var address: String
     @Binding var satoshis: String
+    @Binding var showScanner: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,15 +27,15 @@ struct RecipientView: View {
                     .foregroundColor(Color("btcOrange"))
             }
             Button {
-                print("tapped")
+                showScanner = true
             } label: {
                 Image(systemName: "qrcode.viewfinder")
                     .font(.title)
                     .imageScale(.medium)
                     .foregroundColor(Color("btcOrange"))
             }
-
         }
+        .buttonStyle(BorderlessButtonStyle()) // prevents both button actions occuring simultaneously
     }
 
     private var amountView: some View {
@@ -51,6 +52,10 @@ struct RecipientView: View {
 
 struct RecipientView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipientView(address: .constant(""), satoshis: .constant(""))
+        RecipientView(
+            address: .constant(""),
+            satoshis: .constant(""),
+            showScanner: .constant(false)
+        )
     }
 }
