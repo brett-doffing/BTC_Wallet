@@ -19,7 +19,7 @@ struct RecipientView: View {
                 .textFieldStyle(.roundedBorder)
             Spacer()
             Button {
-                print("tapped")
+                address = UIPasteboard.general.string ?? ""
             } label: {
                 Image(systemName: "doc.on.clipboard.fill")
                     .imageScale(.medium)
