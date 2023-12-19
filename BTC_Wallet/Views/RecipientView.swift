@@ -35,7 +35,6 @@ struct RecipientView: View {
             }
 
         }
-        .padding(.bottom)
     }
 
     private var amountView: some View {
