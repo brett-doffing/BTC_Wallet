@@ -3,7 +3,6 @@
 import SwiftUI
 
 struct SliderLock: View {
-
     @Binding private var unlocked: Bool
     @State private var ratio: CGFloat = 0
     @State private var touchPoint: CGFloat? = nil
@@ -90,7 +89,7 @@ struct SliderLock: View {
     }
 }
 
-struct LockSlider_Previews: PreviewProvider {
+struct SliderLock_Previews: PreviewProvider {
     static var previews: some View {
         SliderLock(unlocked: .constant(false), title: "Slide to Send")
     }
