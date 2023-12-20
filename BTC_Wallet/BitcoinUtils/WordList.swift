@@ -16,7 +16,7 @@ public enum WordList {
         }
     }
 
-    var wordsSet: Set<String> {
+    var wordSet: Set<String> {
         switch self {
         case .english:
             return Set(englishWords)

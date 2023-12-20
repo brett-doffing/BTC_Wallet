@@ -10,8 +10,9 @@ import Foundation
     var wallet: Wallet
 
     var hasValidMnemonic: Bool {
+        let wordSet = WordList.english.wordSet
         for word in words {
-            if !WordList.english.wordsSet.contains(word) {
+            if !wordSet.contains(word) {
                 return false
             }
         }
