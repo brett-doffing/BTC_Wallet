@@ -126,6 +126,6 @@ struct MnemonicView: View {
 
 struct MnemonicView_Previews: PreviewProvider {
     static var previews: some View {
-        MnemonicView(viewModel: MnemonicViewModel(currentWallet: ""))
+        MnemonicView(viewModel: MnemonicViewModel())
     }
 }

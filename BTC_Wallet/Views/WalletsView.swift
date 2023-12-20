@@ -13,7 +13,7 @@ struct WalletsView: View {
                 walletsList
             }
             .navigationDestination(isPresented: $viewModel.showMnemonic) {
-                let vm = MnemonicViewModel(currentWallet: viewModel.walletName)
+                let vm = MnemonicViewModel(with: viewModel.walletName)
                 MnemonicView(viewModel: vm)
             }
             .alert("walletName", isPresented: $viewModel.showNameAlert) {

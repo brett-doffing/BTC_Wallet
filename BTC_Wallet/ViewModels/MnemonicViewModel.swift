@@ -26,8 +26,8 @@ import Foundation
         }
     }
 
-    init(currentWallet: String = "New Wallet") {
-        self.wallet = Wallet(name: currentWallet)
+    init(with name: String = "New Wallet") {
+        self.wallet = Wallet(name: name)
     }
 
     func saveWord(word: String, index: Int) {

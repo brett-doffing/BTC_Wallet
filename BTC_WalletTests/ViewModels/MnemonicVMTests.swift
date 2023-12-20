@@ -6,7 +6,7 @@ import XCTest
 final class MnemonicVMTests: XCTestCase {
     @MainActor func test_MnemonicViewModel_saveWord() {
         // Given
-        let vm = MnemonicViewModel(currentWallet: "")
+        let vm = MnemonicViewModel()
         let words: [String] = ["legal", "winner", "thank", "year", "wave", "sausage", "worth", "useful", "legal", "winner", "thank", "yellow"]
         // When
         for _ in 0..<24 {
@@ -20,7 +20,7 @@ final class MnemonicVMTests: XCTestCase {
 
     @MainActor func test_MnemonicViewModel_saveMnemonic() {
         // Given
-        let vm = MnemonicViewModel(currentWallet: "")
+        let vm = MnemonicViewModel()
         let words = ["legal", "winner", "thank", "year", "wave", "sausage", "worth", "useful", "legal", "winner", "thank", "yellow"]
         let mnemonic = words.map { $0.lowercased() }.joined(separator: " ")
         // When
@@ -32,11 +32,19 @@ final class MnemonicVMTests: XCTestCase {
 
     @MainActor func test_MnemonicViewModel_randomlyGenerateSeed() {
         // Given
-        let vm = MnemonicViewModel(currentWallet: "")
+        let vm = MnemonicViewModel()
         // When
         vm.randomlyGenerateSeed()
         // Then
         XCTAssertTrue(vm.hasValidMnemonic)
         XCTAssertTrue(vm.shouldQuiz)
+    }
+
+    @MainActor func test_MnemonicViewModel_newWallet_defaultName() {
+        // Given
+        // When
+        let vm = MnemonicViewModel()
+        // Then
+        XCTAssertTrue(vm.wallet.name == "New Wallet")
     }
 }
