@@ -11,7 +11,7 @@ import Foundation
 
     var hasValidMnemonic: Bool {
         for word in words {
-            if !WordList.english.words.contains(word) {
+            if !WordList.english.wordsSet.contains(word) {
                 return false
             }
         }

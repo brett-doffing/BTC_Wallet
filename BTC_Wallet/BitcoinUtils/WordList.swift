@@ -15,6 +15,13 @@ public enum WordList {
             return englishWords
         }
     }
+
+    var wordsSet: Set<String> {
+        switch self {
+        case .english:
+            return Set(englishWords)
+        }
+    }
 }
 
 extension WordList {
