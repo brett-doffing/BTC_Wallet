@@ -30,16 +30,16 @@ import SwiftUI
 
     func getTransactionsForCurrentAddress() async {
         guard let address else { return }
-        await getTXs(forAddress: address, isCurrentAddress: true)
+        await getTXs(forAddress: address)
     }
 
-    private func getTXs(forAddress address: String, lastSeenTX: String? = nil, isCurrentAddress: Bool = false) async {
+    private func getTXs(forAddress address: String) async {
         do {
-            let responseData = try await service.fetchTransactions(for: address, lastSeenTX: lastSeenTX)
+            let responseData = try await service.fetchTransactions(for: address)
             if !responseData.isEmpty {
                 await MainActor.run {
                     flagTXs(in: responseData)
-                    if isCurrentAddress { self.getNextAddress() }
+                    self.getNextAddress()
                 }
             } else {
                 await MainActor.run { isLoading = false }

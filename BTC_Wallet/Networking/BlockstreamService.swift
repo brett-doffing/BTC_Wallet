@@ -3,36 +3,52 @@
 import Foundation
 
 protocol BlockstreamServiceable {
-    func fetchTransactions(
-        for address: String,
-        lastSeenTX: String?
-    ) async throws -> [BlockstreamResponse]
+    func fetchTransactions(for address: String) async throws -> [BlockstreamResponse]
 }
 
 struct BlockstreamService: BlockstreamServiceable {
     private let baseURL = "https://blockstream.info/testnet/api/"
     private let defaults = UserDefaults.standard
 
-    func fetchTransactions(
-        for address: String,
-        lastSeenTX: String? = nil
-    ) async throws -> [BlockstreamResponse] {
+    func fetchTransactions(for address: String) async throws -> [BlockstreamResponse] {
         var urlString = baseURL + "address/\(address)/txs"
-        if let lastSeenTX = lastSeenTX { urlString += "/chain/\(lastSeenTX)" } // Add last seen tx for address to api call
-        guard let url = URL(string: urlString) else { throw "Bad URL when fetching a BlockstreamResponse" }
+        return try await request(with: urlString, type: [BlockstreamResponse].self)
+    }
+
+    func request<T: Codable>(with urlString: String, type: T.Type) async throws -> T {
+        guard let url = URL(string: urlString) else { throw NetworkError.invalidURL }
 
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
-            guard let response = response as? HTTPURLResponse else { throw "No HTTP response?" }
-            if !(response.statusCode >= 200 && response.statusCode < 300) {
-                throw "Bad HTTP response status code."
+            guard let response = response as? HTTPURLResponse else { throw NetworkError.InvalidHTTPURLResponse }
+            if (200..<300) ~= response.statusCode {
+                throw NetworkError.invalidStatusCode(statusCode: response.statusCode)
             }
 
-            let transactions = try JSONDecoder().decode([BlockstreamResponse].self, from: data)
-            return transactions
+            let decoded = try JSONDecoder().decode(T.self, from: data)
+            return decoded
 
         } catch {
             throw error
+        }
+    }
+}
+
+extension BlockstreamService {
+    enum NetworkError: Error {
+        case invalidURL
+        case InvalidHTTPURLResponse
+        case invalidStatusCode(statusCode: Int)
+
+        var localizedDescription: String {
+            switch self {
+            case .invalidURL:
+                return "Invalid URL"
+            case .InvalidHTTPURLResponse:
+                return "Invalid HTTPURLResponse"
+            case .invalidStatusCode(let statusCode):
+                return "Invalid Status Code: \(statusCode)"
+            }
         }
     }
 }
