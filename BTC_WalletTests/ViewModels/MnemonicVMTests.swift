@@ -28,6 +28,7 @@ final class MnemonicVMTests: XCTestCase {
         vm.saveMnemonic()
         // Then
         XCTAssertTrue(vm.wallet.mnemonic == mnemonic)
+        XCTAssertTrue(vm.hasValidMnemonic)
     }
 
     @MainActor func test_MnemonicViewModel_randomlyGenerateSeed() {
@@ -46,5 +47,14 @@ final class MnemonicVMTests: XCTestCase {
         let vm = MnemonicViewModel()
         // Then
         XCTAssertTrue(vm.wallet.name == "New Wallet")
+    }
+
+    @MainActor func test_MnemonicViewModel_withWallet_invalidMnemonic() {
+        // Given
+        let wallet = Wallet(name: "")
+        // When
+        let vm = MnemonicViewModel(for: wallet)
+        // Then
+        XCTAssertFalse(vm.hasValidMnemonic)
     }
 }
