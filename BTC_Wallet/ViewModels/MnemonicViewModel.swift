@@ -19,7 +19,7 @@ import Foundation
         return true
     }
 
-    init(_ wallet: Wallet) {
+    init(for wallet: Wallet) {
         self.wallet = wallet
         self.isNewWallet = false
         if let words = wallet.mnemonic?.components(separatedBy: " ") {
