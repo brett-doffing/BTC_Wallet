@@ -36,7 +36,6 @@ struct AppView: View {
 
         }
         .accentColor(Color("btcOrange"))
-        .environmentObject(wallets)
         .environmentObject(store)
     }
 }

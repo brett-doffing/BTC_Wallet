@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct UTXOsView: View {
-    @EnvironmentObject var wallets: Wallets
+    @EnvironmentObject var store: DataStore
     @StateObject var viewModel = UTXOsViewModel()
     
     var body: some View {
