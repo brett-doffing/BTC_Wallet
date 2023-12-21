@@ -1,8 +1,8 @@
-// UTXOsView.swift
+// UTXOSelectionView.swift
 
 import SwiftUI
 
-struct UTXOsView: View {
+struct UTXOSelectionView: View {
     @EnvironmentObject var store: DataStore
     @StateObject var viewModel = UTXOsViewModel()
     
@@ -11,8 +11,8 @@ struct UTXOsView: View {
     }
 }
 
-struct UTXOsView_Previews: PreviewProvider {
+struct UTXOSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        UTXOsView()
+        UTXOSelectionView()
     }
 }

@@ -11,8 +11,12 @@ struct SendView: View {
             List {
                 recipientView
                 feeView
+                selectionView
                 sendView
             }
+        }
+        .navigationDestination(isPresented: $viewModel.selectUTXOs) {
+            UTXOSelectionView()
         }
         .sheet(isPresented: $viewModel.isShowingScanner) {
             CodeScannerView(
@@ -46,6 +50,16 @@ struct SendView: View {
             }
         }
         .listRowBackground(Color.clear)
+    }
+
+    private var selectionView: some View {
+        Section(header: SectionHeaderView(heading: "Selected UTXO's",
+                                          callback: { viewModel.selectUTXOs = true })
+        ) {
+            ForEach($viewModel.selectedUTXOs, id: \.self) { _ in
+
+            }
+        }
     }
 
     private var sendView: some View {

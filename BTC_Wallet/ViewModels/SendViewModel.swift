@@ -9,9 +9,8 @@ import Foundation
     @Published var amountToSend = ""
     @Published var canSend = false
     @Published var isShowingScanner = false
-
-    var utxos: [String] = []
-    var recipients: [[String]] = []
+    @Published var selectUTXOs = false
+    @Published var selectedUTXOs: [String] = []
 
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false

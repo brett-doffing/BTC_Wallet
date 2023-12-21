@@ -4,8 +4,8 @@ import SwiftUI
 
 struct SectionHeaderView: View {
     let heading: String
-    var callback: (() -> ())? = nil
     var btnIcon = Image(systemName: "plus")
+    var callback: (() -> ())? = nil
 
     var body: some View {
         HStack {
@@ -16,6 +16,7 @@ struct SectionHeaderView: View {
                     callback()
                 } label: {
                     btnIcon
+                        .foregroundColor(Color("btcOrange"))
                 }
             }
         }
