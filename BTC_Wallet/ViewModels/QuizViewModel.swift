@@ -25,6 +25,7 @@ class QuizViewModel: ObservableObject {
     }
 
     func generateQuiz() {
+        guard words.count == 12 else { return }
         var wordsEnumerated: [(index: Int, word: String)] = []
         for (i, word) in words.enumerated() {
             wordsEnumerated.append((i, word))
@@ -35,11 +36,11 @@ class QuizViewModel: ObservableObject {
             let answer = wordsEnumerated.remove(at: index)
             answers.append(answer)
         }
-
         wrongAnswerOptions = wordsEnumerated.shuffled().map { $0.word }
     }
 
     private func generateQuestion() {
+        guard wrongAnswerOptions.count == 8 else { return }
         answerButtonNumber = Int.random(in: 1...3)
 
         for i in 1...3 {
