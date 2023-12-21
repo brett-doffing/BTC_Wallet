@@ -4,7 +4,7 @@ import Foundation
 
 struct V_in: Codable {
     var is_coinbase: Bool
-//    var prevout: V_out
+    var prevout: V_out // Array?
     var scriptsig: String
 //    var scriptsig_asm: String
     var sequence: Int
