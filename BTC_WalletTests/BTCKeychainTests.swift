@@ -9,7 +9,7 @@ class BTCKeychainTests: XCTestCase { // TODO: need to add support for testnet ke
     func testKeychains() {
         for i in 0..<3 {
             let seed = kcSeeds[i]
-            let keyChain = BTCKeychain(seed: seed.hexData()!)
+            let keyChain = BTCKeychain(seed: seed.hexData()!, network: .main)
             XCTAssertEqual(keyChain.extendedPrivateKey?.base58, kcExtPrvKeys[i][0])
             XCTAssertEqual(keyChain.extendedPublicKey.base58, kcExtPubKeys[i][0])
             for j in 1..<kcPaths[i].count {
@@ -23,7 +23,7 @@ class BTCKeychainTests: XCTestCase { // TODO: need to add support for testnet ke
     
     func testKeysFromKeychain() {
         let seed = String("87eaaac5a539ab028df44d9110defbef3797ddb805ca309f61a69ff96dbaa7ab5b24038cf029edec5235d933110f0aea8aeecf939ed14fc20730bba71e4b1110").hexData()!
-        let keychain = BTCKeychain(seed: seed)
+        let keychain = BTCKeychain(seed: seed, network: .main)
         let coinType = keychain.network.coinType
         let derived47 = keychain.derivedKeychain(withPath: "m/47'/\(coinType)'/0'/0")
         XCTAssertEqual(derived47?.extendedPrivateKey?.privateKey.hexDescription(), "04448fd1be0c9c13a5ca0b530e464b619dc091b299b98c5cab9978b32b4a1b8b")
@@ -45,7 +45,7 @@ class BTCKeychainTests: XCTestCase { // TODO: need to add support for testnet ke
     // https://github.com/bitcoin/bips/blob/master/bip-0084.mediawiki#test-vectors
     func testKeychain84() {
         let seed = String("5eb00bbddcf069084889a8ab9155568165f5c453ccb85e70811aaed6f6da5fc19a5ac40b389cd370d086206dec8aa6c43daea6690f20ad3d8d48b2d2ce9e38e4").hexData()!
-        let keychain = BTCKeychain(seed: seed)
+        let keychain = BTCKeychain(seed: seed, network: .main)
         let coinType = keychain.network.coinType
         let kc84 = keychain.derivedKeychain(withPath: "m/84'/\(coinType)'/0'", andType: .BIP84)
         let recvKey0 = kc84?.recieveKeychain(atIndex: 0, withType: .BIP84)
