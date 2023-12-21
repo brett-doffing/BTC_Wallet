@@ -41,4 +41,17 @@ class DataStore: ObservableObject {
         save()
 //        load()
     }
+
+    func deleteAllData() {
+        let fileURL = URL.documentsDirectory.appending(path: "Wallets.json")
+        if FileManager().fileExists(atPath: fileURL.path) {
+            do {
+                wallets = []
+                currentWallet = nil
+                try FileManager.default.removeItem(at: fileURL)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

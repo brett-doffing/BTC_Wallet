@@ -3,7 +3,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject var viewModel = SettingsViewModel()
+    @EnvironmentObject var store: DataStore
+    @State var promptToDelete = false
 
     var body: some View {
         NavigationView {
@@ -12,9 +13,9 @@ struct SettingsView: View {
                 deleteDataItem
             }
         }
-        .alert("deleteData", isPresented: $viewModel.promptToDelete,
+        .alert("deleteData", isPresented: $promptToDelete,
             actions: {
-                Button("delete", role: .destructive, action: {viewModel.deleteData()})
+            Button("delete", role: .destructive, action: { store.deleteAllData() })
                 Button("cancel", role: .cancel, action: {})
             },
             message: {
@@ -39,7 +40,7 @@ struct SettingsView: View {
     private var deleteDataItem: some View {
         Section {
             Button("deleteAllData") {
-                viewModel.promptToDelete = true
+                promptToDelete = true
             }
         }
     }

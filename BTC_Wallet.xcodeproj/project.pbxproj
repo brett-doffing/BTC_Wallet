@@ -67,7 +67,6 @@
 		BC21BB6D2AF2D63F005AC913 /* MnemonicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */; };
 		BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */; };
 		BC21BB712AF2D66E005AC913 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB702AF2D66D005AC913 /* SettingsView.swift */; };
-		BC21BB732AF2D679005AC913 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */; };
 		BC21BB752AF2D6B1005AC913 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB742AF2D6B1005AC913 /* WebView.swift */; };
 		BC21BB772AF2E09D005AC913 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB762AF2E09D005AC913 /* SendView.swift */; };
 		BC21BB792AF2E0CC005AC913 /* SendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */; };
@@ -175,7 +174,6 @@
 		BC21BB6C2AF2D63F005AC913 /* MnemonicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicView.swift; sourceTree = "<group>"; };
 		BC21BB6E2AF2D644005AC913 /* MnemonicWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MnemonicWordView.swift; sourceTree = "<group>"; };
 		BC21BB702AF2D66D005AC913 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		BC21BB742AF2D6B1005AC913 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		BC21BB762AF2E09D005AC913 /* SendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 		BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendViewModel.swift; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 			children = (
 				BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */,
 				BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */,
-				BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */,
 				BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */,
 				BCE06A292B05485300F5F415 /* WalletViewModel.swift */,
 				BCBF75972B34A9FF0031DE60 /* UTXOsViewModel.swift */,
@@ -623,7 +620,6 @@
 				BC21BB342AF2D3F1005AC913 /* BTCNetwork.swift in Sources */,
 				BCBF75922B30BFEA0031DE60 /* AnimatedArrows.swift in Sources */,
 				BC6285282B1D349B00EDFDB2 /* TX.swift in Sources */,
-				BC21BB732AF2D679005AC913 /* SettingsViewModel.swift in Sources */,
 				BC21BB332AF2D3F1005AC913 /* BTCCurve.swift in Sources */,
 				BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */,
 				BC21BB562AF2D3F2005AC913 /* Mnemonic.swift in Sources */,
