@@ -91,6 +91,7 @@
 		BCBF75942B31DADB0031DE60 /* SliderLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75932B31DADB0031DE60 /* SliderLock.swift */; };
 		BCBF75962B34A9D90031DE60 /* UTXOsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75952B34A9D90031DE60 /* UTXOsView.swift */; };
 		BCBF75982B34A9FF0031DE60 /* UTXOsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75972B34A9FF0031DE60 /* UTXOsViewModel.swift */; };
+		BCBF759A2B34AF600031DE60 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75992B34AF600031DE60 /* DataStore.swift */; };
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
@@ -199,6 +200,7 @@
 		BCBF75932B31DADB0031DE60 /* SliderLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderLock.swift; sourceTree = "<group>"; };
 		BCBF75952B34A9D90031DE60 /* UTXOsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOsView.swift; sourceTree = "<group>"; };
 		BCBF75972B34A9FF0031DE60 /* UTXOsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOsViewModel.swift; sourceTree = "<group>"; };
+		BCBF75992B34AF600031DE60 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -267,9 +269,10 @@
 				BC21BB672AF2D573005AC913 /* Views */,
 				BC21BB002AF2D3F1005AC913 /* BitcoinUtils */,
 				BC21BAD62AF2D397005AC913 /* BTC_WalletApp.swift */,
+				BCBF75992B34AF600031DE60 /* DataStore.swift */,
+				BCE06A272B03D06D00F5F415 /* Localizable.strings */,
 				BC21BADA2AF2D399005AC913 /* Assets.xcassets */,
 				BC21BADC2AF2D399005AC913 /* Preview Content */,
-				BCE06A272B03D06D00F5F415 /* Localizable.strings */,
 			);
 			path = BTC_Wallet;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				BC21BB592AF2D3F2005AC913 /* SMP.swift in Sources */,
 				BC62852E2B1D362000EDFDB2 /* Wallet.swift in Sources */,
 				BC21BAD72AF2D397005AC913 /* BTC_WalletApp.swift in Sources */,
+				BCBF759A2B34AF600031DE60 /* DataStore.swift in Sources */,
 				BC21BB532AF2D3F2005AC913 /* PBInt.swift in Sources */,
 				BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */,
 				BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */,
