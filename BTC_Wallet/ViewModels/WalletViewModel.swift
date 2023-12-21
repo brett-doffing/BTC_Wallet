@@ -28,7 +28,7 @@ import SwiftUI
         }
     }
 
-    func getTransactionsForCurrentAddress() async {
+    func fetchTransactions() async {
         guard let address else { return }
         await getTXs(forAddress: address)
     }
@@ -72,7 +72,7 @@ import SwiftUI
         wallet.walletIndex += 1
         if let address = self.keychain?.recieveKeychain(atIndex: UInt32(wallet.walletIndex))?.address {
             self.address = address
-            Task { await getTransactionsForCurrentAddress() }
+            Task { await fetchTransactions() }
         }
     }
 

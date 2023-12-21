@@ -21,7 +21,7 @@ struct WalletView: View {
             if viewModel.isLoading { ProgressView("Loading").scaleEffect(1.5) }
         }
         .onAppear {
-            Task { await viewModel.getTransactionsForCurrentAddress() }
+            Task { await viewModel.fetchTransactions() }
         }
     }
 
