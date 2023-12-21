@@ -91,7 +91,7 @@ struct MnemonicView: View {
     private var quizButton: some View {
         NavigationLink("quiz", destination: {
             QuizView(words: viewModel.words) { dismiss in
-                if dismiss {
+                if dismiss == true {
                     viewModel.shouldQuiz = false
                     viewModel.saveMnemonic()
                     presentationMode.wrappedValue.dismiss()
