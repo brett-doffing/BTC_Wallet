@@ -7,7 +7,11 @@ import Foundation
     @Published var isNewWallet = true
     @Published var shouldQuiz = false
     @Published var showAlert = false
-    var wallet: Wallet
+    let store = DataStore.shared
+    var wallet: Wallet? {
+        get { store.currentWallet }
+        set { store.currentWallet = newValue }
+    }
 
     var hasValidMnemonic: Bool {
         let wordSet = WordList.english.wordSet
@@ -19,16 +23,11 @@ import Foundation
         return true
     }
 
-    init(for wallet: Wallet) {
-        self.wallet = wallet
-        self.isNewWallet = false
-        if let words = wallet.mnemonic?.components(separatedBy: " ") {
+    init() {
+        if let wallet = wallet, let words = wallet.mnemonic?.components(separatedBy: " ") {
             self.words = words
+            self.isNewWallet = false
         }
-    }
-
-    init(with name: String = "New Wallet") {
-        self.wallet = Wallet(name: name)
     }
 
     func saveWord(word: String, index: Int) {
@@ -37,7 +36,8 @@ import Foundation
 
     func saveMnemonic() {
         let mnemonic = words.map { $0.lowercased() }.joined(separator: " ")
-        wallet.mnemonic = mnemonic
+        wallet?.mnemonic = mnemonic
+        store.saveNewWallet()
     }
 
     func randomlyGenerateSeed() {

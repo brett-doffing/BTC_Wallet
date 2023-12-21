@@ -20,6 +20,7 @@ final class MnemonicVMTests: XCTestCase {
 
     @MainActor func test_MnemonicViewModel_saveMnemonic() {
         // Given
+        DataStore.shared.currentWallet = Wallet()
         let vm = MnemonicViewModel()
         let words = ["legal", "winner", "thank", "year", "wave", "sausage", "worth", "useful", "legal", "winner", "thank", "yellow"]
         let mnemonic = words.map { $0.lowercased() }.joined(separator: " ")
@@ -27,7 +28,7 @@ final class MnemonicVMTests: XCTestCase {
         vm.words = words
         vm.saveMnemonic()
         // Then
-        XCTAssertTrue(vm.wallet.mnemonic == mnemonic)
+        XCTAssertTrue(vm.wallet?.mnemonic == mnemonic)
         XCTAssertTrue(vm.hasValidMnemonic)
     }
 
@@ -43,17 +44,18 @@ final class MnemonicVMTests: XCTestCase {
 
     @MainActor func test_MnemonicViewModel_newWallet_defaultName() {
         // Given
+        DataStore.shared.currentWallet = Wallet()
         // When
         let vm = MnemonicViewModel()
         // Then
-        XCTAssertTrue(vm.wallet.name == "New Wallet")
+        XCTAssertTrue(vm.wallet?.name == "New Wallet")
     }
 
     @MainActor func test_MnemonicViewModel_withWallet_invalidMnemonic() {
         // Given
-        let wallet = Wallet(name: "")
+        DataStore.shared.currentWallet = Wallet()
         // When
-        let vm = MnemonicViewModel(for: wallet)
+        let vm = MnemonicViewModel()
         // Then
         XCTAssertFalse(vm.hasValidMnemonic)
     }
