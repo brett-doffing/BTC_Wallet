@@ -3,31 +3,32 @@
 import SwiftUI
 
 struct WalletsView: View {
-    @EnvironmentObject var wallets: Wallets
-    @StateObject var viewModel = WalletsViewModel()
+    @EnvironmentObject var store: DataStore
     @Binding var tabSelection: Tab
+    @State var createNewWallet = false
+    @State var showNameAlert = false
+    @State var walletName = ""
 
     var body: some View {
         NavigationStack {
             ZStack {
                 walletsList
             }
-            .navigationDestination(isPresented: $viewModel.showMnemonic) {
-                let vm = MnemonicViewModel(with: viewModel.walletName)
-                MnemonicView(viewModel: vm)
+            .navigationDestination(isPresented: $createNewWallet) {
+                MnemonicView()
             }
-            .alert("walletName", isPresented: $viewModel.showNameAlert) {
-                TextField("walletName", text: $viewModel.walletName)
+            .alert("walletName", isPresented: $showNameAlert) {
+                TextField("walletName", text: $walletName)
                     .font(.headline)
-                Button("ok", action: { viewModel.saveName() })
+                Button("ok", action: {
+                    if walletName != "" {
+                        store.currentWallet = Wallet(name: walletName)
+                        createNewWallet = true
+                    }
+                })
                 Button("cancel", role: .cancel, action: {})
             }
-            .onAppear { viewModel.walletName = ""}
-        }
-        .onChange(of: tabSelection) { selection in
-            if selection == .wallets {
-                wallets.getWallets()
-            }
+            .onAppear { walletName = ""}
         }
     }
 
@@ -36,10 +37,10 @@ struct WalletsView: View {
             Section(
                 header: SectionHeaderView(
                     heading: "wallets",
-                    callback: { viewModel.showNameAlert = true }
+                    callback: { showNameAlert = true }
                 )
             ) {
-                ForEach($wallets.wallets) { wallet in
+                ForEach($store.wallets) { wallet in
                     getWallet(wallet.wrappedValue)
                 }
             }

@@ -2,14 +2,14 @@
 
 import Foundation
 
-class DataStore {
+class DataStore: ObservableObject {
     static let shared = DataStore()
 
     private init() {
         load()
     }
 
-    var wallets: [Wallet] = []
+    @Published var wallets: [Wallet] = []
     var currentWallet: Wallet?
 
     func save() {
@@ -33,5 +33,12 @@ class DataStore {
             }
         }
 
+    }
+
+    func saveNewWallet() {
+        guard let wallet = currentWallet else { return }
+        wallets += [wallet]
+        save()
+//        load()
     }
 }

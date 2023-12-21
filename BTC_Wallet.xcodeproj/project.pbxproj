@@ -75,7 +75,6 @@
 		BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */; };
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
-		BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */; };
 		BC6285212B1BA66C00EDFDB2 /* BlockstreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */; };
 		BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */; };
 		BC6285262B1BBF7800EDFDB2 /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285252B1BBF7800EDFDB2 /* String+Error.swift */; };
@@ -184,7 +183,6 @@
 		BC21BB7E2AF2E128005AC913 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
 		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
-		BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
 		BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamService.swift; sourceTree = "<group>"; };
 		BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamResponse.swift; sourceTree = "<group>"; };
 		BC6285252B1BBF7800EDFDB2 /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
@@ -397,7 +395,6 @@
 				BC21BB782AF2E0CC005AC913 /* SendViewModel.swift */,
 				BC21BB6A2AF2D62D005AC913 /* MnemonicViewModel.swift */,
 				BC21BB722AF2D679005AC913 /* SettingsViewModel.swift */,
-				BC21BB842AF2F57F005AC913 /* WalletsViewModel.swift */,
 				BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */,
 				BCE06A292B05485300F5F415 /* WalletViewModel.swift */,
 				BCBF75972B34A9FF0031DE60 /* UTXOsViewModel.swift */,
@@ -553,7 +550,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC21BB3C2AF2D3F2005AC913 /* lax_der_privatekey_parsing.swift in Sources */,
-				BC21BB852AF2F57F005AC913 /* WalletsViewModel.swift in Sources */,
 				BC21BB462AF2D3F2005AC913 /* hash_impl.swift in Sources */,
 				BC21BB322AF2D3F1005AC913 /* ExtendedPrivateKey.swift in Sources */,
 				BC6285262B1BBF7800EDFDB2 /* String+Error.swift in Sources */,

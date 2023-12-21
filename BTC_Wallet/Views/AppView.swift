@@ -10,6 +10,7 @@ enum Tab {
 
 struct AppView: View {
     @StateObject var wallets = Wallets()
+    @StateObject var store = DataStore.shared
     @State private var tabSelection = Tab.wallets
 
     var body: some View {
@@ -36,5 +37,6 @@ struct AppView: View {
         }
         .accentColor(Color("btcOrange"))
         .environmentObject(wallets)
+        .environmentObject(store)
     }
 }
