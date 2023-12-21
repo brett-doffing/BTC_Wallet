@@ -21,7 +21,7 @@ struct BlockstreamService: BlockstreamServiceable {
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             guard let response = response as? HTTPURLResponse else { throw NetworkError.InvalidHTTPURLResponse }
-            if (200..<300) ~= response.statusCode {
+            if !(response.statusCode >= 200 && response.statusCode < 300) {
                 throw NetworkError.invalidStatusCode(statusCode: response.statusCode)
             }
 
@@ -29,7 +29,7 @@ struct BlockstreamService: BlockstreamServiceable {
             return decoded
 
         } catch {
-            throw error
+            throw NetworkError.failedToDecode(error: error)
         }
     }
 }
@@ -39,6 +39,7 @@ extension BlockstreamService {
         case invalidURL
         case InvalidHTTPURLResponse
         case invalidStatusCode(statusCode: Int)
+        case failedToDecode(error: Error)
 
         var localizedDescription: String {
             switch self {
@@ -48,6 +49,8 @@ extension BlockstreamService {
                 return "Invalid HTTPURLResponse"
             case .invalidStatusCode(let statusCode):
                 return "Invalid Status Code: \(statusCode)"
+            case .failedToDecode(let error):
+                return "Invalid Status Code: \(error.localizedDescription)"
             }
         }
     }
