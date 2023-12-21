@@ -52,16 +52,9 @@ import SwiftUI
     /// Flag wallet specific TXs
     private func flagTXs(in txs: [BlockstreamResponse]) {
         var txs = txs
-        for (i, response) in txs.enumerated() {
-            for (j, _) in txs[i].vout.enumerated() {
-                if let vOutAddr = txs[i].vout[j].scriptpubkey_address,
-                   let address = self.address,
-                   vOutAddr == address
-                {
-                    txs[i].vout[j].isTXO = true
-                    txs[i].vout[j].txid = response.txid
-                    txs[i].vout[j].n = j
-                }
+        for (i, _) in txs.enumerated() {
+            if let address = self.address {
+                txs[i].map(to: address)
             }
             let mappedTX = txs[i].mapped()
             self.transactions.append(mappedTX)

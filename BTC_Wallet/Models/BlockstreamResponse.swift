@@ -31,4 +31,24 @@ struct BlockstreamResponse: Codable, Identifiable {
             v_out: vout
         )
     }
+
+    mutating func map(to address: String) {
+        for (i, _) in vout.enumerated() {
+            if let vOutAddr = vout[i].scriptpubkey_address,
+               vOutAddr == address
+            {
+                vout[i].isTXO = true
+                vout[i].txid = self.txid
+                vout[i].n = i
+            }
+        }
+//
+//        for (i, _) in vin.enumerated() {
+//            if let vInAddr = vin[i].prevout.scriptpubkey_address,
+//               vInAddr == address
+//            {
+//
+//            }
+//        }
+    }
 }
