@@ -179,7 +179,7 @@ class BTCKeychain: Codable {
         return fingerprint
     }
     
-    func recieveKeychain(atIndex index: UInt32, withType type: BTCKeychainType = .derived) -> BTCKeychain? {
+    func receiveKeychain(atIndex index: UInt32, withType type: BTCKeychainType = .derived) -> BTCKeychain? {
         return derivedKeychain(withPath: "0/\(index)", andType: type)
     }
     

@@ -37,7 +37,7 @@ class BTCKeychainTests: XCTestCase { // TODO: need to add support for testnet ke
         let keychain = BTCKeychain(seed: seed, network: .test)
         let coinType = keychain.network.coinType
         let kc49 = keychain.derivedKeychain(withPath: "m/49'/\(coinType)'/0'", andType: .BIP49)
-        let recvKey0 = kc49?.recieveKeychain(atIndex: 0, withType: .BIP49)
+        let recvKey0 = kc49?.receiveKeychain(atIndex: 0, withType: .BIP49)
         
         XCTAssertEqual(recvKey0?.address, "2Mww8dCYPUpKHofjgcXcBCEGmniw9CoaiD2")
     }
@@ -48,8 +48,8 @@ class BTCKeychainTests: XCTestCase { // TODO: need to add support for testnet ke
         let keychain = BTCKeychain(seed: seed, network: .main)
         let coinType = keychain.network.coinType
         let kc84 = keychain.derivedKeychain(withPath: "m/84'/\(coinType)'/0'", andType: .BIP84)
-        let recvKey0 = kc84?.recieveKeychain(atIndex: 0, withType: .BIP84)
-        let recvKey1 = kc84?.recieveKeychain(atIndex: 1, withType: .BIP84)
+        let recvKey0 = kc84?.receiveKeychain(atIndex: 0, withType: .BIP84)
+        let recvKey1 = kc84?.receiveKeychain(atIndex: 1, withType: .BIP84)
         let changeKey0 = kc84?.changeKeychain(atIndex: 0, withType: .BIP84)
         XCTAssertEqual(recvKey0?.address, "bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu")
         XCTAssertEqual(recvKey1?.address, "bc1qnjg0jd8228aq7egyzacy8cys3knf9xvrerkf9g")
