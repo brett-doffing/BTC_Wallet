@@ -5,18 +5,14 @@ import SwiftUI
 @MainActor class WalletViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var copied = false
-    @Published var wallet = Wallet()
+    @Published var wallet: Wallet
     
     private let service = BlockstreamService()
     private var store = DataStore.shared
     private var didUpdate = false
 
-    init() {
-        if let currentWallet = store.currentWallet {
-            self.wallet = currentWallet
-        } else {
-            // HANDLE ERROR
-        }
+    init(_ wallet: Wallet) {
+        self.wallet = wallet
     }
 
     func fetchTransactions() async {
