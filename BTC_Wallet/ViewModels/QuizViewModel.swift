@@ -40,7 +40,7 @@ class QuizViewModel: ObservableObject {
     }
 
     private func generateQuestion() {
-        guard wrongAnswerOptions.count == 8 else { return }
+        guard wrongAnswerOptions.count >= 2 else { return }
         answerButtonNumber = Int.random(in: 1...3)
 
         for i in 1...3 {
