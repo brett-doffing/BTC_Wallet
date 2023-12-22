@@ -7,7 +7,7 @@ struct WalletsView: View {
     @Binding var tabSelection: Tab
     @State var createNewWallet = false
     @State var showNameAlert = false
-    @State var walletName = ""
+    @State var walletName: String?
 
     var body: some View {
         NavigationStack {
@@ -18,17 +18,17 @@ struct WalletsView: View {
                 MnemonicView()
             }
             .alert("walletName", isPresented: $showNameAlert) {
-                TextField("walletName", text: $walletName)
+                TextField("walletName", text: $walletName ?? "")
                     .font(.headline)
                 Button("ok", action: {
-                    if walletName != "" {
+                    if let walletName {
                         store.currentWallet = Wallet(name: walletName)
                         createNewWallet = true
                     }
                 })
                 Button("cancel", role: .cancel, action: {})
             }
-            .onAppear { walletName = ""}
+            .onAppear { walletName = nil }
         }
     }
 

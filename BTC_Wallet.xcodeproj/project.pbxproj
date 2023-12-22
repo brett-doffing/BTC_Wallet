@@ -89,6 +89,7 @@
 		BCBF75962B34A9D90031DE60 /* UTXOSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75952B34A9D90031DE60 /* UTXOSelectionView.swift */; };
 		BCBF75982B34A9FF0031DE60 /* UTXOsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75972B34A9FF0031DE60 /* UTXOsViewModel.swift */; };
 		BCBF759A2B34AF600031DE60 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75992B34AF600031DE60 /* DataStore.swift */; };
+		BCBF759C2B3526870031DE60 /* Binding+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF759B2B3526870031DE60 /* Binding+Optional.swift */; };
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
@@ -195,6 +196,7 @@
 		BCBF75952B34A9D90031DE60 /* UTXOSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOSelectionView.swift; sourceTree = "<group>"; };
 		BCBF75972B34A9FF0031DE60 /* UTXOsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOsViewModel.swift; sourceTree = "<group>"; };
 		BCBF75992B34AF600031DE60 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		BCBF759B2B3526870031DE60 /* Binding+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Optional.swift"; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				BC6285252B1BBF7800EDFDB2 /* String+Error.swift */,
+				BCBF759B2B3526870031DE60 /* Binding+Optional.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				BC21BB402AF2D3F2005AC913 /* ecdsa_impl.swift in Sources */,
 				BC21BB6D2AF2D63F005AC913 /* MnemonicView.swift in Sources */,
 				BC21BB492AF2D3F2005AC913 /* ecmult_const_impl.swift in Sources */,
+				BCBF759C2B3526870031DE60 /* Binding+Optional.swift in Sources */,
 				BC21BB522AF2D3F2005AC913 /* ecmult_impl.swift in Sources */,
 				BC21BB432AF2D3F2005AC913 /* field_impl.swift in Sources */,
 				BC21BB382AF2D3F2005AC913 /* BTCkOP_CODES.swift in Sources */,
