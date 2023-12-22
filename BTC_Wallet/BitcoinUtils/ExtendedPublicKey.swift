@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct ExtendedPublicKey {
+struct ExtendedPublicKey: Codable {
     
     let publicKey: Data
     let chainCode: Data

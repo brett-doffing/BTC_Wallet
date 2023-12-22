@@ -2,7 +2,7 @@
 
 import Foundation
 
-public enum BTCKeychainType {
+public enum BTCKeychainType: Codable {
     case master
     case derived
     case BIP44

@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct ExtendedPrivateKey {
+struct ExtendedPrivateKey: Codable {
     
     let privateKey: Data
     let chainCode: Data

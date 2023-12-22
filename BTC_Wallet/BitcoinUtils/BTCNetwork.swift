@@ -1,6 +1,6 @@
 // BTCNetwork.swift
 
-public enum BTCNetwork {
+public enum BTCNetwork: Codable {
     case main
     case test
     

@@ -2,14 +2,14 @@
 
 import Foundation
 
-class BTCKeychain {
+class BTCKeychain: Codable {
     
     let extendedPublicKey: ExtendedPublicKey
     let extendedPrivateKey: ExtendedPrivateKey?
     let network: BTCNetwork
     let type: BTCKeychainType
     /// 2^31 = 2147483648
-    let hardenedMin = UInt32(2147483648)
+    var hardenedMin = UInt32(2147483648)
 
     lazy var address: String = {
         switch self.type {
