@@ -82,7 +82,6 @@
 		BC62852C2B1D35C100EDFDB2 /* V_in.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852B2B1D35C100EDFDB2 /* V_in.swift */; };
 		BC62852E2B1D362000EDFDB2 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852D2B1D362000EDFDB2 /* Wallet.swift */; };
 		BC6285302B1D36F400EDFDB2 /* BTCBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC62852F2B1D36F400EDFDB2 /* BTCBlock.swift */; };
-		BC6285322B1E689100EDFDB2 /* Wallets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285312B1E689100EDFDB2 /* Wallets.swift */; };
 		BC6285342B21106400EDFDB2 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285332B21106400EDFDB2 /* TransactionListView.swift */; };
 		BCBF75902B29F5CE0031DE60 /* MnemonicVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF758F2B29F5CE0031DE60 /* MnemonicVMTests.swift */; };
 		BCBF75922B30BFEA0031DE60 /* AnimatedArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75912B30BFEA0031DE60 /* AnimatedArrows.swift */; };
@@ -189,7 +188,6 @@
 		BC62852B2B1D35C100EDFDB2 /* V_in.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V_in.swift; sourceTree = "<group>"; };
 		BC62852D2B1D362000EDFDB2 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		BC62852F2B1D36F400EDFDB2 /* BTCBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCBlock.swift; sourceTree = "<group>"; };
-		BC6285312B1E689100EDFDB2 /* Wallets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallets.swift; sourceTree = "<group>"; };
 		BC6285332B21106400EDFDB2 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		BCBF758F2B29F5CE0031DE60 /* MnemonicVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicVMTests.swift; sourceTree = "<group>"; };
 		BCBF75912B30BFEA0031DE60 /* AnimatedArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedArrows.swift; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 				BC6285292B1D354A00EDFDB2 /* V_out.swift */,
 				BC62852B2B1D35C100EDFDB2 /* V_in.swift */,
 				BC62852D2B1D362000EDFDB2 /* Wallet.swift */,
-				BC6285312B1E689100EDFDB2 /* Wallets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -570,7 +567,6 @@
 				BC21BB362AF2D3F1005AC913 /* BTCKeychain.swift in Sources */,
 				BC21BB7F2AF2E128005AC913 /* SectionHeaderView.swift in Sources */,
 				BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */,
-				BC6285322B1E689100EDFDB2 /* Wallets.swift in Sources */,
 				BC21BB2F2AF2D3F1005AC913 /* WordList.swift in Sources */,
 				BC21BB5A2AF2D3F2005AC913 /* SegwitAddrCoder.swift in Sources */,
 				BC21BB402AF2D3F2005AC913 /* ecdsa_impl.swift in Sources */,

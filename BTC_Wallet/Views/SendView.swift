@@ -7,23 +7,25 @@ struct SendView: View {
     @StateObject var viewModel = SendViewModel()
     
     var body: some View {
-        VStack {
-            List {
-                recipientView
-                feeView
-                selectionView
-                sendView
+        NavigationStack {
+            VStack {
+                List {
+                    recipientView
+                    feeView
+                    selectionView
+                    sendView
+                }
             }
-        }
-        .navigationDestination(isPresented: $viewModel.selectUTXOs) {
-            UTXOSelectionView()
-        }
-        .sheet(isPresented: $viewModel.isShowingScanner) {
-            CodeScannerView(
-                codeTypes: [.qr],
-                simulatedData: "bitcoin:n3qSUp3c5x6tKD3qYmwe28WnEHBTvNyNic",
-                completion: { viewModel.handleScan(result: $0) }
-            )
+            .navigationDestination(isPresented: $viewModel.selectUTXOs) {
+                UTXOSelectionView()
+            }
+            .sheet(isPresented: $viewModel.isShowingScanner) {
+                CodeScannerView(
+                    codeTypes: [.qr],
+                    simulatedData: "bitcoin:n3qSUp3c5x6tKD3qYmwe28WnEHBTvNyNic",
+                    completion: { viewModel.handleScan(result: $0) }
+                )
+            }
         }
     }
 
