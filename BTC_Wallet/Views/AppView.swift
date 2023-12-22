@@ -9,7 +9,6 @@ enum Tab {
 }
 
 struct AppView: View {
-    @StateObject var wallets = Wallets()
     @StateObject var store = DataStore.shared
     @State private var tabSelection = Tab.wallets
 
