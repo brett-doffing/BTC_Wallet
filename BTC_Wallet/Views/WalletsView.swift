@@ -49,9 +49,9 @@ struct WalletsView: View {
     }
 
     private func showWallet(_ wallet: Wallet) -> some View {
-        store.currentWallet = wallet
-        return NavigationLink(wallet.name) {
-            WalletView()
+        NavigationLink(wallet.name) {
+            let vm = WalletViewModel(wallet)
+            WalletView(viewModel: vm)
         }
         .font(.headline)
     }
