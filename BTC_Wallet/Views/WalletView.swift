@@ -5,7 +5,7 @@ import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct WalletView: View {
-    @StateObject var viewModel: WalletViewModel
+    @StateObject var viewModel = WalletViewModel()
 
     let qrContext = CIContext()
     let qrFilter = CIFilter.qrCodeGenerator()
@@ -42,7 +42,7 @@ struct WalletView: View {
                 .frame(width: 200, height: 200)
                 .shadow(radius: 10)
                 .padding()
-            if let address = viewModel.address {
+            if let address = viewModel.wallet.receiveAddress {
                 HStack {
                     Text("\(address)")
                         .scaledToFill()
@@ -65,7 +65,7 @@ struct WalletView: View {
     private var transactionsList: some View {
         List {
             Section(header: SectionHeaderView(heading: "Transactions")) {
-                ForEach($viewModel.transactions) { $tx in
+                ForEach($viewModel.wallet.transactions) { $tx in
                     TransactionListView(for: $tx.wrappedValue)
                 }
             }
@@ -88,7 +88,7 @@ struct WalletView: View {
     }
 
     private func generateQRCode() -> UIImage {
-        guard let address = viewModel.address else {
+        guard let address = viewModel.wallet.receiveAddress else {
             return UIImage()
         }
         qrFilter.message = Data("bitcoin:\(address)".utf8)

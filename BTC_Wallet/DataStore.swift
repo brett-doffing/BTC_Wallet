@@ -39,7 +39,6 @@ class DataStore: ObservableObject {
         guard let wallet = currentWallet else { return }
         wallets += [wallet]
         save()
-//        load()
     }
 
     func deleteAllData() {

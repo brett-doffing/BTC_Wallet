@@ -4,32 +4,23 @@
 import SwiftUI
 
 @MainActor class WalletViewModel: ObservableObject {
-    @Published var keychain: BTCKeychain?
-    @Published var address: String?
     @Published var isLoading = true
-    @Published var transactions: [TX] = []
     @Published var copied = false
+    @Published var wallet = Wallet()
     
     private let service = BlockstreamService()
+    private var store = DataStore.shared
 
-    var wallet: Wallet
-
-    init(_ wallet: Wallet) {
-        self.wallet = wallet
-        guard let mnemonic = wallet.mnemonic else { return }
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let masterKeychain = BTCKeychain(seed: seed)
-        let coinType = masterKeychain.network.coinType
-        if let kc = masterKeychain.derivedKeychain(withPath: "m/44'/\(coinType)'/0'", andType: .BIP44),
-           let address = kc.recieveKeychain(atIndex: UInt32(wallet.walletIndex), withType: .BIP44)?.address
-        {
-            self.keychain = kc
-            self.address = address
+    init() {
+        if let currentWallet = store.currentWallet {
+            self.wallet = currentWallet
+        } else {
+            // HANDLE ERROR
         }
     }
 
     func fetchTransactions() async {
-        guard let address else { return }
+        guard let address = wallet.receiveAddress else { return }
         await getTXs(forAddress: address)
     }
 
@@ -53,20 +44,17 @@ import SwiftUI
     private func flagTXs(in txs: [BlockstreamResponse]) {
         var txs = txs
         for (i, _) in txs.enumerated() {
-            if let address = self.address {
+            if let address = wallet.receiveAddress {
                 txs[i].map(to: address)
             }
             let mappedTX = txs[i].mapped()
-            self.transactions.append(mappedTX)
+            wallet.transactions.append(mappedTX)
         }
     }
 
     private func getNextAddress() {
         wallet.walletIndex += 1
-        if let address = self.keychain?.recieveKeychain(atIndex: UInt32(wallet.walletIndex))?.address {
-            self.address = address
-            Task { await fetchTransactions() }
-        }
+        Task { await fetchTransactions() }
     }
 
     func refresh() async {

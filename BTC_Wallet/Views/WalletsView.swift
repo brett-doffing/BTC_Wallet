@@ -41,17 +41,17 @@ struct WalletsView: View {
                 )
             ) {
                 ForEach($store.wallets) { wallet in
-                    getWallet(wallet.wrappedValue)
+                    showWallet(wallet.wrappedValue)
                 }
             }
         }
         .listStyle(.insetGrouped)
     }
 
-    private func getWallet(_ wallet: Wallet) -> some View {
-        NavigationLink(wallet.name) {
-            let vm = WalletViewModel(wallet)
-            WalletView(viewModel: vm)
+    private func showWallet(_ wallet: Wallet) -> some View {
+        store.currentWallet = wallet
+        return NavigationLink(wallet.name) {
+            WalletView()
         }
         .font(.headline)
     }
