@@ -35,6 +35,17 @@ class DataStore: ObservableObject {
 
     }
 
+    func update(_ wallet: Wallet) {
+        for (i, oldWallet) in wallets.enumerated() {
+            if oldWallet.id == wallet.id {
+                wallets.remove(at: i)
+                wallets.insert(wallet, at: i)
+                save()
+                break
+            }
+        }
+    }
+
     func saveNewWallet() {
         guard let wallet = currentWallet else { return }
         wallets += [wallet]
