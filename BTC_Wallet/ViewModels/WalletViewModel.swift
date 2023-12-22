@@ -1,6 +1,5 @@
 // WalletViewModel.swift
 
-//import Foundation
 import SwiftUI
 
 @MainActor class WalletViewModel: ObservableObject {
@@ -10,6 +9,7 @@ import SwiftUI
     
     private let service = BlockstreamService()
     private var store = DataStore.shared
+    private var didUpdate = false
 
     init() {
         if let currentWallet = store.currentWallet {
@@ -29,11 +29,17 @@ import SwiftUI
             let responseData = try await service.fetchTransactions(for: address)
             if !responseData.isEmpty {
                 await MainActor.run {
+                    didUpdate = true
                     flagTXs(in: responseData)
-                    self.getNextAddress()
+                    getNextAddress()
                 }
             } else {
-                await MainActor.run { isLoading = false }
+                await MainActor.run {
+                    if didUpdate {
+                        store.update(wallet)
+                    }
+                    isLoading = false
+                }
             }
         } catch {
             print(error)
