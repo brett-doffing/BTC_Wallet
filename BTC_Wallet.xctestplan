@@ -17,8 +17,6 @@
   },
   "testTargets" : [
     {
-      "enabled" : false,
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:BTC_Wallet.xcodeproj",
         "identifier" : "BC21BAE22AF2D399005AC913",
