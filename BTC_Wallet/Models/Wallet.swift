@@ -4,10 +4,25 @@ import Foundation
 
 struct Wallet: Codable, Identifiable {
     var id = UUID()
-    var name = "New Wallet"
+    var name: String
     var changeIndex = 0
     var walletIndex = 0
-    var transactions: [TX] = []
+    private var _txs: [TX] = []
+    var transactions: [TX] {
+        get {
+            let sorted = _txs.sorted { (lhs, rhs) in
+                switch (lhs.blockTime, rhs.blockTime) {
+                case let(l?, r?): return l > r // Both lhs and rhs are not nil
+                case (nil, _): return false    // Lhs is nil
+                case (_?, nil): return true    // Lhs is not nil, rhs is nil
+                }
+            }
+            return sorted
+        }
+        set {
+            _txs = newValue
+        }
+    }
     var mnemonic: String?
 
     var keychain: BTCKeychain? {
@@ -25,4 +40,12 @@ struct Wallet: Codable, Identifiable {
     }
     var receiveAddress: String? { receiveKeychain?.address }
     var changeAddress: String? { changeKeychain?.address }
+
+    init(name: String? = nil) {
+        if let name {
+            self.name = name
+        } else {
+            self.name = "New Wallet"
+        }
+    }
 }
