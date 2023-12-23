@@ -4,7 +4,7 @@ import SwiftUI
 
 @MainActor class WalletViewModel: ObservableObject {
     @Published var isLoading = true
-    @Published var copied = false
+    @Published var copiedAddress = false
     @Published var wallet: Wallet
     
     private let service = BlockstreamService()

@@ -14,7 +14,7 @@ struct WalletView: View {
         NavigationView {
             GeometryReader { geometry in
                 if !viewModel.isLoading { content }
-                if viewModel.copied { showCopiedText(with: geometry) }
+                if viewModel.copiedAddress { showCopiedText(with: geometry) }
             }
         }
         .overlay {
@@ -55,8 +55,8 @@ struct WalletView: View {
                 .padding()
                 .onTapGesture() {
                     UIPasteboard.general.string = address
-                    withAnimation { viewModel.copied = true }
-                    withAnimation(.easeInOut.delay(1.5)) { viewModel.copied = false }
+                    withAnimation { viewModel.copiedAddress = true }
+                    withAnimation(.easeInOut.delay(1.5)) { viewModel.copiedAddress = false }
                 }
             }
         }
