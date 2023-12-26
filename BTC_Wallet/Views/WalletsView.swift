@@ -28,6 +28,8 @@ struct WalletsView: View {
             }
             .alert("Delete Wallet?", isPresented: $showDeleteAlert) {
                 deleteAlertView
+            } message: {
+                Text("Are you sure you want to delete this wallet?")
             }
             .onAppear {
                 walletName = nil
@@ -68,8 +70,6 @@ struct WalletsView: View {
 
     @ViewBuilder
     private var deleteAlertView: some View {
-        Text("Are you sure you want to delete this wallet? Please make sure you have a backup seed if necessary.")
-            .font(.headline)
         Button("delete", role: .destructive, action: {
             deleteWallet()
         })
