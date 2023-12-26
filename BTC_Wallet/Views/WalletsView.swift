@@ -7,6 +7,7 @@ struct WalletsView: View {
     @Binding var tabSelection: Tab
     @State var createNewWallet = false
     @State var showNameAlert = false
+    @State var walletSelected = false
     @State var walletName: String?
 
     var body: some View {
@@ -16,6 +17,9 @@ struct WalletsView: View {
             }
             .navigationDestination(isPresented: $createNewWallet) {
                 MnemonicView()
+            }
+            .navigationDestination(isPresented: $walletSelected) {
+                WalletView()
             }
             .alert("walletName", isPresented: $showNameAlert) {
                 TextField("walletName", text: $walletName ?? "")
@@ -28,7 +32,10 @@ struct WalletsView: View {
                 })
                 Button("cancel", role: .cancel, action: {})
             }
-            .onAppear { walletName = nil }
+            .onAppear {
+                walletName = nil
+                walletSelected = false
+            }
         }
     }
 
@@ -41,18 +48,25 @@ struct WalletsView: View {
                 )
             ) {
                 ForEach($store.wallets) { wallet in
-                    showWallet(wallet.wrappedValue)
+                    walletRow(wallet.wrappedValue)
                 }
+
             }
         }
         .listStyle(.insetGrouped)
     }
 
-    private func showWallet(_ wallet: Wallet) -> some View {
-        NavigationLink(wallet.name) {
-            let vm = WalletViewModel(wallet)
-            WalletView(viewModel: vm)
+    private func walletRow(_ wallet: Wallet) -> some View {
+        HStack {
+            Text(wallet.name)
+                .font(.headline)
+            Spacer()
+            Image(systemName: "chevron.right")
         }
-        .font(.headline)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            store.currentWallet = wallet
+            walletSelected = true
+        }
     }
 }

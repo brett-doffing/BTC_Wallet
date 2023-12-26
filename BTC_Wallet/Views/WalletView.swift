@@ -5,7 +5,7 @@ import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct WalletView: View {
-    @StateObject var viewModel: WalletViewModel
+    @StateObject var viewModel = WalletViewModel()
 
     let qrContext = CIContext()
     let qrFilter = CIFilter.qrCodeGenerator()

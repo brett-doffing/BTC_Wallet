@@ -11,8 +11,9 @@ import SwiftUI
     private var store = DataStore.shared
     private var didUpdate = false
 
-    init(_ wallet: Wallet) {
-        self.wallet = wallet
+    init() {
+        assert(store.currentWallet != nil)
+        self.wallet = store.currentWallet!
     }
 
     func fetchTransactions() async {
