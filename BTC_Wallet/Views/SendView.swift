@@ -56,7 +56,7 @@ struct SendView: View {
     }
 
     private var selectionView: some View {
-        Section(header: SectionHeaderView(heading: "UTXO Set",
+        Section(header: SectionHeaderView(heading: "Selected Outputs",
                                           callback: { viewModel.selectUTXOs = true })
         ) {
             ForEach($viewModel.selectedUTXOs, id: \.self) { $out in
