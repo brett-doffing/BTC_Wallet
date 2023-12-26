@@ -41,9 +41,8 @@ struct RecipientView: View {
     private var amountView: some View {
         HStack(alignment: .center) {
             TextField("Amount", text: $satoshis)
-                .frame(maxWidth: 200)
                 .textFieldStyle(.roundedBorder)
-            Spacer()
+                .keyboardType(.numberPad)
             Text("Satoshis")
                 .foregroundColor(.gray)
         }

@@ -55,11 +55,11 @@ struct SendView: View {
     }
 
     private var selectionView: some View {
-        Section(header: SectionHeaderView(heading: "Selected UTXO's",
+        Section(header: SectionHeaderView(heading: "UTXO Set",
                                           callback: { viewModel.selectUTXOs = true })
         ) {
             ForEach($viewModel.selectedUTXOs, id: \.self) { $out in
-                Text("\(Int($out.value.wrappedValue))")
+                selectedUTXO($out.wrappedValue)
             }
         }
     }
@@ -68,6 +68,13 @@ struct SendView: View {
         SliderLock(unlocked: $viewModel.canSend, title: "Slide to Send")
             .frame(height: 50)
         .listRowBackground(Color.clear)
+    }
+
+    private func selectedUTXO(_ vout: V_out) -> some View {
+        HStack {
+            Text("\(Int(vout.value))")
+            Text("Satoshis")
+        }
     }
 }
 
