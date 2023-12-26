@@ -19,6 +19,9 @@ struct SendView: View {
             .navigationDestination(isPresented: $viewModel.selectUTXOs) {
                 UTXOSelectionView($viewModel.selectedUTXOs)
             }
+            .navigationDestination(isPresented: $viewModel.canSend) {
+                SendSummaryView()
+            }
             .sheet(isPresented: $viewModel.isShowingScanner) {
                 CodeScannerView(
                     codeTypes: [.qr],
@@ -26,6 +29,12 @@ struct SendView: View {
                     completion: { viewModel.handleScan(result: $0) }
                 )
             }
+            .alert("Invalid Amount", isPresented: $viewModel.showAmountsAlerts) {
+                Button("ok", role: .cancel, action: {})
+            } message: {
+                Text("The value of the selected outputs does not cover the cost of the transaction.")
+            }
+
         }
     }
 
@@ -66,8 +75,12 @@ struct SendView: View {
     }
 
     private var sendView: some View {
-        SliderLock(unlocked: $viewModel.canSend, title: "Slide to Send")
-            .frame(height: 50)
+        HStack {
+            ButtonX(text: "Next") {
+                viewModel.checkToSend()
+            }
+            .buttonStyle(PrimaryButton())
+        }
         .listRowBackground(Color.clear)
     }
 
