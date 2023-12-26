@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct V_out: Codable {
+struct V_out: Codable, Hashable {
     var scriptpubkey: String
     var scriptpubkey_asm: String
     var scriptpubkey_address: String?

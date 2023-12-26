@@ -17,7 +17,7 @@ struct SendView: View {
                 }
             }
             .navigationDestination(isPresented: $viewModel.selectUTXOs) {
-                UTXOSelectionView()
+                UTXOSelectionView($viewModel.selectedUTXOs)
             }
             .sheet(isPresented: $viewModel.isShowingScanner) {
                 CodeScannerView(

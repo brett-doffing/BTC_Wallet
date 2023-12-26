@@ -10,7 +10,7 @@ import Foundation
     @Published var canSend = false
     @Published var isShowingScanner = false
     @Published var selectUTXOs = false
-    @Published var selectedUTXOs: [String] = []
+    @Published var selectedUTXOs: [V_out] = []
 
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
