@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct UTXOSelectionView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var store: DataStore
     @Binding var selectedUTXOs: [V_out]
 
@@ -27,6 +28,11 @@ struct UTXOSelectionView: View {
                     }
                 }
             }
+            ButtonX(text: "Done") {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .buttonStyle(PrimaryButton())
+            .padding()
         }
         .padding()
     }
