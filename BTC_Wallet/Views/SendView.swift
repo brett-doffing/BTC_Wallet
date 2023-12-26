@@ -49,6 +49,7 @@ struct SendView: View {
                 Spacer()
                 Text("Satoshis")
                     .foregroundColor(.gray)
+                    .padding(.leading)
             }
         }
         .listRowBackground(Color.clear)

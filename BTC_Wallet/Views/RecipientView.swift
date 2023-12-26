@@ -17,6 +17,7 @@ struct RecipientView: View {
     private var addressView: some View {
         HStack(spacing: 10) {
             TextField("Address", text: $address)
+                .truncationMode(.middle)
                 .textFieldStyle(.roundedBorder)
             Spacer()
             Button {
@@ -45,6 +46,7 @@ struct RecipientView: View {
                 .keyboardType(.numberPad)
             Text("Satoshis")
                 .foregroundColor(.gray)
+                .padding(.leading)
         }
     }
 }
