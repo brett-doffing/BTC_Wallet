@@ -29,10 +29,12 @@ struct SendView: View {
                     completion: { viewModel.handleScan(result: $0) }
                 )
             }
-            .alert("Invalid Amount", isPresented: $viewModel.showAmountsAlerts) {
-                Button("ok", role: .cancel, action: {})
+            .alert("Invalid Transaction", isPresented: $viewModel.showAlert) {
+                Button("ok", role: .cancel, action: {
+                    viewModel.alertMessage = ""
+                })
             } message: {
-                Text("The value of the selected outputs does not cover the cost of the transaction.")
+                Text(viewModel.alertMessage)
             }
 
         }
@@ -77,7 +79,7 @@ struct SendView: View {
     private var sendView: some View {
         HStack {
             ButtonX(text: "Next") {
-                viewModel.checkToSend()
+                viewModel.validateTransaction()
             }
             .buttonStyle(PrimaryButton())
         }
