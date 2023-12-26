@@ -44,8 +44,8 @@ struct SendView: View {
         Section(header: SectionHeaderView(heading: "Fee")) {
             HStack(alignment: .center) {
                 TextField("Amount", text: $viewModel.fee)
-                    .frame(maxWidth: 200)
                     .textFieldStyle(.roundedBorder)
+                    .keyboardType(.numberPad)
                 Spacer()
                 Text("Satoshis")
                     .foregroundColor(.gray)
