@@ -19,6 +19,7 @@ struct RecipientView: View {
             TextField("Address", text: $address)
                 .truncationMode(.middle)
                 .textFieldStyle(.roundedBorder)
+                .disabled(true) // only allow paste or scan
             Spacer()
             Button {
                 address = UIPasteboard.general.string ?? ""
