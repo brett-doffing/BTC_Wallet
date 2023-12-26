@@ -14,21 +14,22 @@ struct UTXOSelectionView: View {
     private var layout = [GridItem(.adaptive(minimum: 100))]
     
     var body: some View {
-        ForEach($store.wallets) { wallet in
-            Section(header:
-                HStack {
-                    Text(wallet.name.wrappedValue)
-                        .font(.title)
-                    Spacer()
-                }
-            ) {
-                LazyVGrid(columns: layout, spacing: 20) {
-                    getUTXOs(for: wallet.wrappedValue)
+        ScrollView {
+            ForEach($store.wallets) { wallet in
+                Section(header:
+                    HStack {
+                        Text(wallet.name.wrappedValue)
+                            .font(.title)
+                        Spacer()
+                    }
+                ) {
+                    LazyVGrid(columns: layout, spacing: 20) {
+                        getUTXOs(for: wallet.wrappedValue)
+                    }
                 }
             }
         }
         .padding()
-        Spacer()
     }
 
     private func getUTXOs(for wallet: Wallet) -> some View {
@@ -53,6 +54,6 @@ struct UTXOSelectionView: View {
 
 struct UTXOSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        UTXOSelectionView(store: <#T##DataStore#>, selectedUTXOs: <#T##[V_out]#>, layout: <#T##arg#>)
+        UTXOSelectionView(.constant([]))
     }
 }
