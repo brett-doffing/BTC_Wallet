@@ -4,7 +4,6 @@ import SwiftUI
 
 struct UTXOSelectionView: View {
     @EnvironmentObject var store: DataStore
-//    @StateObject var viewModel = UTXOsViewModel()
     @Binding var selectedUTXOs: [V_out]
 
     init(_ selectedUTXOs: Binding<[V_out]>) {
@@ -33,27 +32,29 @@ struct UTXOSelectionView: View {
     }
 
     private func getUTXOs(for wallet: Wallet) -> some View {
-        var utxos: [V_out] = []
+        var outs: [V_out] = []
         for tx in wallet.transactions {
             for vout in tx.v_out {
                 if vout.isTXO == true && vout.isSpent != true {
-                    utxos.append(vout)
+                    outs.append(vout)
                 }
             }
         }
-        return ForEach(utxos, id: \.self) { utxo in
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color("btcOrange"), lineWidth: 3)
-                .overlay {
-                    Text("\(Int(utxo.value))")
+        return ForEach(outs, id: \.self) { vout in
+            let isSelected = selectedUTXOs.contains(vout)
+            UTXOMiniView(vout: vout, isSelected: isSelected) { isSelected in
+                if isSelected {
+                    selectedUTXOs.append(vout)
+                } else {
+                    selectedUTXOs.removeAll(where: { $0 == vout })
                 }
-                .aspectRatio(1, contentMode: .fit)
+            }
         }
     }
 }
 
-struct UTXOSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        UTXOSelectionView(.constant([]))
-    }
-}
+//struct UTXOSelectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UTXOSelectionView(.constant([]))
+//    }
+//}

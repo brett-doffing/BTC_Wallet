@@ -58,8 +58,8 @@ struct SendView: View {
         Section(header: SectionHeaderView(heading: "Selected UTXO's",
                                           callback: { viewModel.selectUTXOs = true })
         ) {
-            ForEach($viewModel.selectedUTXOs, id: \.self) { _ in
-
+            ForEach($viewModel.selectedUTXOs, id: \.self) { $out in
+                Text("\(Int($out.value.wrappedValue))")
             }
         }
     }
