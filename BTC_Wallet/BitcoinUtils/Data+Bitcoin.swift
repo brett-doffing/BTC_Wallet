@@ -96,13 +96,13 @@ extension Array where Element == UInt8 {
         return Data((self))
     }
     
-//    func bigToLittleEndian() -> [UInt8] {
-//        var littleEndianArray: [UInt8] = []
-//        for byte in self {
-//            littleEndianArray.insert(byte.littleEndian, at: 0)
-//        }
-//        return littleEndianArray
-//    }
+    func bigToLittleEndian() -> [UInt8] {
+        var littleEndianArray: [UInt8] = []
+        for byte in self {
+            littleEndianArray.insert(byte.littleEndian, at: 0)
+        }
+        return littleEndianArray
+    }
 }
 
 // MARK: DataConvertable
