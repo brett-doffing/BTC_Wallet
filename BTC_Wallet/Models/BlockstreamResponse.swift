@@ -39,7 +39,7 @@ struct BlockstreamResponse: Codable, Identifiable {
             {
                 vout[i].isTXO = true
                 vout[i].txid = self.txid
-                vout[i].n = i
+                vout[i].n = UInt32(i)
             }
         }
 //

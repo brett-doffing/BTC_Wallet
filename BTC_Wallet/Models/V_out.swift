@@ -10,7 +10,7 @@ struct V_out: Codable, Hashable {
     var value: Double
 
     /// Non API
-    var n: Int? // Sequence number
+    var n: UInt32? // Sequence number
     var isTXO: Bool? // Flag wallet TXO
     var isChange: Bool? // Denotes wallet change
     var isSpent: Bool? // Unspent (U)TXO
