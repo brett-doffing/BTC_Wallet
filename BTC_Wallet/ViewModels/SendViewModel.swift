@@ -43,7 +43,7 @@ import Foundation
 
         guard let sendAmount = Double(amountToSend),
               let feeAmount = Double(fee),
-              total < (sendAmount + feeAmount) || total == 0
+              total < (sendAmount + feeAmount) || total != 0
         else {
             alertMessage = "The value of the selected outputs does not cover the cost of the transaction."
             showAlert = true
