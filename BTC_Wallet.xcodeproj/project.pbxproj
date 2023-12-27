@@ -94,6 +94,7 @@
 		BCBF75962B34A9D90031DE60 /* UTXOSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75952B34A9D90031DE60 /* UTXOSelectionView.swift */; };
 		BCBF759A2B34AF600031DE60 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF75992B34AF600031DE60 /* DataStore.swift */; };
 		BCBF759C2B3526870031DE60 /* Binding+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF759B2B3526870031DE60 /* Binding+Optional.swift */; };
+		BCC725F52B3C7CB200550763 /* WalletsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC725F42B3C7CB200550763 /* WalletsSheet.swift */; };
 		BCE06A212AFACE9300F5F415 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BCE06A202AFACE9300F5F415 /* CodeScanner */; };
 		BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A222AFD3EE200F5F415 /* ButtonX.swift */; };
 		BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A252B02B37900F5F415 /* ButtonStyles.swift */; };
@@ -205,6 +206,7 @@
 		BCBF75952B34A9D90031DE60 /* UTXOSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOSelectionView.swift; sourceTree = "<group>"; };
 		BCBF75992B34AF600031DE60 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BCBF759B2B3526870031DE60 /* Binding+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Optional.swift"; sourceTree = "<group>"; };
+		BCC725F42B3C7CB200550763 /* WalletsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsSheet.swift; sourceTree = "<group>"; };
 		BCE06A222AFD3EE200F5F415 /* ButtonX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonX.swift; sourceTree = "<group>"; };
 		BCE06A252B02B37900F5F415 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				BCBF75912B30BFEA0031DE60 /* AnimatedArrows.swift */,
 				BCBF75932B31DADB0031DE60 /* SliderLock.swift */,
 				BC41B8CB2B3B389A00EC8206 /* UTXOMiniView.swift */,
+				BCC725F42B3C7CB200550763 /* WalletsSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				BCE06A232AFD3EE200F5F415 /* ButtonX.swift in Sources */,
 				BC21BB562AF2D3F2005AC913 /* Mnemonic.swift in Sources */,
 				BC21BB4E2AF2D3F2005AC913 /* lax_der_parsing.swift in Sources */,
+				BCC725F52B3C7CB200550763 /* WalletsSheet.swift in Sources */,
 				BC21BB372AF2D3F1005AC913 /* KeychainPasswordItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
