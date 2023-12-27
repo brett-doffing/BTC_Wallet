@@ -1,10 +1,5 @@
-//
 //  Mnemonic.swift
-//  WalletKit
-//
-//  Created by yuzushioh on 2018/02/11.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
+
 import Foundation
 
 // https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki

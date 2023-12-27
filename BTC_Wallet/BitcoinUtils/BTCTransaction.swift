@@ -2,7 +2,7 @@
 
 import Foundation
 
-public class BTCTransaction {
+public struct BTCTransaction {
     
     static let shared = BTCTransaction()
     
@@ -31,11 +31,11 @@ public class BTCTransaction {
     11. Then the actual output script
     12. Then we write the four-byte "lock time" field: 00000000. nLockTime, can be either UNIX time or Block Height depending on usage. Before this time, the transaction cannot be accepted into a block.
     */
-    public func createTX(
+    func createTX(
         scriptSigs: [Data],
         satoshis: [UInt64],
         receivingAddresses: [String],
-        utxos: [TxOutput],
+        utxos: [V_out],
         opReturnData: Data? = nil
     ) -> Data {
         
@@ -78,32 +78,32 @@ public class BTCTransaction {
         return Data(bytes: &myInt, count: MemoryLayout.size(ofValue: myInt))
     }
     
-    private func appendScriptSig(_ rawTX: inout Data, _ scriptSigs: [Data], _ utxos: [TxOutput]) {
+    private func appendScriptSig(_ rawTX: inout Data, _ scriptSigs: [Data], _ utxos: [V_out]) {
         var coordinatedIndex = 0
         for utxo in utxos {
-            rawTX += utxo.txid!
-            if scriptSigs.count == utxos.count {
-                rawTX += utxo.n!
-                let myScriptSig = scriptSigs[coordinatedIndex]
-                let size = UInt8(myScriptSig.count)
-                rawTX += size
-                rawTX += myScriptSig
-            } else if coordinatedIndex == scriptSigs.count {
-                rawTX += utxo.n!
-                let myScriptPubKey = utxo.script
-                let size = UInt8(myScriptPubKey!.count)
-                rawTX += size
-                rawTX += myScriptPubKey!
-            } else {
-                // The zeroes represent the 32 bit int "n", and size? byte
-                let placeholderData = [UInt8](repeating: 0, count:5).data
-                rawTX += placeholderData
-            }
-            // If non-zero locktime is used, then at least one input must have a seq number below 0xffffffff
-            #warning("TODO: Account for sequence and locktime")
-            rawTX += UInt32(0xffffffff)
-            
-            coordinatedIndex += 1
+//            rawTX += utxo.txid!
+//            if scriptSigs.count == utxos.count {
+//                rawTX += utxo.n!
+//                let myScriptSig = scriptSigs[coordinatedIndex]
+//                let size = UInt8(myScriptSig.count)
+//                rawTX += size
+//                rawTX += myScriptSig
+//            } else if coordinatedIndex == scriptSigs.count {
+//                rawTX += utxo.n!
+//                let myScriptPubKey = utxo.script
+//                let size = UInt8(myScriptPubKey!.count)
+//                rawTX += size
+//                rawTX += myScriptPubKey!
+//            } else {
+//                // The zeroes represent the 32 bit int "n", and size? byte
+//                let placeholderData = [UInt8](repeating: 0, count:5).data
+//                rawTX += placeholderData
+//            }
+//            // If non-zero locktime is used, then at least one input must have a seq number below 0xffffffff
+//            #warning("TODO: Account for sequence and locktime")
+//            rawTX += UInt32(0xffffffff)
+//
+//            coordinatedIndex += 1
         }
     }
 
