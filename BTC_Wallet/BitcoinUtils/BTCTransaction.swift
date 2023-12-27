@@ -78,7 +78,11 @@ public struct BTCTransaction {
         return Data(bytes: &myInt, count: MemoryLayout.size(ofValue: myInt))
     }
     
-    private func appendScriptSig(_ rawTX: inout Data, _ scriptSigs: [Data], _ utxos: [V_out]) {
+    private func appendScriptSig(
+        _ rawTX: inout Data,
+        _ scriptSigs: [Data],
+        _ utxos: [V_out])
+    {
         var coordinatedIndex = 0
         for utxo in utxos {
             guard let txid = utxo.txid?.unhexlify().bigToLittleEndian().data,
