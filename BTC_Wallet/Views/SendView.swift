@@ -21,7 +21,7 @@ struct SendView: View {
                 UTXOSelectionView($viewModel.selectedUTXOs)
             }
             .navigationDestination(isPresented: $viewModel.canSend) {
-                SendSummaryView()
+                SendTransactionView(transaction: viewModel.transaction)
             }
             .sheet(isPresented: $viewModel.isShowingScanner) {
                 CodeScannerView(
