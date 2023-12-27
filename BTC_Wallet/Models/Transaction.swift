@@ -32,9 +32,9 @@ struct Transaction {
             receivingAddresses: receivingAddresses,
             utxos: utxos
         )
-        newRawTx += UInt32(0x00000001).littleEndian
 
         for (i, utxo) in utxos.enumerated() {
+            newRawTx += UInt32(0x00000001).littleEndian
             doubleSha256 = newRawTx.doubleSHA256().bytes
             do {
                 let signature: secp256k1_ecdsa_signature = try BTCCurve.shared.sign(
