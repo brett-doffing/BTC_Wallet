@@ -4,7 +4,7 @@ import Foundation
 
 struct Transaction {
     var receivingAddresses: [String]
-    var satoshisArray: [UInt64]
+    var receiverAmounts: [UInt64]
     var utxos: [V_out]
     var privateKeys: [[UInt8]] {
         if _privateKeys.isEmpty {
@@ -18,7 +18,7 @@ struct Transaction {
             return _privateKeys
         }
     }
-    /// Used for testing as a property that can be passed in,
+    /// A property that can be passed in for testing purposes,
     /// otherwise private keys are derived from wallets.
     var _privateKeys: [[UInt8]] = []
 
@@ -28,7 +28,7 @@ struct Transaction {
 
         var newRawTx = BTCTransaction.shared.createTX(
             scriptSigs: scriptSigs,
-            satoshis: satoshisArray,
+            satoshis: receiverAmounts,
             receivingAddresses: receivingAddresses,
             utxos: utxos
         )
@@ -58,7 +58,7 @@ struct Transaction {
 
                 newRawTx = BTCTransaction.shared.createTX(
                     scriptSigs: scriptSigs,
-                    satoshis: satoshisArray,
+                    satoshis: receiverAmounts,
                     receivingAddresses: receivingAddresses,
                     utxos: utxos
                 )
