@@ -81,29 +81,33 @@ public struct BTCTransaction {
     private func appendScriptSig(_ rawTX: inout Data, _ scriptSigs: [Data], _ utxos: [V_out]) {
         var coordinatedIndex = 0
         for utxo in utxos {
-//            rawTX += utxo.txid!
-//            if scriptSigs.count == utxos.count {
-//                rawTX += utxo.n!
-//                let myScriptSig = scriptSigs[coordinatedIndex]
-//                let size = UInt8(myScriptSig.count)
-//                rawTX += size
-//                rawTX += myScriptSig
-//            } else if coordinatedIndex == scriptSigs.count {
-//                rawTX += utxo.n!
-//                let myScriptPubKey = utxo.script
-//                let size = UInt8(myScriptPubKey!.count)
-//                rawTX += size
-//                rawTX += myScriptPubKey!
-//            } else {
-//                // The zeroes represent the 32 bit int "n", and size? byte
-//                let placeholderData = [UInt8](repeating: 0, count:5).data
-//                rawTX += placeholderData
-//            }
-//            // If non-zero locktime is used, then at least one input must have a seq number below 0xffffffff
-//            #warning("TODO: Account for sequence and locktime")
-//            rawTX += UInt32(0xffffffff)
-//
-//            coordinatedIndex += 1
+            guard let txid = utxo.txid?.unhexlify().bigToLittleEndian().data,
+                  let n = utxo.n,
+                  let script = utxo.scriptpubkey.hexData()
+            else { return }
+            rawTX += txid
+            if scriptSigs.count == utxos.count {
+                rawTX += n
+                let myScriptSig = scriptSigs[coordinatedIndex]
+                let size = UInt8(myScriptSig.count)
+                rawTX += size
+                rawTX += myScriptSig
+            } else if coordinatedIndex == scriptSigs.count {
+                rawTX += n
+                let myScriptPubKey = script
+                let size = UInt8(myScriptPubKey.count)
+                rawTX += size
+                rawTX += myScriptPubKey
+            } else {
+                // The zeroes represent the 32 bit int "n", and size? byte
+                let placeholderData = [UInt8](repeating: 0, count:5).data
+                rawTX += placeholderData
+            }
+            // If non-zero locktime is used, then at least one input must have a seq number below 0xffffffff
+            #warning("TODO: Account for sequence and locktime")
+            rawTX += UInt32(0xffffffff)
+
+            coordinatedIndex += 1
         }
     }
 
