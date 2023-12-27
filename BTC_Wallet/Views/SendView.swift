@@ -13,6 +13,7 @@ struct SendView: View {
                     recipientView
                     feeView
                     selectionView
+                    receiveChangeView
                     sendView
                 }
             }
@@ -38,6 +39,7 @@ struct SendView: View {
             }
 
         }
+        .onAppear { viewModel.changeWallet = viewModel.store.wallets.first }
     }
 
     private var recipientView: some View {
@@ -67,11 +69,26 @@ struct SendView: View {
     }
 
     private var selectionView: some View {
-        Section(header: SectionHeaderView(heading: "Selected Outputs",
-                                          callback: { viewModel.selectUTXOs = true })
+        Section(header: SectionHeaderView(
+            heading: "Selected Outputs",
+            callback: { viewModel.selectUTXOs = true })
         ) {
             ForEach($viewModel.selectedUTXOs, id: \.self) { $out in
                 selectedUTXO($out.wrappedValue)
+            }
+        }
+    }
+
+    private var receiveChangeView: some View {
+        Section(header: SectionHeaderView(
+            heading: "Receive change wallet",
+            btnIcon: Image(systemName: "pencil"),
+            callback: { viewModel.showWalletSheet = true })
+        ) {
+            if let changeWallet = $viewModel.changeWallet.wrappedValue {
+                Text(changeWallet.name)
+            } else {
+                EmptyView()
             }
         }
     }

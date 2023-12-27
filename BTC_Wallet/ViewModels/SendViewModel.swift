@@ -9,11 +9,14 @@ import Foundation
     @Published var amountToSend = ""
     @Published var canSend = false
     @Published var showAlert = false
+    @Published var showWalletSheet = false
     @Published var isShowingScanner = false
     @Published var selectUTXOs = false
     @Published var selectedUTXOs: [V_out] = []
+    @Published var changeWallet: Wallet?
 
     var alertMessage = ""
+    var store = DataStore.shared
 
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
@@ -51,5 +54,29 @@ import Foundation
         }
 
         canSend = true
+    }
+
+    func createTransaction() {
+        // Send and change addresses
+        // amount to change address should be utxo total - send amount - fee
+        // check if amounts, like fees, work
+        var total = 0.0
+
+        for vout in selectedUTXOs {
+            total += vout.value
+        }
+
+        guard let sendAmount = Double(amountToSend),
+              let feeAmount = Double(fee),
+              total < (sendAmount + feeAmount) || total != 0
+        else { return }
+
+        let hasChange = false
+
+//        let transaction = Transaction(
+//            receivingAddresses: <#T##[String]#>,
+//            receiverAmounts: <#T##[UInt64]#>,
+//            utxos: selectedUTXOs
+//        )
     }
 }
