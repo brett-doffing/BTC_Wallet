@@ -70,7 +70,8 @@ import Foundation
         transaction = Transaction(
             receivingAddresses: receivingAddresses,
             receiverAmounts: receiverAmounts,
-            utxos: selectedUTXOs
+            utxos: selectedUTXOs,
+            fee: Int(feeAmount)
         )
 
         canSend = true

@@ -6,6 +6,12 @@ struct Transaction {
     var receivingAddresses: [String]
     var receiverAmounts: [UInt64]
     var utxos: [V_out]
+    var fee: Int
+    // TODO: per vByte
+    var feePerByte: Int {
+        guard let rawTX else { return 0 }
+        return Int(fee / rawTX.bytes.count)
+    }
     var privateKeys: [[UInt8]] {
         if _privateKeys.isEmpty {
             return utxos.compactMap { vout in
