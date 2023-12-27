@@ -22,8 +22,9 @@ final class TransactionTests: XCTestCase {
         // When
         let transaction = Transaction(
             receivingAddresses: addressArray,
-            satoshisArray: satoshisArray,
+            receiverAmounts: satoshisArray,
             utxos: [utxo],
+            fee: 0, /* unused here */
             _privateKeys: [privateKey]
         )
         // Then
@@ -58,8 +59,9 @@ final class TransactionTests: XCTestCase {
         // When
         let transaction = Transaction(
             receivingAddresses: addressArray,
-            satoshisArray: satoshisArray,
+            receiverAmounts: satoshisArray,
             utxos: [utxo1, utxo2],
+            fee: 0, /* unused here */
             _privateKeys: [privateKey1, privateKey2]
         )
         // Then
