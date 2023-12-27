@@ -75,7 +75,7 @@
 		BC21BB812AF2F074005AC913 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB802AF2F074005AC913 /* WalletsView.swift */; };
 		BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC21BB822AF2F15E005AC913 /* WalletView.swift */; };
 		BC41B8CC2B3B389A00EC8206 /* UTXOMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CB2B3B389A00EC8206 /* UTXOMiniView.swift */; };
-		BC41B8CE2B3B786C00EC8206 /* SendSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CD2B3B786C00EC8206 /* SendSummaryView.swift */; };
+		BC41B8CE2B3B786C00EC8206 /* SendTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CD2B3B786C00EC8206 /* SendTransactionView.swift */; };
 		BC41B8D02B3BA32E00EC8206 /* BTCTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CF2B3BA32E00EC8206 /* BTCTransaction.swift */; };
 		BC41B8D42B3BB10300EC8206 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8D32B3BB10300EC8206 /* Transaction.swift */; };
 		BC41B8D62B3BC6E200EC8206 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8D52B3BC6E200EC8206 /* TransactionTests.swift */; };
@@ -187,7 +187,7 @@
 		BC21BB802AF2F074005AC913 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
 		BC21BB822AF2F15E005AC913 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		BC41B8CB2B3B389A00EC8206 /* UTXOMiniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOMiniView.swift; sourceTree = "<group>"; };
-		BC41B8CD2B3B786C00EC8206 /* SendSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSummaryView.swift; sourceTree = "<group>"; };
+		BC41B8CD2B3B786C00EC8206 /* SendTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionView.swift; sourceTree = "<group>"; };
 		BC41B8CF2B3BA32E00EC8206 /* BTCTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCTransaction.swift; sourceTree = "<group>"; };
 		BC41B8D32B3BB10300EC8206 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		BC41B8D52B3BC6E200EC8206 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
@@ -381,7 +381,7 @@
 				BCFD2D842AF44A7200A9A94E /* QuizView.swift */,
 				BC1981242B222C980003ABEC /* AuthView.swift */,
 				BCBF75952B34A9D90031DE60 /* UTXOSelectionView.swift */,
-				BC41B8CD2B3B786C00EC8206 /* SendSummaryView.swift */,
+				BC41B8CD2B3B786C00EC8206 /* SendTransactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -609,7 +609,7 @@
 				BCE06A262B02B37900F5F415 /* ButtonStyles.swift in Sources */,
 				BC1981252B222C980003ABEC /* AuthView.swift in Sources */,
 				BC21BB452AF2D3F2005AC913 /* scalar_impl.swift in Sources */,
-				BC41B8CE2B3B786C00EC8206 /* SendSummaryView.swift in Sources */,
+				BC41B8CE2B3B786C00EC8206 /* SendTransactionView.swift in Sources */,
 				BC21BB392AF2D3F2005AC913 /* Data+Bitcoin.swift in Sources */,
 				BC21BB412AF2D3F2005AC913 /* gen_context.swift in Sources */,
 				BC21BB422AF2D3F2005AC913 /* group_impl.swift in Sources */,
