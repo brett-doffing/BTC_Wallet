@@ -77,6 +77,8 @@
 		BC41B8CC2B3B389A00EC8206 /* UTXOMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CB2B3B389A00EC8206 /* UTXOMiniView.swift */; };
 		BC41B8CE2B3B786C00EC8206 /* SendSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CD2B3B786C00EC8206 /* SendSummaryView.swift */; };
 		BC41B8D02B3BA32E00EC8206 /* BTCTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8CF2B3BA32E00EC8206 /* BTCTransaction.swift */; };
+		BC41B8D42B3BB10300EC8206 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8D32B3BB10300EC8206 /* Transaction.swift */; };
+		BC41B8D62B3BC6E200EC8206 /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41B8D52B3BC6E200EC8206 /* TransactionTests.swift */; };
 		BC6285212B1BA66C00EDFDB2 /* BlockstreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */; };
 		BC6285232B1BBD8D00EDFDB2 /* BlockstreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */; };
 		BC6285262B1BBF7800EDFDB2 /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6285252B1BBF7800EDFDB2 /* String+Error.swift */; };
@@ -186,6 +188,8 @@
 		BC41B8CB2B3B389A00EC8206 /* UTXOMiniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTXOMiniView.swift; sourceTree = "<group>"; };
 		BC41B8CD2B3B786C00EC8206 /* SendSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSummaryView.swift; sourceTree = "<group>"; };
 		BC41B8CF2B3BA32E00EC8206 /* BTCTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCTransaction.swift; sourceTree = "<group>"; };
+		BC41B8D32B3BB10300EC8206 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		BC41B8D52B3BC6E200EC8206 /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		BC6285202B1BA66C00EDFDB2 /* BlockstreamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamService.swift; sourceTree = "<group>"; };
 		BC6285222B1BBD8D00EDFDB2 /* BlockstreamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockstreamResponse.swift; sourceTree = "<group>"; };
 		BC6285252B1BBF7800EDFDB2 /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 				BC21BB5F2AF2D415005AC913 /* MnemonicTests.swift */,
 				BC21BB5C2AF2D414005AC913 /* BTC_WalletTests-Bridging-Header.h */,
 				BC1E79482B16679F00F68FAB /* Base58Tests.swift */,
+				BC41B8D52B3BC6E200EC8206 /* TransactionTests.swift */,
 			);
 			path = BTC_WalletTests;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				BC6285292B1D354A00EDFDB2 /* V_out.swift */,
 				BC62852B2B1D35C100EDFDB2 /* V_in.swift */,
 				BC62852D2B1D362000EDFDB2 /* Wallet.swift */,
+				BC41B8D32B3BB10300EC8206 /* Transaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 				BCBF759A2B34AF600031DE60 /* DataStore.swift in Sources */,
 				BC21BB532AF2D3F2005AC913 /* PBInt.swift in Sources */,
 				BC21BB832AF2F15E005AC913 /* WalletView.swift in Sources */,
+				BC41B8D42B3BB10300EC8206 /* Transaction.swift in Sources */,
 				BC21BB6F2AF2D645005AC913 /* MnemonicWordView.swift in Sources */,
 				BC21BB542AF2D3F2005AC913 /* BTCKeychainType.swift in Sources */,
 				BC62852C2B1D35C100EDFDB2 /* V_in.swift in Sources */,
@@ -643,6 +650,7 @@
 			files = (
 				BCE06A2D2B0562C200F5F415 /* QuizVMTests.swift in Sources */,
 				BC1E79492B16679F00F68FAB /* Base58Tests.swift in Sources */,
+				BC41B8D62B3BC6E200EC8206 /* TransactionTests.swift in Sources */,
 				BCBF75902B29F5CE0031DE60 /* MnemonicVMTests.swift in Sources */,
 				BC21BB642AF2D415005AC913 /* MnemonicTests.swift in Sources */,
 				BC21BB652AF2D415005AC913 /* BTCKeychainTests.swift in Sources */,
