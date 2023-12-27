@@ -15,4 +15,5 @@ struct V_out: Codable, Hashable {
     var isChange: Bool? // Denotes wallet change
     var isSpent: Bool? // Unspent (U)TXO
     var txid: String? // Used for TX creation?
+    var walletId: UUID? // Used for TX creation
 }

@@ -32,7 +32,7 @@ struct BlockstreamResponse: Codable, Identifiable {
         )
     }
 
-    mutating func map(to address: String) {
+    mutating func map(to address: String, and walletId: UUID) {
         for (i, _) in vout.enumerated() {
             if let vOutAddr = vout[i].scriptpubkey_address,
                vOutAddr == address
@@ -40,6 +40,7 @@ struct BlockstreamResponse: Codable, Identifiable {
                 vout[i].isTXO = true
                 vout[i].txid = self.txid
                 vout[i].n = UInt32(i)
+                vout[i].walletId = walletId
             }
         }
 //

@@ -48,7 +48,7 @@ import SwiftUI
         var txs = txs
         for (i, _) in txs.enumerated() {
             if let address = wallet.receiveAddress {
-                txs[i].map(to: address)
+                txs[i].map(to: address, and: wallet.id)
             }
             let mappedTX = txs[i].mapped()
             wallet.transactions.append(mappedTX)
