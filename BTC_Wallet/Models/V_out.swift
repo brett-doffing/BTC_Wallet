@@ -16,4 +16,5 @@ struct V_out: Codable, Hashable {
     var isSpent: Bool? // Unspent (U)TXO
     var txid: String? // Used for TX creation?
     var walletId: UUID? // Used for TX creation
+    var walletIndex: Int? // Used for TX creation
 }
