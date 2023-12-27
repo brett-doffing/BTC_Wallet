@@ -2,11 +2,11 @@
 
 import Foundation
 
-class Transaction {
-    var receivingAddresses: [String] = []
-    var receiverAmounts: [UInt64] = []
-    var utxos: [V_out] = []
-    var fee: Int = 0
+struct Transaction {
+    var receivingAddresses: [String]
+    var receiverAmounts: [UInt64]
+    var utxos: [V_out]
+    var fee: Int
     var feePerVByte: Int {
         guard let rawTX else { return 0 }
         // Factor of four to convert bytes to weight units
@@ -28,56 +28,50 @@ class Transaction {
     /// otherwise private keys are derived from wallets.
     var _privateKeys: [[UInt8]] = []
 
-    private(set) var _rawTX: Data?
     var rawTX: Data? {
-        if let _rawTX {
-            return _rawTX
-        } else {
-            var scriptSigs: [Data] = []
-            var doubleSha256: [UInt8]
+        var scriptSigs: [Data] = []
+        var doubleSha256: [UInt8]
 
-            var newRawTx = BTCTransaction.shared.createTX(
-                scriptSigs: scriptSigs,
-                satoshis: receiverAmounts,
-                receivingAddresses: receivingAddresses,
-                utxos: utxos
-            )
+        var newRawTx = BTCTransaction.shared.createTX(
+            scriptSigs: scriptSigs,
+            satoshis: receiverAmounts,
+            receivingAddresses: receivingAddresses,
+            utxos: utxos
+        )
 
-            for (i, utxo) in utxos.enumerated() {
-                newRawTx += UInt32(0x00000001).littleEndian
-                doubleSha256 = newRawTx.doubleSHA256().bytes
-                do {
-                    let signature: secp256k1_ecdsa_signature = try BTCCurve.shared.sign(
-                        key: privateKeys[i],
-                        message: doubleSha256
-                    )
-                    let publicKey = try BTCCurve.shared.generatePublicKey(
-                        privateKey: privateKeys[i].data
-                    )
-                    var encodedSig = try BTCCurve.shared.encodeDER(signature: signature)
-                    guard let scriptPubKey = utxo.scriptpubkey.hexData()?.bytes else { return nil }
+        for (i, utxo) in utxos.enumerated() {
+            newRawTx += UInt32(0x00000001).littleEndian
+            doubleSha256 = newRawTx.doubleSHA256().bytes
+            do {
+                let signature: secp256k1_ecdsa_signature = try BTCCurve.shared.sign(
+                    key: privateKeys[i],
+                    message: doubleSha256
+                )
+                let publicKey = try BTCCurve.shared.generatePublicKey(
+                    privateKey: privateKeys[i].data
+                )
+                var encodedSig = try BTCCurve.shared.encodeDER(signature: signature)
+                guard let scriptPubKey = utxo.scriptpubkey.hexData()?.bytes else { return nil }
 
-                    encodedSig = BTCCurve.shared.appendDERbytes(
-                        encodedDERSig: encodedSig,
-                        hashType: 0x01,
-                        scriptPubKey: scriptPubKey,
-                        pubkey: publicKey.bytes
-                    )
+                encodedSig = BTCCurve.shared.appendDERbytes(
+                    encodedDERSig: encodedSig,
+                    hashType: 0x01,
+                    scriptPubKey: scriptPubKey,
+                    pubkey: publicKey.bytes
+                )
 
-                    scriptSigs.append(encodedSig.data)
+                scriptSigs.append(encodedSig.data)
 
-                    newRawTx = BTCTransaction.shared.createTX(
-                        scriptSigs: scriptSigs,
-                        satoshis: receiverAmounts,
-                        receivingAddresses: receivingAddresses,
-                        utxos: utxos
-                    )
-                } catch {
-                    return nil
-                }
+                newRawTx = BTCTransaction.shared.createTX(
+                    scriptSigs: scriptSigs,
+                    satoshis: receiverAmounts,
+                    receivingAddresses: receivingAddresses,
+                    utxos: utxos
+                )
+            } catch {
+                return nil
             }
-            _rawTX = newRawTx
-            return _rawTX
         }
+        return newRawTx
     }
 }
