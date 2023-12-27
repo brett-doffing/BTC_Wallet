@@ -17,6 +17,7 @@ import Foundation
 
     var alertMessage = ""
     var store = DataStore.shared
+    var transaction: Transaction?
 
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
@@ -53,30 +54,25 @@ import Foundation
             return
         }
 
-        canSend = true
-    }
+        var receivingAddresses = [address]
+        var receiverAmounts = [UInt64(sendAmount)]
 
-    func createTransaction() {
-        // Send and change addresses
-        // amount to change address should be utxo total - send amount - fee
-        // check if amounts, like fees, work
-        var total = 0.0
+        let change = total - sendAmount - feeAmount
 
-        for vout in selectedUTXOs {
-            total += vout.value
+        if change > 0 {
+            if let changeAddress = changeWallet?.changeAddress {
+                receivingAddresses.append(changeAddress)
+                receiverAmounts.append(UInt64(change))
+            }
         }
 
-        guard let sendAmount = Double(amountToSend),
-              let feeAmount = Double(fee),
-              total < (sendAmount + feeAmount) || total != 0
-        else { return }
+        // TODO: calculate satoshis per (v)byte
+        transaction = Transaction(
+            receivingAddresses: receivingAddresses,
+            receiverAmounts: receiverAmounts,
+            utxos: selectedUTXOs
+        )
 
-        let hasChange = false
-
-//        let transaction = Transaction(
-//            receivingAddresses: <#T##[String]#>,
-//            receiverAmounts: <#T##[UInt64]#>,
-//            utxos: selectedUTXOs
-//        )
+        canSend = true
     }
 }
