@@ -40,8 +40,8 @@ struct BlockstreamResponse: Codable, Identifiable {
                 vout[i].isTXO = true
                 vout[i].txid = self.txid
                 vout[i].n = UInt32(i)
-                vout[i].walletId = wallet.id
-                vout[i].walletIndex = wallet.walletIndex
+                vout[i].walletId = wallet.id.uuidString
+                vout[i].walletIndex = UInt32(wallet.walletIndex)
             }
         }
 //
