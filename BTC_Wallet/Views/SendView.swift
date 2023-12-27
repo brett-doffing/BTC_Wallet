@@ -30,6 +30,11 @@ struct SendView: View {
                     completion: { viewModel.handleScan(result: $0) }
                 )
             }
+            .sheet(isPresented: $viewModel.showWalletSheet) {
+                WalletsSheet { wallet in
+                    viewModel.changeWallet = wallet
+                }
+            }
             .alert("Invalid Transaction", isPresented: $viewModel.showAlert) {
                 Button("ok", role: .cancel, action: {
                     viewModel.alertMessage = ""
@@ -39,7 +44,11 @@ struct SendView: View {
             }
 
         }
-        .onAppear { viewModel.changeWallet = viewModel.store.wallets.first }
+        .onAppear {
+            if viewModel.changeWallet == nil {
+                viewModel.changeWallet = viewModel.store.wallets.first
+            }
+        }
     }
 
     private var recipientView: some View {
@@ -81,12 +90,12 @@ struct SendView: View {
 
     private var receiveChangeView: some View {
         Section(header: SectionHeaderView(
-            heading: "Receive change wallet",
+            heading: "wallet to receive change",
             btnIcon: Image(systemName: "pencil"),
             callback: { viewModel.showWalletSheet = true })
         ) {
             if let changeWallet = $viewModel.changeWallet.wrappedValue {
-                Text(changeWallet.name)
+                Text(changeWallet.name).font(.headline)
             } else {
                 EmptyView()
             }
