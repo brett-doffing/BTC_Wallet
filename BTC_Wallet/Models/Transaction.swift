@@ -3,6 +3,22 @@
 import Foundation
 
 struct Transaction {
+    internal init(
+        receivingAddresses: [String],
+        receiverAmounts: [UInt64],
+        utxos: [V_out],
+        fee: Int,
+        _privateKeys: [[UInt8]] = []
+    ) {
+        self.receivingAddresses = receivingAddresses
+        self.receiverAmounts = receiverAmounts
+        self.utxos = utxos
+        self.fee = fee
+        self._privateKeys = _privateKeys
+
+        self.rawTX = getRawTX()
+    }
+
     var receivingAddresses: [String]
     var receiverAmounts: [UInt64]
     var utxos: [V_out]
@@ -24,11 +40,13 @@ struct Transaction {
             return _privateKeys
         }
     }
-    /// A property that can be passed in for testing purposes,
+    var rawTX: Data?
+
+    /// Temp property that can be passed in for testing purposes,
     /// otherwise private keys are derived from wallets.
     var _privateKeys: [[UInt8]] = []
 
-    var rawTX: Data? {
+    private func getRawTX() -> Data? {
         var scriptSigs: [Data] = []
         var doubleSha256: [UInt8]
 
