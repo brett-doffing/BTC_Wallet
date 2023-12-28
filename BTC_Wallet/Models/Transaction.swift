@@ -16,7 +16,7 @@ struct Transaction {
         self.fee = fee
         self._privateKeys = _privateKeys
 
-        self.rawTX = getRawTX()
+        self.rawTX = setRawTX()
     }
 
     var receivingAddresses: [String]
@@ -46,7 +46,7 @@ struct Transaction {
     /// otherwise private keys are derived from wallets.
     var _privateKeys: [[UInt8]] = []
 
-    private func getRawTX() -> Data? {
+    private func setRawTX() -> Data? {
         var scriptSigs: [Data] = []
         var doubleSha256: [UInt8]
 

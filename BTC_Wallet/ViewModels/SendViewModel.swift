@@ -14,6 +14,7 @@ import Foundation
     @Published var selectUTXOs = false
     @Published var selectedUTXOs: [V_out] = []
     @Published var changeWallet: Wallet?
+    @Published var isLoading = false
 
     var alertMessage = ""
     var store = DataStore.shared
@@ -66,14 +67,25 @@ import Foundation
             }
         }
 
-        // TODO: calculate satoshis per (v)byte
-        transaction = Transaction(
-            receivingAddresses: receivingAddresses,
-            receiverAmounts: receiverAmounts,
-            utxos: selectedUTXOs,
-            fee: Int(feeAmount)
-        )
+        createTransaction(addresses: receivingAddresses, amounts: receiverAmounts, fee: Int(feeAmount))
+    }
 
-        canSend = true
+    private func createTransaction(addresses: [String], amounts: [UInt64], fee: Int) {
+        isLoading = true
+        let utxos = selectedUTXOs
+        DispatchQueue.global(qos: .background).async {
+            let tx = Transaction(
+                receivingAddresses: addresses,
+                receiverAmounts: amounts,
+                utxos: utxos,
+                fee: fee
+            )
+
+            DispatchQueue.main.async { [unowned self] in
+                self.transaction = tx
+                self.canSend = true
+                self.isLoading = false
+            }
+        }
     }
 }

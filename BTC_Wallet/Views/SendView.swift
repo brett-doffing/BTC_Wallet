@@ -17,6 +17,10 @@ struct SendView: View {
                     sendView
                 }
             }
+            .disabled(viewModel.isLoading)
+            .overlay {
+                if viewModel.isLoading { ProgressView("Creating Transaction").scaleEffect(1.5) }
+            }
             .navigationDestination(isPresented: $viewModel.selectUTXOs) {
                 UTXOSelectionView($viewModel.selectedUTXOs)
             }
