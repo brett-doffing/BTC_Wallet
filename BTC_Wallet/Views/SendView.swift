@@ -19,16 +19,9 @@ struct SendView: View {
                 }
             }
             .disabled(viewModel.isLoading)
+            .toolbar { doneBar }
             .overlay {
                 if viewModel.isLoading { ProgressView("Processing").scaleEffect(1.5) }
-            }
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        focusedField = nil
-                    }
-                }
             }
             .navigationDestination(isPresented: $viewModel.selectUTXOs) {
                 UTXOSelectionView($viewModel.selectedUTXOs)
@@ -37,11 +30,7 @@ struct SendView: View {
                 SendTransactionView(transaction: viewModel.transaction)
             }
             .sheet(isPresented: $viewModel.isShowingScanner) {
-                CodeScannerView(
-                    codeTypes: [.qr],
-                    simulatedData: "bitcoin:n3qSUp3c5x6tKD3qYmwe28WnEHBTvNyNic",
-                    completion: { viewModel.handleScan(result: $0) }
-                )
+                codeScanner
             }
             .sheet(isPresented: $viewModel.showWalletSheet) {
                 WalletsSheet { wallet in
@@ -125,6 +114,23 @@ struct SendView: View {
             .buttonStyle(PrimaryButton())
         }
         .listRowBackground(Color.clear)
+    }
+
+    private var codeScanner: some View {
+        CodeScannerView(
+            codeTypes: [.qr],
+            simulatedData: "bitcoin:n3qSUp3c5x6tKD3qYmwe28WnEHBTvNyNic",
+            completion: { viewModel.handleScan(result: $0) }
+        )
+    }
+
+    private var doneBar: ToolbarItemGroup<some View> {
+        ToolbarItemGroup(placement: .keyboard) {
+            Spacer()
+            Button("Done") {
+                focusedField = nil
+            }
+        }
     }
 
     private func selectedUTXO(_ vout: V_out) -> some View {
