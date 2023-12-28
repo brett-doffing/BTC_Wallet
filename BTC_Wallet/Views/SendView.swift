@@ -109,6 +109,7 @@ struct SendView: View {
     private var sendView: some View {
         HStack {
             ButtonX(text: "Next") {
+                resignFirstResponder()
                 viewModel.validateTransaction()
             }
             .buttonStyle(PrimaryButton())
@@ -138,6 +139,10 @@ struct SendView: View {
             Text("\(Int(vout.value))")
             Text("Satoshis")
         }
+    }
+
+    private func resignFirstResponder() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
