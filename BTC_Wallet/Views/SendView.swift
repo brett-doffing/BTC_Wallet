@@ -5,6 +5,7 @@ import SwiftUI
 
 struct SendView: View {
     @StateObject var viewModel = SendViewModel()
+    @FocusState private var focusedField: Bool?
     
     var body: some View {
         NavigationStack {
@@ -19,7 +20,15 @@ struct SendView: View {
             }
             .disabled(viewModel.isLoading)
             .overlay {
-                if viewModel.isLoading { ProgressView("Creating Transaction").scaleEffect(1.5) }
+                if viewModel.isLoading { ProgressView("Processing").scaleEffect(1.5) }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focusedField = nil
+                    }
+                }
             }
             .navigationDestination(isPresented: $viewModel.selectUTXOs) {
                 UTXOSelectionView($viewModel.selectedUTXOs)
@@ -60,7 +69,8 @@ struct SendView: View {
             RecipientView(
                 address: $viewModel.address,
                 satoshis: $viewModel.amountToSend,
-                showScanner: $viewModel.isShowingScanner
+                showScanner: $viewModel.isShowingScanner,
+                focus: $focusedField
             )
         }
         .listRowBackground(Color.clear)
@@ -70,6 +80,7 @@ struct SendView: View {
         Section(header: SectionHeaderView(heading: "Fee")) {
             HStack(alignment: .center) {
                 TextField("Amount", text: $viewModel.fee)
+                    .focused($focusedField, equals: true)
                     .textFieldStyle(.roundedBorder)
                     .keyboardType(.numberPad)
                 Spacer()
