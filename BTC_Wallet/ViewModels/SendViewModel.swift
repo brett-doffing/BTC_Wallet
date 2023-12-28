@@ -41,17 +41,20 @@ import Foundation
 
         // TODO: validate bitcoin address
         if address == "" {
-            alertMessage = "Address field is empty."
-            showAlert = true
+            showAlert(message: "Address field is empty.")
             return
         }
 
         guard let sendAmount = Double(amountToSend),
               let feeAmount = Double(fee),
-              total < (sendAmount + feeAmount) || total != 0
+              total != 0
         else {
-            alertMessage = "The value of the selected outputs does not cover the cost of the transaction."
-            showAlert = true
+            showAlert(message: "Invalid amounts")
+            return
+        }
+
+        if total < (sendAmount + feeAmount) {
+            showAlert(message: "The value of the selected outputs does not cover the cost of the transaction.")
             return
         }
 
@@ -87,5 +90,10 @@ import Foundation
                 self.isLoading = false
             }
         }
+    }
+
+    private func showAlert(message: String) {
+        alertMessage = message
+        showAlert = true
     }
 }
