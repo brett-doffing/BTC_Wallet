@@ -19,6 +19,7 @@ import Foundation
     var alertMessage = ""
     var store = DataStore.shared
     var transaction: Transaction?
+    let service = BlockstreamService()
 
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
