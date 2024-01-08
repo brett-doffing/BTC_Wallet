@@ -4,6 +4,7 @@ import Foundation
 
 protocol BlockstreamServiceable {
     func fetchTransactions(for address: String) async throws -> [BlockstreamResponse]
+    func post(rawTX: String) async throws -> String
 }
 
 struct BlockstreamService: BlockstreamServiceable {
@@ -15,14 +16,19 @@ struct BlockstreamService: BlockstreamServiceable {
 
      - Parameters:
         - address: The address to fetch transactions for
-
      - Returns: An array of `BlockstreamResponse` objects
      */
     func fetchTransactions(for address: String) async throws -> [BlockstreamResponse] {
-        var urlString = baseURL + "address/\(address)/txs"
+        let urlString = baseURL + "address/\(address)/txs"
         return try await request(with: urlString, type: [BlockstreamResponse].self)
     }
 
+    /**
+    Posts a raw transaction to the Blockstream API
+    - Parameters:
+       - rawTX: The raw transaction to post
+    - Returns: The transaction ID
+    */
     func post(rawTX: String) async throws -> String {
         let urlString = baseURL + "tx"
         guard let url = URL(string: urlString) else { throw NetworkError.invalidURL }
@@ -46,6 +52,13 @@ struct BlockstreamService: BlockstreamServiceable {
         }
     }
 
+    /**
+     Generic request function
+     - Parameters:
+        - urlString: The URL to request
+        - type: The type to decode the response to
+     - Returns: The decoded response
+     */
     func request<T: Codable>(with urlString: String, type: T.Type) async throws -> T {
         guard let url = URL(string: urlString) else { throw NetworkError.invalidURL }
 
