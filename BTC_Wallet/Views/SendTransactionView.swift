@@ -5,6 +5,7 @@ import SwiftUI
 struct SendTransactionView: View {
     @State var canSend = false
     @State var transaction: Transaction?
+    let service = BlockstreamService()
 
     var body: some View {
         VStack {
@@ -31,12 +32,22 @@ struct SendTransactionView: View {
                 .padding()
         }
         .onChange(of: canSend) { newValue in
-            if canSend, let tx = transaction?.rawTX {
-                print(tx)
-                print("HEX Count: \(tx.hexDescription().count)")
-                print("BYTES Count: \(tx.bytes.count)")
-                canSend = false
+            if canSend, let rawTX = transaction?.rawTX {
+                print("HEX TX: \(rawTX.hexDescription())")
+//                Task {
+//                    await send(rawTX)
+//                }
             }
+            canSend = false
+        }
+    }
+
+    private func send(_ rawTX: Data) async {
+        do {
+            let txID = try await service.post(rawTX: rawTX)
+            print(txID)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

@@ -4,7 +4,7 @@ import Foundation
 
 protocol BlockstreamServiceable {
     func fetchTransactions(for address: String) async throws -> [BlockstreamResponse]
-    func post(rawTX: String) async throws -> String
+    func post(rawTX: Data) async throws -> String
 }
 
 struct BlockstreamService: BlockstreamServiceable {
@@ -29,15 +29,14 @@ struct BlockstreamService: BlockstreamServiceable {
        - rawTX: The raw transaction to post
     - Returns: The transaction ID
     */
-    func post(rawTX: String) async throws -> String {
+    func post(rawTX: Data) async throws -> String {
         let urlString = baseURL + "tx"
         guard let url = URL(string: urlString) else { throw NetworkError.invalidURL }
         
         var request = URLRequest(url: url)
         request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        guard let txData = rawTX.data(using: .utf8) else { throw NetworkError.failedToEncode }
-        request.httpBody = txData
+        request.httpBody = rawTX
 
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
