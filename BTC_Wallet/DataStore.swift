@@ -23,16 +23,24 @@ class DataStore: ObservableObject {
     }
 
     func load() {
-        let fileURL = URL.documentsDirectory.appending(path: "Wallets.json")
-        if FileManager().fileExists(atPath: fileURL.path) {
+//        let fileURL = URL.documentsDirectory.appending(path: "WalletMock.json")
+//        if FileManager().fileExists(atPath: fileURL.path) {
+//            do {
+//                let walletsData = try Data(contentsOf: fileURL)
+//                wallets = try JSONDecoder().decode([Wallet].self, from: walletsData)
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+        if let path = Bundle.main.path(forResource: "WalletMock", ofType: "json") {
             do {
-                let walletsData = try Data(contentsOf: fileURL)
+                let walletsData = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: walletsData, options: .mutableLeaves)
                 wallets = try JSONDecoder().decode([Wallet].self, from: walletsData)
-            } catch {
-                print(error.localizedDescription)
-            }
+              } catch {
+                // handle error
+              }
         }
-
     }
 
     func update(_ wallet: Wallet) {
@@ -70,3 +78,13 @@ class DataStore: ObservableObject {
         }
     }
 }
+
+//extension Data {
+//    var prettyPrintedJSONString: NSString? { /// NSString gives us a nice sanitized debugDescription
+//        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+//              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+//              let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
+//
+//        return prettyPrintedString
+//    }
+//}
