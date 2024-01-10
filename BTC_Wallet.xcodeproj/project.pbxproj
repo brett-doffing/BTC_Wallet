@@ -101,6 +101,7 @@
 		BCE06A282B03D06D00F5F415 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCE06A272B03D06D00F5F415 /* Localizable.strings */; };
 		BCE06A2A2B05485300F5F415 /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A292B05485300F5F415 /* WalletViewModel.swift */; };
 		BCE06A2D2B0562C200F5F415 /* QuizVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE06A2C2B0562C200F5F415 /* QuizVMTests.swift */; };
+		BCFCA3DC2B4F015600F27F00 /* WalletMock.json in Resources */ = {isa = PBXBuildFile; fileRef = BCFCA3DB2B4F015600F27F00 /* WalletMock.json */; };
 		BCFD2D852AF44A7200A9A94E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D842AF44A7200A9A94E /* QuizView.swift */; };
 		BCFD2D872AF44A9300A9A94E /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -212,6 +213,7 @@
 		BCE06A272B03D06D00F5F415 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BCE06A292B05485300F5F415 /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		BCE06A2C2B0562C200F5F415 /* QuizVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizVMTests.swift; sourceTree = "<group>"; };
+		BCFCA3DB2B4F015600F27F00 /* WalletMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WalletMock.json; sourceTree = "<group>"; };
 		BCFD2D842AF44A7200A9A94E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		BCFD2D862AF44A9300A9A94E /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		BCFD2D882AF5AFC100A9A94E /* BTC_Wallet.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BTC_Wallet.xctestplan; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				BC1981272B24B8BD0003ABEC /* PreviewMocks.swift */,
+				BCFCA3DB2B4F015600F27F00 /* WalletMock.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 			files = (
 				BC21BADE2AF2D399005AC913 /* Preview Assets.xcassets in Resources */,
 				BCE06A282B03D06D00F5F415 /* Localizable.strings in Resources */,
+				BCFCA3DC2B4F015600F27F00 /* WalletMock.json in Resources */,
 				BC21BADB2AF2D399005AC913 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
