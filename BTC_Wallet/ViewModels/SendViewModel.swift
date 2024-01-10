@@ -19,8 +19,8 @@ import Foundation
     var alertMessage = ""
     var store = DataStore.shared
     var transaction: Transaction?
-    let service = BlockstreamService()
 
+    /// Handles the result from the QR code scanner
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
         switch result {
