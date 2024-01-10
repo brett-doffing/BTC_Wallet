@@ -13,8 +13,8 @@ struct Wallet: Codable, Identifiable {
             let sorted = _txs.sorted { (lhs, rhs) in
                 switch (lhs.blockTime, rhs.blockTime) {
                 case let(l?, r?): return l > r // Both lhs and rhs are not nil
-                case (nil, _): return false    // Lhs is nil
-                case (_?, nil): return true    // Lhs is not nil, rhs is nil
+                case (nil, _): return true    // Lhs is nil
+                case (_?, nil): return false    // Lhs is not nil, rhs is nil
                 }
             }
             return sorted

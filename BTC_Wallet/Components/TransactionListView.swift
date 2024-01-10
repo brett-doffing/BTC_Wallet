@@ -25,7 +25,7 @@ struct TransactionListView: View {
                     Text(txo?.isSpent == true ? "Sent:" : "Received:")
                     Text(blockTime)
                         .font(.callout)
-                        .foregroundColor(txo?.isSpent == true ? .red : .gray)
+                        .foregroundColor(blockTime == "Unconfirmed" ? .red : .gray)
                 }
                 Spacer()
                 Text("\(Int(txo?.value ?? 0)) Sats")
