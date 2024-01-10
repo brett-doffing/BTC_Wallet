@@ -32,7 +32,8 @@ struct Transaction {
         if _privateKeys.isEmpty {
             return utxos.compactMap { vout in
                 let wallet = DataStore.shared.wallets.first { $0.id.uuidString == vout.walletId }
-                let kc = wallet?.keychain?.receiveKeychain(atIndex: vout.walletIndex ?? 0)
+                print(vout.walletIndex)
+                let kc = wallet?.keychain?.receiveKeychain(atIndex: vout.walletIndex ?? 0, withType: .BIP44)
                 let privateKey = kc?.extendedPrivateKey?.privateKey.bytes
                 return privateKey
             }
